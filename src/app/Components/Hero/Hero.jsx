@@ -8,7 +8,7 @@ export default function Hero() {
                     <Image src={'/images/Hero/imageLeft.webp'} width={260} height={260} alt="lumiland"/>
                 </div>
                 <div className={styles.imageRight}>
-                    <Image src={'/images/Hero/imageRight.webp'} width={260} height={260} alt="lumiland"/>
+                    <Image src={'/images/Hero/imageRight.webp'} width={281} height={282} alt="lumiland"/>
                 </div>
             </div>
             <div className={styles.imageBg}>
@@ -23,8 +23,8 @@ export default function Hero() {
                 <div className={styles.sloganTop}>
                     <p>Детские и взрослые мечты сбываются в LUMILAND</p>
                 </div>
-                <h1><span>открытие первого</span><br/><span>мультимедийного</span><br/><span>парка в томске</span><br/><span>уже в декабре</span></h1>
-                <div className={styles.Geo}>
+                <h1><span>ОТКРЫТИЕ ПЕРВОГО</span><br/><span>МУЛЬТИМЕДИЙНОГО</span><br/><span>ПАРКА В ТОМСКЕ</span><br/><span>УЖЕ В ДЕКАБРЕ</span></h1>
+                <div className={styles.geo}>
                     <Image src={'/icons/geo.svg'} width={53} height={53} alt="ул. Котовского 19/1, ТЦ Смайлcity"/>
                     <span>ул. Котовского 19/1,<br />ТЦ Смайлcity</span>
                 </div>
