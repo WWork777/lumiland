@@ -1,5 +1,22 @@
+@font-face {
+  font-family: "TT";
+  src: url('../../fonts/TT\ Travels\ Next\ Trial\ Regular.ttf');
+}
+@font-face {
+  font-family: "TT Black";
+  src: url('../../fonts/TT\ Travels\ Next\ Trial\ Black.ttf');
+}
+@font-face {
+  font-family: "TT 600";
+  src: url('../../fonts/TT\ Travels\ Next\ Trial\ Light.ttf');
+}
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
+  font-family: "TT";
+  overflow-x: hidden;
+}
+p {
+  margin: 0;
 }
