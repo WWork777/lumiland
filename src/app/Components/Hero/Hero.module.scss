@@ -1,6 +1,7 @@
 .hero {
     background: linear-gradient(#FAE1F0, #F1E6F5);
-    width: 100vw;
+    max-width: 100%;
+    position: relative;
     .imageTop {
         position: absolute;
         display: flex;
@@ -246,7 +247,7 @@
     .hero {
     .imageBg {
         .imageBgLeft {
-            top: 300px;
+            top: 200px;
             left: -250px;
             img {
                 width: 330px;
@@ -255,7 +256,7 @@
         }
         .imageBgRight {
             right: -540px;
-            top: 160px;
+            top: 60px;
             img {
                 width: 600px;
                 height: 400px;
@@ -293,14 +294,14 @@
             font-size: 14px;
             gap: 14px;
             left: 0;
-            top: 0px;
+            top: 36px;
         }
     }
     .WhiteBg {
         display: none;
     }
     .imageMain {
-        top: 20px;
+        top: 70px;
         width: 95vw;
         height: 95vw;
         img {
