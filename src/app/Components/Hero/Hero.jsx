@@ -21,7 +21,7 @@ export default function Hero() {
       maxScrollRef.current = Math.max(maxScrollRef.current, currentProgress);
 
       // Масштабируем от 0.5 до 1
-      const scale = 0.6 + maxScrollRef.current * 0.7;
+      const scale = 0.75 + maxScrollRef.current * 0.5;
 
       if (imageMainRef.current) {
         imageMainRef.current.style.transform = `scale(${scale})`;
