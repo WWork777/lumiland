@@ -1,4 +1,3 @@
-
 import "./globals.scss";
 import Header from "./Components/Header/Header";
 import YandexMetrika from "./Components/YandexMetrika/YandexMEtrika";
