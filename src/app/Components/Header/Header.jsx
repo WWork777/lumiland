@@ -108,7 +108,7 @@ export default function Header() {
           <div className={styles.mobileSocials}>
             <Link href="#">
               <Image
-                src="/icons/vk.svg"
+                src="/icons/Vk.svg"
                 width={36}
                 height={36}
                 alt="Вконтакте"
