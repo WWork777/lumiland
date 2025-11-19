@@ -108,3 +108,19 @@
     }
   }
 }
+
+.footer {
+  text-align: center;
+  padding: 20px 0px;
+
+  @media (max-width: 768px) {
+    padding: 10px 0;
+  }
+  span {
+    font-size: 14px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+}

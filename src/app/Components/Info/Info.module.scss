@@ -217,7 +217,7 @@
 }
 @media (max-width: 480px) {
   .info {
-    padding: 100px 9px;
+    padding: 100px 15px;
     padding-bottom: 0;
     .bgIcon {
       top: 40%;
@@ -225,8 +225,8 @@
       height: 300px !important;
     }
     .fireIcone {
-      top: 35%;
-      left: -4%;
+      top: 37%;
+      left: 2%;
       width: 220px;
       height: 220px;
       svg {
@@ -276,13 +276,14 @@
     }
     .swiperGalary {
       width: 100%;
-      margin-top: 120px;
+      margin-top: 110px;
       .swiperSlide {
-        width: 350px;
+        width: 100%;
         img {
-        width: 350px;
-            object-fit: fill;
-          height: 280px;
+          width: 100%;
+          object-fit: contain;
+          height: 270px;
+          border-radius: 30px;
         }
       }
       .swiperDescription {
@@ -296,6 +297,55 @@
     }
   }
 }
+
+@media (max-width: 400px) {
+  .fireIcone {
+    top: 45% !important;
+    left: 9% !important;
+    width: 220px;
+    height: 220px;
+    svg {
+      width: 320px !important;
+      height: 320px !important;
+    }
+  }
+  .swiperGalary {
+    margin-top: 50px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .fireIcone {
+    top: 47% !important;
+    left: 5% !important;
+    width: 220px;
+    height: 220px;
+    svg {
+      width: 320px !important;
+      height: 320px !important;
+    }
+  }
+  .swiperGalary {
+    margin-top: 50px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .fireIcone {
+    top: 50% !important;
+    left: 5% !important;
+    width: 220px;
+    height: 220px;
+    svg {
+      width: 320px !important;
+      height: 320px !important;
+    }
+  }
+  .swiperGalary {
+    margin-top: 50px !important;
+  }
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
