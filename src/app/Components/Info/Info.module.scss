@@ -218,6 +218,7 @@
 @media (max-width: 480px) {
   .info {
     padding: 100px 9px;
+    padding-bottom: 0;
     .bgIcon {
       top: 40%;
       width: 170px !important;
@@ -279,8 +280,9 @@
       .swiperSlide {
         width: 350px;
         img {
-          object-fit: cover;
-          height: 320px;
+        width: 350px;
+            object-fit: fill;
+          height: 280px;
         }
       }
       .swiperDescription {

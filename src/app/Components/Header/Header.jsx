@@ -42,7 +42,7 @@ export default function Header() {
           <Image src="/icons/tg.svg" width={36} height={36} alt="телеграм" />
         </Link>
         <div className={styles.numberGeo}>
-          <Link href={"tel:79161920266"}>+7 (916) 19-20-266</Link>
+          <Link href={"tel:79161920266"}>+7 (952) 880-03-30</Link>
           <span>Томск, Котовского 19/1, ТЦ Смайлcity</span>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default function Header() {
             </Link>
           </div>
           <div className={styles.numberGeo}>
-            <Link href={"tel:79161920266"}>+7 (916) 19-20-266</Link>
+            <Link href={"tel:79528800330"}>+7 (952) 880-03-30</Link>
             <span>Томск, Котовского 19/1, ТЦ Смайлcity</span>
           </div>
         </div>
