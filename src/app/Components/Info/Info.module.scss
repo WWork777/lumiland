@@ -67,17 +67,20 @@
             width: 100%;
             img {
                 width: 100%;
+                border-radius: 50px;
             }
         }
         .swiperDescription {
+            text-align: center;
             margin: 0 auto;
             margin-top: -65px;
             background: #DCFF00;
             border-radius: 15px;
             transform: rotate(-0.84deg);
             padding: 20px 36px;
-            width: 415px;
+            width: 550px;
             span {
+                display: block;
                 font-family: "TT 700";
                 font-size: 25px;
                 font-weight: 700;

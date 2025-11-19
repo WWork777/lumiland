@@ -8,8 +8,8 @@ import 'swiper/css/navigation'
 export default function Info() {
     const slides = [
         {id: 1, img: "01.webp", descrition: "Лепите песочные замки в натуральную величину"},
-        {id: 2, img: "01.webp", descrition: "Лепите песочные замки в натуральную величину"},
-        {id: 3, img: "01.webp", descrition: "Лепите песочные замки в натуральную величину"},
+        {id: 2, img: "02.webp", descrition: "Создавайте рисунки, которые оживают на ваших глазах"},
+        {id: 3, img: "03.webp", descrition: "Играйте в хоккей как профессиональный спортсмен"},
     ]
     return (
         <section className={styles.info}>
