@@ -87,6 +87,8 @@
     }
     .imageMain {
         position: relative;
+        // animation: scaleP 2s ease;
+        // animation-timeline: scroll(root block);
         z-index: 10;
         border-radius: 100%;
         height: 526px;
@@ -310,4 +312,12 @@
         }
     }
 }
+}
+@keyframes scaleP {
+    from {
+        transform: scale(0.7);
+    }
+    to {
+        transform: scale(1);
+    }
 }
