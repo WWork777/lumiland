@@ -13,10 +13,11 @@ export default function Info() {
     ]
     return (
         <section className={styles.info}>
+            <Image src={'/images/Info/flowe.webp'} width={355} height={700} alt="lumiland" className={styles.bgIcon}/>
             <h2 className={styles.infoTitle}><span>БОЛЬШЕ НИКАКИХ ОГРАНИЧЕНИЙ.</span><span> ДОБРО ПОЖАЛОВАТЬ В LUMILAND —</span><span> МЕСТО, ГДЕ САМЫЕ НЕВЕРОЯТНЫЕ</span><span> ФАНТАЗИИ СТАНОВЯТСЯ ВАШЕЙ</span><span> НОВОЙ РЕАЛЬНОСТЬЮ</span></h2>
             <p className={styles.infoDescrition}>Десятки phygital-аттракционов и не(реальные) впечатления, в которых сочетается взаимодействие с реальными и мультимедийными объектами</p>
             <div className={styles.fireIcone}>
-                <svg width="724" height="724" viewBox="0 0 724 724" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="724" height="724" viewBox="0 0 724 250" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_1_2)">
                 <circle cx="361.76" cy="229.76" r="139.74" transform="rotate(8.78169 361.76 229.76)" fill="#DCFF00"/>
                 </g>
@@ -31,8 +32,8 @@ export default function Info() {
                 <path d="M348.435 195.698L348.59 195.859C348.812 196.899 343.854 208.214 343.059 209.634C342.067 208.443 344.694 202.981 345.23 201.331C345.867 199.372 347.047 197.234 348.435 195.698Z" fill="#8C559B"/>
                 <path d="M382.467 209.399C382.916 209.496 383.216 209.469 383.442 209.765C383.569 211.551 382.05 216.464 381.118 218.144C380.989 218.164 380.882 218.093 380.725 218.036C380.032 217.048 381.821 210.557 382.467 209.399Z" fill="#8C559B"/>
                 <defs>
-                <filter id="filter0_d_1_2" x="3.8147e-06" y="0" width="723.52" height="723.52" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter0_d_1_2" x="3.8147e-06" y="0" width="723.52" height="723.52" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                 <feOffset dy="132"/>
                 <feGaussianBlur stdDeviation="111"/>
@@ -59,7 +60,7 @@ export default function Info() {
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={25}
-                slidesPerView={1}
+                slidesPerView={'auto'}
                 navigation={{
                     nextEl: `.${styles.swiperButtonNext}`,
                     prevEl: `.${styles.swiperButtonPrev}`,

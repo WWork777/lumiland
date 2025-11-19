@@ -2,10 +2,16 @@
     position: relative;
     z-index: 1;
     padding: 50px 17vw;
+    .bgIcon {
+        position: absolute;
+        left: 0;
+        top: 20%;
+        z-index: -1;
+    }
     .fireIcone {
         position: absolute;
         z-index: 10;
-        top: 25%;
+        top: 5%;
         left: 50%;
         svg {
             .svgAnim {
@@ -58,6 +64,7 @@
         margin-top: -70px;
         display: flex;
         .swiperSlide {
+            width: 100%;
             img {
                 width: 100%;
             }
@@ -81,9 +88,15 @@
 @media (max-width:1280px) {
     .info {
     padding: 50px 10vw;
-    .fireIcone {
+        .bgIcon {
+        left: 0;
         top: 20%;
-        left: 50%;
+        width: 170px !important;
+        height: 400px !important;
+    }
+    .fireIcone {
+        top: -5%;
+        left: 44%;
     }
     .swiperButtonPrev {
         top: 350px;
@@ -129,8 +142,14 @@
 @media (max-width:1024px) {
     .info {
     padding: 50px 5vw;
+    .bgIcon {
+        left: -5%;
+        top: 30%;
+        width: 170px !important;
+        height: 300px !important;
+    }
     .fireIcone {
-        top: 25%;
+        top: 8%;
         left: 52%;
         svg {
             width: 520px;
@@ -180,30 +199,49 @@
     }
 }
 }
-
-@media (max-width:480px) {
+@media (max-width:820px) {
     .info {
-    padding: 100px 5px;
+    padding: 50px 5vw;
     .fireIcone {
-        top: 25%;
-        left: 52%;
+        top: 20%;
+        left: 42%;
         svg {
             width: 520px;
             height: 520px;
         }
     }
+}}
+@media (max-width:480px) {
+    .info {
+    padding: 100px 9px;
+    .bgIcon {
+        top: 40%;
+        width: 170px !important;
+        height: 300px !important;
+    }
+    .fireIcone {
+        top: 35%;
+        left: -4%;
+        width: 220px;
+        height: 220px;
+        svg {
+        width: 420px;
+        height: 420px;
+        }
+    }
     .swiperButtonPrev {
-        top: 250px;
-        left: -2%;
+        display: none;
     }
     .swiperButtonNext {
-        top: 185px;
-        left: 97%;
+        display: none;
     }
     .infoTitle {
         font-size: 23px;
         line-height: 1.46;
         letter-spacing: 3%;
+        span {
+            display: inline-block;
+        }
         span:first-child {
             padding-left: 0px;
             text-align: center;
@@ -220,26 +258,32 @@
             padding-left: 0px;
             text-align: center;
         }
+        span:last-child {
+            text-align: center;
+        }
     }
     .infoDescrition {
-        font-size: 16px;
-        line-height: 33px;
-        width: 60%;
+        font-size: 14px;
+        line-height: 21px;
+        width: 100%;
+        text-align: center;
         margin-top: 30px;
     }
     .swiperGalary {
-        margin-top: -100px;
+        width: 100%;
+        margin-top: 120px;
         .swiperSlide {
+            width: 310px;
             img {
-                height: 450px;
+                height: 300px;
             }
         }
         .swiperDescription {
-            margin-top: -65px;
+            margin-top: -50px;
             padding: 20px 36px;
-            width: 300px;
+            width: 220px;
             span {
-                font-size: 18px;
+                font-size: 13px;
             }
         }
     }
