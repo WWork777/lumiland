@@ -23,4 +23,8 @@ html, body {
   box-sizing: border-box;
   font-family: "TT";
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
 }

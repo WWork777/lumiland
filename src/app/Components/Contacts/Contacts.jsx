@@ -3,7 +3,7 @@ import styles from "./Contacts.module.scss"
 import Link from "next/link"
 export default function Contacts() {
     return (
-        <section className={styles.contacts}>
+        <section className={styles.contacts} id="contacts">
             <h2 className={styles.contactsTitle}><span>ПРИХОДИТЕ В ГОСТИ</span><span>В ИНТЕРАКТИВНЫЙ</span><span>ПАРК LUMILAND</span></h2>
             <Image src={'/images/Contacts/Knot.webp'} width={350} height={500} alt="lumiland" className={styles.iconBg}/>
             <div className={styles.mapContainer}>

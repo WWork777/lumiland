@@ -5,9 +5,9 @@ import Link from "next/link";
 import styles from "./Header.module.scss";
 
 const navItems = [
-    { label: "О парке", href: "#" },
-    { label: "Вопрос-ответ", href: "#" },
-    { label: "Контакты", href: "#" },
+    { label: "О парке", href: "#info" },
+    { label: "Вопрос-ответ", href: "#questions" },
+    { label: "Контакты", href: "#contacts" },
 ];
 
 export default function Header() {
@@ -37,7 +37,7 @@ export default function Header() {
                     <Image src="/icons/tg.svg" width={36} height={36} alt="телеграм" />
                 </Link>
                 <div className={styles.numberGeo}>
-                    <span>+7 (916) 19-20-266</span>
+                    <Link href={'tel:79161920266'}>+7 (916) 19-20-266</Link>
                     <span>Томск, Котовского 19/1, ТЦ Смайлcity</span>
                 </div>
             </div>
@@ -93,7 +93,7 @@ export default function Header() {
                         </Link>
                     </div>
                     <div className={styles.numberGeo}>
-                        <span>+7 (916) 19-20-266</span>
+                        <Link href={'tel:79161920266'}>+7 (916) 19-20-266</Link>
                         <span>Томск, Котовского 19/1, ТЦ Смайлcity</span>
                     </div>
                 </div>

@@ -6,16 +6,16 @@ export default function Questions() {
     const [activeIndex, setActiveIndex] = useState(null);
     
     const answer = [
-        {question: "Есть ли в парке кафе или зона отдыха?", answer: "wqwqw"},
-        {question: "Можно ли прийти в парк без брони?", answer: ""},
-        {question: "Что необходимо будет взять с собой?", answer: ""},
-        {question: "Есть ли у вас скидки или акции?", answer: ""}
+        {question: "Есть ли в парке кафе или зона отдыха?", answer: "Есть ли в парке кафе или зона отдыха?"},
+        {question: "Можно ли прийти в парк без брони?", answer: "Можно ли прийти в парк без брони?"},
+        {question: "Что необходимо будет взять с собой?", answer: "Что необходимо будет взять с собой?"},
+        {question: "Есть ли у вас скидки или акции?", answer: "Есть ли у вас скидки или акции?"}
     ]
         const toggleItem = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
     return (
-        <section className={styles.questions}>
+        <section className={styles.questions} id="questions">
             <h2 className={styles.questionTitle}>
                 ОТВЕТЫ НА <span>ЧАСТЫЕ ВОПРОСЫ</span>
             </h2>

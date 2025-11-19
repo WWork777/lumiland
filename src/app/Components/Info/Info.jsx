@@ -12,7 +12,7 @@ export default function Info() {
         {id: 3, img: "03.webp", descrition: "Играйте в хоккей как профессиональный спортсмен"},
     ]
     return (
-        <section className={styles.info}>
+        <section className={styles.info} id="info">
             <Image src={'/images/Info/flowe.webp'} width={355} height={700} alt="lumiland" className={styles.bgIcon}/>
             <h2 className={styles.infoTitle}><span>БОЛЬШЕ НИКАКИХ ОГРАНИЧЕНИЙ.</span><span> ДОБРО ПОЖАЛОВАТЬ В LUMILAND —</span><span> МЕСТО, ГДЕ САМЫЕ НЕВЕРОЯТНЫЕ</span><span> ФАНТАЗИИ СТАНОВЯТСЯ ВАШЕЙ</span><span> НОВОЙ РЕАЛЬНОСТЬЮ</span></h2>
             <p className={styles.infoDescrition}>Десятки phygital-аттракционов и не(реальные) впечатления, в которых сочетается взаимодействие с реальными и мультимедийными объектами</p>
