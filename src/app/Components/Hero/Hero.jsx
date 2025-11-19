@@ -13,9 +13,10 @@ export default function Hero() {
         const handleScroll = () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const currentProgress = Math.min(scrollTop / scrollHeight, 1);
+            let currentProgress = Math.min(scrollTop / scrollHeight, 1);
             
             // Сохраняем максимальный прогресс
+            currentProgress = Math.pow(currentProgress, 0.5);
             maxScrollRef.current = Math.max(maxScrollRef.current, currentProgress);
             
             // Масштабируем от 0.5 до 1
