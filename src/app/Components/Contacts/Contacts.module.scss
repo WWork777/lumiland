@@ -9,7 +9,7 @@
   .contactsTitle {
     color: #4c365a;
     font-size: 45px;
-    font-family: "TT Black";
+    font-family: 'TT Black';
     text-align: center;
     line-height: 1.46;
     letter-spacing: 3%;
@@ -110,17 +110,61 @@
 }
 
 .footer {
-  text-align: center;
-  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 18vw;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 1650px) {
+    padding: 20px 8vw;
+  }
 
   @media (max-width: 768px) {
-    padding: 10px 0;
+    padding: 10px 5vw;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
   }
-  span {
+
+  .copyright {
     font-size: 14px;
+    white-space: nowrap;
 
     @media (max-width: 768px) {
       font-size: 12px;
+    }
+  }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+
+    .socialsLabel {
+      font-size: 14px;
+      color: #320948;
+      font-weight: 400;
+      white-space: nowrap;
+
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      img {
+        display: block;
+        width: 36px;
+        height: 36px;
+      }
     }
   }
 }

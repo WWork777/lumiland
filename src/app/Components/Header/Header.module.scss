@@ -1,181 +1,183 @@
 .header {
-    background: linear-gradient(#FAE1F0, #F1E6F5);
-    padding: 34px 18vw;
+  background: linear-gradient(#fae1f0, #f1e6f5);
+  padding: 34px 18vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #7c2dae33;
+  position: relative;
+  .navigation {
     display: flex;
-    justify-content: space-between;
+    gap: 35px;
+    font-size: 14px;
+    a {
+      color: #320948;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      &:hover {
+        color: #7c2dae;
+      }
+    }
+  }
+  .contacts {
+    display: flex;
     align-items: center;
-    border-bottom: 1px solid #7C2DAE33;
-    position: relative;
-    .navigation {
-        display: flex;
-        gap: 35px;
-        font-size: 14px;
-        a {
-            color: #320948;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-            &:hover {
-                color: #7C2DAE;
-            }
-        }
+    gap: 20px;
+    .numberGeo {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      a,
+      span {
+        color: #9117ba;
+      }
+      a {
+        color: #9117ba;
+        display: block;
+        font-size: 24px;
+        font-weight: 900;
+        font-family: 'TT Black';
+      }
+      span:last-child {
+        font-size: 13px;
+        font-weight: 500;
+      }
     }
-    .contacts {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        .numberGeo {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            a, span {
-                color: #9117BA;
-            }
-            a { 
-                color: #9117BA;
-                display: block;
-                font-size: 24px;
-                font-weight: 900;
-                font-family:  "TT Black";
-            }
-            span:last-child {
-                font-size: 13px;
-                font-weight: 500;
-            }
-        }
-    }
-    .burgerMenu {
-        display: none;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-    }
-    .mobileMenu {
-        display: none;
-    }
+  }
+  .burgerMenu {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .mobileMenu {
+    display: none;
+  }
 }
 .backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(2px);
-    z-index: 9;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  z-index: 9;
 }
 @media (max-width: 1650px) {
-    .header {
-        padding: 34px 8vw;
-    }
+  .header {
+    padding: 34px 8vw;
+  }
 }
 @media (max-width: 1280px) {
-    .header {
-        padding: 34px 5vw;
-        .contacts {
-            .numberGeo {
-                span:first-child {
-                    font-size: 18px;
-                }
-                span:last-child {
-                    font-size: 10px;
-                }
-            }
+  .header {
+    padding: 34px 5vw;
+    .contacts {
+      .numberGeo {
+        span:first-child {
+          font-size: 18px;
         }
+        span:last-child {
+          font-size: 10px;
+        }
+      }
     }
+  }
 }
 @media (max-width: 1024px) {
-    .header {
-        > img {
-          width: 149px;
-          height: 37px;  
-        }
-        .navigation, .contacts {
-            display: none;
-        }
-        .burgerMenu {
-            display: block;
-            z-index: 9;
-        }
-        .mobileMenu {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            padding: 24px;
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: min(80vw, 360px);
-            background: linear-gradient(180deg, #FAE1F0 0%, #F1E6F5 100%);
-            box-shadow: -8px 0 30px rgba(50, 9, 72, 0.1);
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            z-index: 11;
-            nav {
-                display: flex;
-                flex-direction: column;
-                gap: 18px;
-                font-size: 16px;
-                a {
-                    text-decoration: none;
-                    color: #320948;
-                    font-family: "TT DemiBold", sans-serif;
-                }
-            }
-        }
-        .open {
-            transform: translateX(0);
-        }
-        .mobileMenuHeader {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .closeButton {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            border: 1px solid rgba(124, 45, 174, 0.2);
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            cursor: pointer;
-            position: relative;
-            span {
-                position: absolute;
-                width: 18px;
-                height: 2px;
-                background: #320948;
-                &:first-child {
-                    transform: rotate(45deg);
-                }
-                &:last-child {
-                    transform: rotate(-45deg);
-                }
-            }
-        }
-        .mobileContacts {
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            .numberGeo {
-                a {
-                    color: black;
-                    display: block;
-                    font-size: 20px;
-                }
-                span:last-child {
-                    font-size: 12px;
-                }
-            }
-        }
-        .mobileSocials {
-            display: flex;
-            gap: 12px;
-        }
+  .header {
+    > img {
+      width: 149px;
+      height: 37px;
     }
-    .backdrop {
-        display: block;
+    .navigation,
+    .contacts {
+      display: none;
     }
+    .burgerMenu {
+      display: block;
+      z-index: 9;
+    }
+    .mobileMenu {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(80vw, 360px);
+      background: linear-gradient(180deg, #fae1f0 0%, #f1e6f5 100%);
+      box-shadow: -8px 0 30px rgba(50, 9, 72, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 11;
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        font-size: 16px;
+        a {
+          text-decoration: none;
+          color: #320948;
+          font-family: 'TT DemiBold', sans-serif;
+        }
+      }
+    }
+    .open {
+      transform: translateX(0);
+    }
+    .mobileMenuHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .closeButton {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid rgba(124, 45, 174, 0.2);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      cursor: pointer;
+      position: relative;
+      span {
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #320948;
+        &:first-child {
+          transform: rotate(45deg);
+        }
+        &:last-child {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    .mobileContacts {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .numberGeo {
+        a {
+          color: black;
+          display: block;
+          font-size: 20px;
+        }
+        span:last-child {
+          font-size: 12px;
+        }
+      }
+    }
+    .mobileSocials {
+      display: flex;
+      gap: 12px;
+    }
+  }
+  .backdrop {
+    display: block;
+  }
 }
