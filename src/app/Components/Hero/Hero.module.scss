@@ -1,323 +1,324 @@
 .hero {
-    background: linear-gradient(#FAE1F0, #F1E6F5);
-    max-width: 100%;
+  background: linear-gradient(#fae1f0, #f1e6f5);
+  max-width: 100%;
+  position: relative;
+  scroll-snap-align: start;
+  .imageTop {
+    position: absolute;
+    display: flex;
+    .imageLeft {
+      position: absolute;
+      top: 58px;
+      left: 3.2vw;
+      border-radius: 100%;
+      height: 260px;
+      box-shadow: 5px 6px#DCFF00;
+    }
+    .imageRight {
+      position: absolute;
+      left: 82vw;
+      top: -21px;
+      border-radius: 100%;
+      height: 282px;
+      box-shadow: 5px 6px#DCFF00;
+    }
+  }
+  .imageBg {
+    .imageBgLeft {
+      position: absolute;
+      top: 520px;
+      left: 24px;
+    }
+    .imageBgRight {
+      position: absolute;
+      right: 0;
+      top: 420px;
+    }
+  }
+  .heroContent {
+    padding: 50px 18.9vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .sloganTop {
+      display: inline-block;
+      padding: 13px 28px;
+      background: #dcff00;
+      border-radius: 15px;
+      transform: rotate(-0.45deg);
+      font-size: 23px;
+      font-family: "TT";
+      font-weight: 600;
+    }
+    h1 {
+      margin-top: -25px;
+      font-size: 70px;
+      font-family: "TT Black";
+      color: #4c365a;
+      span:first-child {
+        margin-left: 100px;
+      }
+      span:nth-child(3) {
+        color: #7c2dae;
+        margin-left: 150px;
+      }
+      span:last-child {
+        margin-left: 250px;
+      }
+    }
+    .geo {
+      display: flex;
+      color: #7c2dae;
+      font-size: 21px;
+      gap: 23px;
+      font-family: "TT Black";
+      position: relative;
+      left: 440px;
+      top: -175px;
+    }
+  }
+  .WhiteBg {
+    position: absolute;
+    background: #fff;
+    left: -10vw;
+    width: 120vw;
+    height: 800px;
+    border-radius: 50%/175px;
+    top: 820px;
+  }
+  .imageMain {
     position: relative;
-    .imageTop {
-        position: absolute;
-        display: flex;
-        .imageLeft {
-            position: absolute;
-            top: 58px;
-            left: 3.2vw;
-            border-radius: 100%;
-            height: 260px;
-            box-shadow: 5px 6px#DCFF00;
-        }
-        .imageRight {
-            position: absolute;
-            left: 82vw;
-            top: -21px;
-            border-radius: 100%;
-            height: 282px;
-            box-shadow: 5px 6px#DCFF00;
-        }
-    }
-    .imageBg {
-        .imageBgLeft {
-            position: absolute;
-            top: 520px;
-            left: 24px;
-        }
-        .imageBgRight {
-            position: absolute;
-            right: 0;
-            top: 420px
-        }
-    }
-    .heroContent {
-        padding: 50px 18.9vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .sloganTop {
-            display: inline-block;
-            padding: 13px 28px;
-            background: #DCFF00;
-            border-radius: 15px;
-            transform: rotate(-0.45deg);
-            font-size: 23px;
-            font-family: "TT";
-            font-weight: 600;
-        }
-        h1 {
-            margin-top: -25px;
-            font-size: 70px;
-            font-family: "TT Black";
-            color: #4C365A;
-            span:first-child {
-                margin-left: 100px;
-            }
-            span:nth-child(3) {
-                color: #7C2DAE;
-                margin-left: 150px;
-            }
-            span:last-child {
-                margin-left: 250px;
-            }
-        }
-        .geo {
-            display: flex;
-            color:#7C2DAE;
-            font-size: 21px;
-            gap: 23px;
-            font-family: "TT Black";
-            position: relative;
-            left: 440px;
-            top: -175px;
-        }
-    }
-    .WhiteBg {
-        position: absolute;
-        background: #fff;
-        left: -10vw;
-        width: 120vw;
-        height: 800px;
-        border-radius: 50%/175px;
-        top: 820px;
-    }
-    .imageMain {
-        position: relative;
-        // animation: scaleP 2s ease;
-        // animation-timeline: scroll(root block);
-        z-index: 10;
-        border-radius: 100%;
-        height: 526px;
-        box-shadow: 8px 8px#DCFF00;
-    }
+    // animation: scaleP 2s ease;
+    // animation-timeline: scroll(root block);
+    z-index: 10;
+    border-radius: 100%;
+    height: 526px;
+    box-shadow: 8px 8px#DCFF00;
+  }
 }
 @media (max-width: 1280px) {
-    .hero {
+  .hero {
     .imageTop {
-        .imageLeft {
-            height: 200px;
-            width: 200px;
-            img {
-                height: 200px;
-                width: 200px;
-            }
+      .imageLeft {
+        height: 200px;
+        width: 200px;
+        img {
+          height: 200px;
+          width: 200px;
         }
-        .imageRight {
-            height: 210px;
-            width: 210px;
-            img {
-                height: 210px;
-                width: 210px;
-            }
+      }
+      .imageRight {
+        height: 210px;
+        width: 210px;
+        img {
+          height: 210px;
+          width: 210px;
         }
+      }
     }
     .imageBg {
-        .imageBgLeft {
-            top: 460px;
-            left: 24px;
-            img {
-                width: 330px;
-                height: 300px;
-            }
+      .imageBgLeft {
+        top: 460px;
+        left: 24px;
+        img {
+          width: 330px;
+          height: 300px;
         }
-        .imageBgRight {
-            right: 0;
-            top: 420px;
-            img {
-                width: 600px;
-                height: 400px;
-            }
+      }
+      .imageBgRight {
+        right: 0;
+        top: 420px;
+        img {
+          width: 600px;
+          height: 400px;
         }
+      }
     }
     .heroContent {
-        padding: 50px 20vw;
-        .sloganTop {
-            font-size: 13px;
+      padding: 50px 20vw;
+      .sloganTop {
+        font-size: 13px;
+      }
+      h1 {
+        margin-top: -10px;
+        font-size: 38px;
+        span:first-child {
+          margin-left: 50px;
         }
-        h1 {
-            margin-top: -10px;
-            font-size: 38px;
-            span:first-child {
-                margin-left: 50px;
-            }
-            span:nth-child(3) {
-                margin-left: 100px;
-            }
-            span:last-child {
-                margin-left: 150px;
-            }
+        span:nth-child(3) {
+          margin-left: 100px;
         }
-        .geo {
-            font-size: 17px;
-            gap: 17px;
-            left: 280px;
-            top: -105px;
+        span:last-child {
+          margin-left: 150px;
         }
+      }
+      .geo {
+        font-size: 17px;
+        gap: 17px;
+        left: 280px;
+        top: -105px;
+      }
     }
     .WhiteBg {
-        left: -10vw;
-        width: 120vw;
-        height: 300px;
+      left: -10vw;
+      width: 120vw;
+      height: 300px;
 
-        top: 670px;
+      top: 670px;
     }
     .imageMain {
+      width: 326px;
+      height: 326px;
+      img {
         width: 326px;
         height: 326px;
-        img {
-            width: 326px;
-            height: 326px;
-        }
+      }
     }
-}
+  }
 }
 @media (max-width: 1024px) {
-    .hero {
+  .hero {
     .imageTop {
-        .imageLeft {
-            display: none;
-        }
-        .imageRight {
-            display: none;
-        }
+      .imageLeft {
+        display: none;
+      }
+      .imageRight {
+        display: none;
+      }
     }
     .imageBg {
-        .imageBgLeft {
-            top: 320px;
-            left: 0px;
-            img {
-                width: 330px;
-                height: 300px;
-            }
+      .imageBgLeft {
+        top: 320px;
+        left: 0px;
+        img {
+          width: 330px;
+          height: 300px;
         }
-        .imageBgRight {
-            right: 0;
-            top: 320px;
-            img {
-                width: 600px;
-                height: 400px;
-            }
+      }
+      .imageBgRight {
+        right: 0;
+        top: 320px;
+        img {
+          width: 600px;
+          height: 400px;
         }
+      }
     }
     .heroContent {
-        padding: 20px 20vw;
-        .sloganTop {
-            font-size: 13px;
+      padding: 20px 20vw;
+      .sloganTop {
+        font-size: 13px;
+      }
+      h1 {
+        margin-top: -10px;
+        font-size: 38px;
+        span:first-child {
+          margin-left: 50px;
         }
-        h1 {
-            margin-top: -10px;
-            font-size: 38px;
-            span:first-child {
-                margin-left: 50px;
-            }
-            span:nth-child(3) {
-                margin-left: 100px;
-            }
-            span:last-child {
-                margin-left: 150px;
-            }
+        span:nth-child(3) {
+          margin-left: 100px;
         }
-        .geo {
-            font-size: 14px;
-            gap: 14px;
-            left: 260px;
-            top: -105px;
+        span:last-child {
+          margin-left: 150px;
         }
+      }
+      .geo {
+        font-size: 14px;
+        gap: 14px;
+        left: 260px;
+        top: -105px;
+      }
     }
     .WhiteBg {
-        left: -10vw;
-        width: 120vw;
-        height: 300px;
-        top: 500px;
+      left: -10vw;
+      width: 120vw;
+      height: 300px;
+      top: 500px;
     }
     .imageMain {
-        top: -30px;
+      top: -30px;
+      width: 250px;
+      height: 250px;
+      img {
         width: 250px;
         height: 250px;
-        img {
-            width: 250px;
-            height: 250px;
-        }
+      }
     }
-}
+  }
 }
 @media (max-width: 480px) {
-    .hero {
+  .hero {
     .imageBg {
-        .imageBgLeft {
-            top: 200px;
-            left: -250px;
-            img {
-                width: 330px;
-                height: 300px;
-            }
+      .imageBgLeft {
+        top: 200px;
+        left: -250px;
+        img {
+          width: 330px;
+          height: 300px;
         }
-        .imageBgRight {
-            right: -540px;
-            top: 60px;
-            img {
-                width: 600px;
-                height: 400px;
-            }
+      }
+      .imageBgRight {
+        right: -540px;
+        top: 60px;
+        img {
+          width: 600px;
+          height: 400px;
         }
+      }
     }
     .heroContent {
-        padding: 20px 21px;
-        .sloganTop {
-            width: 80%;
-            font-size: 14px;
-            text-align: center;
-            padding: 6px 9px;
-            transform: rotate(0deg);
+      padding: 20px 21px;
+      .sloganTop {
+        width: 80%;
+        font-size: 14px;
+        text-align: center;
+        padding: 6px 9px;
+        transform: rotate(0deg);
+      }
+      h1 {
+        margin-top: 10px;
+        font-size: 6.2vw;
+        span:first-child {
+          margin-left: 0px;
         }
-        h1 {
-            margin-top: 10px;
-            font-size: 6.2vw;
-            span:first-child {
-                margin-left: 0px;
-            }
-            span:nth-child(3) {
-                margin-left: 0;
-            }
-            span:nth-child(5) {
-                margin-left: 25px;
-            }
-            span:last-child {
-                margin-left: 50px;
-            }
+        span:nth-child(3) {
+          margin-left: 0;
         }
-        .geo {
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            gap: 14px;
-            left: 0;
-            top: 36px;
+        span:nth-child(5) {
+          margin-left: 25px;
         }
+        span:last-child {
+          margin-left: 50px;
+        }
+      }
+      .geo {
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        gap: 14px;
+        left: 0;
+        top: 36px;
+      }
     }
     .WhiteBg {
-        display: none;
+      display: none;
     }
     .imageMain {
-        top: 70px;
+      top: 70px;
+      width: 95vw;
+      height: 95vw;
+      img {
         width: 95vw;
         height: 95vw;
-        img {
-            width: 95vw;
-            height: 95vw;
-        }
+      }
     }
-}
+  }
 }
 @keyframes scaleP {
-    from {
-        transform: scale(0.7);
-    }
-    to {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(0.7);
+  }
+  to {
+    transform: scale(1);
+  }
 }
