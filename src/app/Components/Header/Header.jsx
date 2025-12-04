@@ -27,16 +27,21 @@ export default function Header() {
         ))}
       </nav>
       <div className={styles.contacts}>
-        <Link href='https://wa.me/qr/D6UDOX4E2TVAO1'>
-          <Image
-            src='/icons/whatsapp.svg'
-            width={36}
-            height={36}
-            alt='Вотсап'
+        <Link href='https://t.me/+79528800330'>
+          <Image 
+            src='/icons/tg.svg' 
+            width={36} 
+            height={36} 
+            alt='телеграм' 
           />
         </Link>
-        <Link href='https://t.me/+79528800330'>
-          <Image src='/icons/tg.svg' width={36} height={36} alt='телеграм' />
+        <Link href='https://max.ru/u/f9LHodD0cOI9mXJtibRDK-p1ur9gDFWVupyiARE_tbdrCyzutlyeOOEd9Qs'>
+          <Image
+            src='/icons/Max.svg'
+            width={36}
+            height={36}
+            alt='max'
+          />
         </Link>
         <div className={styles.numberGeo}>
           <Link href={'tel:79161920266'}>+7 (952) 880-03-30</Link>
@@ -103,15 +108,7 @@ export default function Header() {
         </nav>
         <div className={styles.mobileContacts}>
           <div className={styles.mobileSocials}>
-            <Link href='#'>
-              <Image
-                src='/icons/whatsapp.svg'
-                width={36}
-                height={36}
-                alt='Вотсап'
-              />
-            </Link>
-            <Link href='#'>
+          <Link href='https://t.me/+79528800330'>
               <Image
                 src='/icons/tg.svg'
                 width={36}
@@ -119,6 +116,14 @@ export default function Header() {
                 alt='телеграм'
               />
             </Link>
+          <Link href='https://max.ru/u/f9LHodD0cOI9mXJtibRDK-p1ur9gDFWVupyiARE_tbdrCyzutlyeOOEd9Qs'>
+            <Image
+              src='/icons/Max.svg'
+              width={36}
+              height={36}
+              alt='max'
+            />
+          </Link>
           </div>
           <div className={styles.numberGeo}>
             <Link href={'tel:79528800330'}>+7 (952) 880-03-30</Link>
