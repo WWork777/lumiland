@@ -2,6 +2,9 @@ import Contacts from "./Components/Contacts/Contacts";
 import Hero from "./Components/Hero/Hero";
 import Info from "./Components/Info/Info";
 import Questions from "./Components/Questions/Questions";
+import Price from "./Components/Price/Price"
+import Birthday from "./Components/Birthday/Birthday"
+
 import { Metadata } from 'next';
 import { headers } from "next/headers";
 export async function generateMetadata() {
@@ -59,7 +62,10 @@ export default function Home() {
     <Hero />
     <main>
       <Info />
+      <Price />
+      <Birthday />
       <Questions />
+     
       <Contacts />
     </main>
     </>

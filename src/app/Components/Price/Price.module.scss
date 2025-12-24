@@ -1,0 +1,187 @@
+
+.prices {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  
+}
+
+.title {
+    text-align: center;
+    font-family: "TT 900";
+    font-size: 45px;
+    color: #4c365a;
+    span {
+        color: #7C2DAE;
+    }
+}
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #F1E6F5 0%, #FAE1F0 100%);
+}
+.cell {
+  padding: 20px;
+  border-right: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* убираем правую границу у последней колонки */
+.cell:nth-child(4n) {
+  border-right: none;
+}
+
+.head {
+  background: #dfff4f;
+  font-weight: 600;
+}
+
+.ticket {
+  flex-direction: column;
+  gap: 6px;
+  font-size: 16px;
+ 
+}
+
+.ticket small {
+  font-size: 14px;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.ticketBig {
+  grid-row: span 3;
+  font-weight: 500;
+}
+
+.time {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.price {
+  background: #7b2cbf;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.freeWide {
+      border-right: none;
+
+  grid-column: span 2;
+  background: #7b2cbf;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  text-align: center;
+}
+
+@media (min-width: 769px){
+    .mobile{
+        display: none;
+    }   
+}
+@media (max-width: 768px) {
+
+    .desktop{
+        display: none;
+    }
+  .prices {
+  padding: 24px 16px;
+    }
+
+    .title {
+    text-align: center;
+        font-family: "TT Black";
+        font-size: 45px;
+        color: #4c365a;
+        span {
+            color: #7C2DAE;
+        }
+    }
+
+
+    .block {
+    margin-bottom: 32px;
+    }
+
+    .blockTitle {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+    }
+
+
+    .table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 20px;
+    overflow: hidden;
+    }
+
+
+    .head {
+    background: #dfff4f;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 12px;
+    text-align: center;
+    }
+
+    .time {
+    background: #faf5fb;
+    padding: 13px;
+    font-size: 14px;
+    text-align: center;
+    }
+
+    .price {
+    background: #7b2cbf;
+    color: #fff;
+    font-size: 14px;
+    padding: 14px;
+    text-align: center;
+    }
+
+    .ticket {
+        flex-direction: column;
+        gap: 6px;
+        font-size: 16px;
+        
+    }
+
+    .ticket small {
+        font-size: 14px;
+        opacity: 0.7;
+        font-weight: 400;
+    }
+
+    .ticketBig {
+        grid-row: span 3;
+        font-weight: 500;
+    }
+
+      
+
+    .freeWide {
+        font-size: 13px;
+    }
+
+}
+
+
+.spin {
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+}

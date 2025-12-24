@@ -1,0 +1,160 @@
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+.birthdayTitle{
+    text-align: center;
+        font-family: "TT Black";
+        font-size: 45px;
+        color: #4c365a;
+        span {
+            color: #7C2DAE;
+        }
+}
+.header h2{
+    font-family: "TT 600";
+    font-size: 22px;
+    text-align: center;
+
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  border-radius: 20px;
+  overflow: hidden;
+
+}
+
+.cell {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  min-width: 0; 
+}
+
+.label {
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #F1E6F5 0%, #FAE1F0 100%);
+}
+
+.standart { background-color: #DCFF00; color: #000; }
+.premium { background-color: #FFFF00; color: #000; }
+.vip { background-color: #9117BA; color: #fff; }
+.custom { background-color: #F55F41; color: #fff; }
+
+
+.customSideBlock {
+    text-transform: uppercase;
+    font-size: 12px;
+  font-family: "TT 700";
+  grid-column: 5;
+  grid-row: 2 / 15; // Проверьте, чтобы диапазон строк охватывал все услуги
+  background-color: #F55F41; // Оранжевый цвет блока
+  color: white;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;    // Центрируем текст по горизонтали
+  justify-content: flex-start; // Выравниваем контент по ВЕРХНЕМУ краю
+  
+  padding: 30px 15px;     // 30px — отступ сверху, 15px — по бокам
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.4;
+  border-bottom: none;    // Убираем нижнюю рамку, так как это единый блок
+}
+.check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vip .check { background: #fff; color: #8b22c3; }
+
+.footerButtons {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; /* Такая же сетка */
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.labelTitle{
+    color: #1D1D1D;
+    font-family: "TT 600";
+    font-size: 19px;
+    line-height: 33px;
+    align-self: center;
+}
+.standartTitle{
+    font-family: "TT 700";
+    font-size: 17px;
+    line-height: 33px;
+    text-transform: uppercase;
+}
+.premiumTitle{
+    font-family: "TT 700";
+    font-size: 17px;
+    line-height: 33px;
+    text-transform: uppercase;
+}
+.vipTitle{
+    font-family: "TT 700";
+    font-size: 17px;
+    line-height: 33px;
+    text-transform: uppercase;
+    color: #FFFF;
+}
+.customTitle{
+    font-family: "TT 700";
+    font-size: 17px;
+    line-height: 33px;
+    text-transform: uppercase;
+    color: #FFFF;
+}
+
+.sellPrice{
+    font-size: 19px;
+    font-family: "TT 700";
+}
+
+.sellTariff {
+    font-size: 17px;
+    font-family: "TT 700";
+   
+}
+
+.sellTopic{
+    font-family: "TT";
+    color: #655E69;
+    font-weight: 500;
+}
+
+
+.spin{
+    position: absolute;
+    left: 0;
+    bottom: 50%;
+}
