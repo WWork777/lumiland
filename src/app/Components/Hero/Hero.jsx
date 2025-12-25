@@ -1,9 +1,10 @@
 // components/Hero/Hero.jsx
-"use client";
+'use client';
 
-import Image from "next/image";
-import styles from "./Hero.module.scss";
-import { useEffect, useRef } from "react";
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from './Hero.module.scss';
+import { useEffect, useRef } from 'react';
 
 export default function Hero() {
   const imageMainRef = useRef(null);
@@ -28,12 +29,12 @@ export default function Hero() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Инициализация при загрузке
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -41,36 +42,36 @@ export default function Hero() {
       <div className={styles.imageTop}>
         <div className={styles.imageLeft}>
           <Image
-            src={"/images/Hero/imageLeft.webp"}
+            src={'/images/Hero/imageLeft.webp'}
             width={260}
             height={260}
-            alt="lumiland"
+            alt='lumiland'
           />
         </div>
         <div className={styles.imageRight}>
           <Image
-            src={"/images/Hero/imageRight.webp"}
+            src={'/images/Hero/imageRight.webp'}
             width={281}
             height={282}
-            alt="lumiland"
+            alt='lumiland'
           />
         </div>
       </div>
       <div className={styles.imageBg}>
         <div className={styles.imageBgLeft}>
           <Image
-            src={"/images/Hero/imageBgLeft.webp"}
+            src={'/images/Hero/imageBgLeft.webp'}
             width={464}
             height={460}
-            alt="lumiland"
+            alt='lumiland'
           />
         </div>
         <div className={styles.imageBgRight}>
           <Image
-            src={"/images/Hero/imageBgRight.webp"}
+            src={'/images/Hero/imageBgRight.webp'}
             width={1000}
             height={700}
-            alt="lumiland"
+            alt='lumiland'
           />
         </div>
       </div>
@@ -89,10 +90,10 @@ export default function Hero() {
         </h1>
         <div className={styles.geo}>
           <Image
-            src={"/icons/geo.svg"}
+            src={'/icons/geo.svg'}
             width={53}
             height={53}
-            alt="ул. Котовского 19/1, ТЦ Смайлcity"
+            alt='ул. Котовского 19/1, ТЦ Смайлcity'
           />
           <span>
             ул. Котовского 19/1,
@@ -100,21 +101,35 @@ export default function Hero() {
             ТЦ Смайлcity
           </span>
         </div>
+        <div className={styles.buttonsContainer}>
+          <Link href='tel:79528800330' className={styles.phoneButton}>
+            <span>Позвонить в парк</span>
+            <Image
+              src={'/icons/phone.svg'}
+              width={24}
+              height={24}
+              alt='телефон'
+            />
+          </Link>
+          <Link href='#info' className={styles.infoButton}>
+            Подробнее о парке
+          </Link>
+        </div>
         <div className={styles.WhiteBg}></div>
         <div
           ref={imageMainRef}
           className={styles.imageMain}
           style={{
-            transform: "scale(0.5)",
-            transition: "transform 0.3s ease-out",
-            transformOrigin: "center center",
+            transform: 'scale(0.5)',
+            transition: 'transform 0.3s ease-out',
+            transformOrigin: 'center center',
           }}
         >
           <Image
-            src={"/images/Hero/imageMain.webp"}
-            width={526}
-            height={526}
-            alt="lumiland"
+            src={'/images/Hero/imageMain.webp'}
+            width={650}
+            height={650}
+            alt='lumiland'
           />
         </div>
       </div>
