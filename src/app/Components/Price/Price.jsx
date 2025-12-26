@@ -138,6 +138,8 @@ export default function Price() {
         width={300}
         height={900}
       />
+      <div className={styles.WhiteBg2}></div>
+
     </div>
   );
 }

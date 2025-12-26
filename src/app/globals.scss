@@ -12,8 +12,26 @@
 }
 @font-face {
   font-family: "TT 700";
+  src: url("../../fonts/TT\ Travels\ Next\ Trial\ Bold.ttf");
+}
+
+@font-face {
+  font-family: "TT 600";
   src: url("../../fonts/TT\ Travels\ Next\ Trial\ DemiBold.ttf");
 }
+// @font-face {
+//   font-family: "TT 700";
+//   src: url("../../fonts/TT\ Travels\ Next\ Trial\ DemiBold.ttf");
+// }
+@font-face {
+  font-family: "TT 500";
+  src: url("../../fonts/TT\ Travels\ Next\ Trial\ Medium.ttf");
+}
+@font-face {
+  font-family: "TT 800";
+  src: url("../../fonts/TT\ Travels\ Next\ Trial\ ExtraBold.ttf");
+}
+
 
 html {
   scroll-behavior: smooth;

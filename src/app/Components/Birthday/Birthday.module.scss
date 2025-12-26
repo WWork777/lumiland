@@ -1,24 +1,50 @@
+
+.wrapperB{
+    position: relative;
+
+}
 .container {
   max-width: 1200px;
   margin: 40px auto;
   font-family: sans-serif;
   text-transform: uppercase;
+  @media (max-width: 768px) {
+    display: none;
+    
+  }
 }
 
 .birthdayTitle{
+          letter-spacing: 3%;
+
     text-align: center;
         font-family: "TT Black";
         font-size: 45px;
         color: #4c365a;
+        margin-bottom: 36px;
         span {
             color: #7C2DAE;
         }
+    @media (max-width: 666px) {
+        font-size: 23px;
+        letter-spacing: 3%;
+
+      
+    };
 }
 .header h2{
+  color: #4C365A;
     font-family: "TT 600";
     font-size: 22px;
-    text-align: center;
+            margin-bottom: 36px;
 
+    text-align: center;
+   @media (max-width: 666px) {
+        font-size: 14px;
+        
+
+      
+    };
 }
 
 .grid {
@@ -153,8 +179,143 @@
 }
 
 
-.spin{
-    position: absolute;
-    left: 0;
-    bottom: 50%;
+.spin {
+  position: absolute;
+  left: 0;
+  
+  width: 250px;
+  height: auto;
+  transform: translateY(-150%);
+  z-index: -1;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+@media (max-width: 768px) {
+  .spin {
+    display: none;
+  }
+}
+.mobileWrapper{
+  padding: 24px 16px;
+  @media (min-width: 768px) {
+    display: none;
+    
+  }
+}
+
+
+.mContent {
+    margin-bottom: 20px;
+  max-height: 0;         // Изначально схлопнуто
+  overflow: hidden;      // Прячем контент
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  display: flex;         // Чтобы внутри работали флексы для mRow
+  flex-direction: column;
+}
+.mCard {
+    border-radius: 20px;
+
+}
+.mContent.active {
+  max-height: 1500px;    // Большое значение, чтобы всё влезло
+  opacity: 1;
+  padding-bottom: 25px;  // Добавляем отступ только когда открыто
+}
+.mHeader{
+  font-family: "TT 700";
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+  padding: 24px 25px;
+}
+.mRow {
+    border-radius: 20px;
+font-family: "TT 500";
+font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 15px 2px;
+  gap: 14px;
+  border-bottom: 1px solid #0000001A;
+  
+  p {
+    font-size: 14px;
+    text-transform: none; // Обычно услуги лучше читать в обычном регистре
+    max-width: 80%;
+  }
+}
+.mIcon {
+  transition: transform 0.2s ease;
+  // Стили из твоего SVG кружка
+  width: 32px;
+  height: 32px;
+  background: black;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: serif;
+  font-size: 24px;
+}
+
+// Инверсия для VIP
+.vip .mIcon, .custom .mIcon {
+  background: white;
+  color: black;
+}
+
+.mBtn {
+   padding: 15px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  // text-transform: uppercase;
+      width: 80%;
+      margin: 0 auto;
+  background-color: #000;
+  color: white;
+  font-family: "TT 700";
+}
+.mBtn2{
+  background-color: #ffffff !important;
+  color: rgb(0, 0, 0) !important;
+}
+.mPrice{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tariff{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+  padding: 14px 1px 16px 1px;
+    border-bottom: 1px solid #0000001A;
+
+}
+
+.mPrice span {
+font-size: 16px;
+font-family: "TT 700";
+
+}
+
+.mPrice strong {
+font-size: 19px;
+font-family: "TT 700" !important;
+
+}
+
+.customText {
+  text-align: center;
+      padding: 25px 20px;
 }

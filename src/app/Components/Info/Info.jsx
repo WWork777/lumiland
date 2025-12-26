@@ -194,6 +194,7 @@ export default function Info() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div className={styles.WhiteBg}></div>
     </section>
   );
 }

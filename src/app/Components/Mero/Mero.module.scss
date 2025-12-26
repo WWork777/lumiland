@@ -1,0 +1,263 @@
+/* Контейнер и общие настройки */
+.container {
+//   max-width: 1200px;
+  position: relative;
+  z-index: 2;
+  padding: 55px 17vw;
+  font-family: 'TT 700';
+  color: #4A2B6A;
+  background: linear-gradient(180deg, #F1E6F5 0%, #FAE1F0 100%);
+  @media (max-width: 1601px) {
+      padding: 50px 15vw;
+  };
+  @media (max-width: 1360px) {
+      padding: 50px 12vw;
+  };
+  @media (max-width: 1024px) {
+      padding: 50px 10vw;
+  };
+  @media (max-width: 768px) {
+      padding: 50px 8vw;
+  };
+  @media (max-width: 480px) {
+      padding: 50px 5vw;
+  };
+}
+
+
+.firstCard {
+  position: relative; /* Обязательно для absolute внутри */
+  overflow: hidden;   /* Обрезает картинку, которая выходит за край */
+  min-height: 380px;  /* Чтобы было место для картинки внизу */
+}
+
+.decorationWrapper {
+  position: absolute;
+  left: 50%;
+  bottom: -100px; /* Регулируйте это значение, чтобы "утопить" картинку сильнее или меньше */
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* Чтобы картинка не мешала выделять текст */
+  @media (max-width: 666px){
+    display: none;
+  }
+}
+.spiral{
+    position: absolute;
+    bottom: 0;
+}
+
+.titleDesktop {
+    font-family: "TT Black" !important;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  @media (max-width: 666px){
+    display: none;
+  }
+  span {
+            color: #7C2DAE;
+        }
+}
+
+.titleMobile{
+    font-family: "TT Black" !important;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 23px;
+  font-weight: 900;
+  margin-bottom: 32px;
+  @media (min-width: 666px){
+    display: none;
+  }
+  span {
+            color: #7C2DAE;
+        }
+}
+
+/* Сетка карточек */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: 30px;
+}
+
+/* Стили карточки дня */
+.dayCard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Отступ между мероприятиями */
+  max-width: 400px; /* Для примера под одну карточку */
+  min-height: 280px; 
+  padding-bottom: 36px; 
+  @media (max-width: 666px){    
+  min-height: 50px; ;
+    padding-bottom: 20px; 
+    gap: 13px;
+
+  }
+}
+
+.header {
+  padding: 22px 40px;
+  border-radius: 15px;
+  background-color: #DCFF00;
+  color: #000;
+  @media (max-width: 666px){    
+  padding: 12px 25px 14px 24px;
+  }
+}
+
+.headerPurple {
+  background-color: #9117BA !important; /* Фиолетовый для 28 декабря */
+  color: white;
+}
+
+.date {
+      font-family: "TT 700";
+
+  font-size: 32px;
+  margin-bottom: 2px;
+   @media (max-width: 666px){
+    font-size: 18px;
+      margin-bottom: 3px;
+
+  }
+}
+
+.weekday {
+  font-family: "TT 500";
+  font-size: 20px;
+  font-weight: 500;
+  @media (max-width: 666px){
+    font-size: 14px;
+  }
+}
+
+/* Список мероприятий */
+.event {
+  display: flex;
+  gap: 15px;
+  padding-left: 5px;
+}
+
+.time {
+color: #655E69;
+    font-family: "TT 600";
+  font-size: 16px;
+  min-width: 45px;
+  @media (max-width: 666px){
+    display: none;
+  }
+}
+
+.description {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.sub-text {
+  display: block;
+  text-transform: none;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+/* Декоративная картинка (как змейка на макете) */
+.decoration {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.snake-icon {
+  width: 100px;
+  height: auto;
+  opacity: 0.8;
+}
+
+.eventRow {
+  display: flex;
+  align-items: flex-start; /* Выравнивание по верху */
+  gap: 16px;
+  padding: 0 10px;
+}
+
+/* Колонка со временем */
+.timeCol {
+  min-width: 70px; /* Фиксированная ширина, чтобы текст справа стоял ровно в ряд */
+  font-size: 20px;
+  font-family: "TT 600";
+  color: #655E69; /* Цвет с небольшим приглушением как на фото */
+//   opacity: 0.6;
+  @media (max-width: 666px){
+    font-size: 13px;
+  }
+}
+
+/* Маркер (точка) */
+.dot {
+  color: #9117BA;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: -1px;
+  @media (max-width: 666px) {
+      margin-top: -7px;
+
+  }
+}
+
+/* Правая колонка с текстом */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eventName {
+font-family: "TT 800" !important;
+  font-size: 17px;
+  
+  text-transform: uppercase;
+  color: #4C365A;
+  line-height: 1.2;
+  letter-spacing: 2%;
+  @media (max-width: 666px){
+    font-size: 14px;
+  }
+
+}
+
+.eventSubText {
+    font-family: "TT 600" !important;
+
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #655E69;
+//   opacity: 0.7;
+  line-height: 1.3;
+  letter-spacing: 2%;
+  @media (max-width: 666px){
+    font-size: 9px;
+  }
+}
+
+.back{
+    position: absolute;
+    z-index: -1;
+    bottom: 10%;
+    right: 0;
+    @media (max-width: 666px){
+    display: none;
+  }
+}
+

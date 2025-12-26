@@ -1,12 +1,28 @@
 "use client"
+import { useState } from 'react';
 import Image from 'next/image'; 
 import styles from './Birthday.module.scss';
 
 export default function Birthday() {
- 
+ const [activeTab, setActiveTab] = useState(null);
+
+  const toggleTab = (tab) => {
+    setActiveTab(activeTab === tab ? null : tab);
+  };
+  const services = [
+    { name: "Персональный банкетный менеджер", s: true, p: true, v: true },
+    { name: "Пати-рум 3 часа", s: true, p: true, v: true },
+    { name: "Интерактивный стол", s: true, p: true, v: true },
+    { name: "Праздничная сервировка стола", s: true, p: true, v: true },
+    { name: "Электронные приглашения", s: true, p: true, v: true },
+    { name: "Подарок имениннику и гостям", s: true, p: true, v: true },
+    { name: "Оформление воздушными шарами", s: true, p: true, v: true },
+    { name: "Квест по локациям парка", s: false, p: true, v: true },
+    { name: "МК/Турнир на выбор", s: false, p: false, v: true },
+  ];
   const BlackCheck = <Image src="/icons/blackCheck.svg" alt="check" width={29} height={29} />;
   const WhiteCheck = <Image src="/icons/whiteCheck.svg" alt="check" width={29} height={29} />;
-  return (<>
+  return (<div className={styles.wrapperB}>
     <div className={styles.container}>
         <header className={styles.header}>
         <h1 className={styles.birthdayTitle}>ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМОЕ</span> ДЕНЬ РОЖДЕНИЯ В LUMILAND</h1>
@@ -111,15 +127,114 @@ export default function Birthday() {
         <button className={`${styles.btn} ${styles.vip}`}>Заказать</button>
         <button className={`${styles.btn} ${styles.custom}`}>Заказать</button>
       </div>
+      
     </div>
         <Image 
             className={styles.spin} 
-            src="/images/Birthday/spinBlue.png" 
+            src="/images/Birthday/spinBlue.webp" 
             alt='' 
-            width={300}
-            height={300}
+            width={250}
+            height={250}
         />
-    </>
+        
+
+       <div className={styles.mobileWrapper}>
+  <header className={styles.header}>
+    <h1 className={styles.birthdayTitle}>ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМОЕ ДЕНЬ РОЖДЕНИЯ</span> В LUMILAND</h1>
+    <h2>Пакет рассчитан на 6 человек</h2>
+  </header>
+
+  {/* --- STANDART CARD --- */}
+        <div className={`${styles.mCard} ${styles.standart}  ${activeTab === 'standart' ? styles.isOpen : ''}`}>
+          <div className={styles.mHeader} onClick={() => toggleTab('standart')}>
+            <span>STANDART</span>
+            <div className={styles.mIcon}>{activeTab === 'standart' ? '−' : '+'}</div>
+          </div>
+          <div className={`${styles.mContent} ${activeTab === 'standart' ? styles.active : ''}`}>
+            <div className={styles.mRow}><p>Персональный банкетный менеджер</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Пати-рум 3 часа</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Интерактивный стол</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Праздничная сервировка стола</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Электронные приглашения</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Подарок имениннику и гостям</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Оформление воздушными шарами</p> {BlackCheck}</div>
+            <div className={styles.mPrice}>
+              <div className={styles.tariff}><span>Будние дни</span> <strong>9 000 ₽</strong></div>
+              <div className={styles.tariff}><span>Выходные дни</span> <strong>11 000 ₽</strong></div>
+              <div className={styles.tariff}><span>Доп. гость в будни</span> <strong>900 ₽</strong></div>
+              <div className={styles.tariff}><span>Доп. гость в выходные</span> <strong>1 000 ₽</strong></div>
+            </div>
+            <button className={styles.mBtn}>Заказать</button>
+          </div>
+        </div>
+
+        {/* --- PREMIUM CARD --- */}
+        <div className={`${styles.mCard} ${styles.premium} ${activeTab === 'premium' ? styles.isOpen : ''}`}>
+          <div className={styles.mHeader} onClick={() => toggleTab('premium')}>
+            <span>PREMIUM</span>
+            <div className={styles.mIcon}>{activeTab === 'premium' ? '−' : '+'}</div>
+          </div>
+          <div className={`${styles.mContent} ${activeTab === 'premium' ? styles.active : ''}`}>
+            <div className={styles.mRow}><p>Персональный банкетный менеджер</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Пати-рум 3 часа</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Интерактивный стол</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Праздничная сервировка стола</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Электронные приглашения</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Подарок имениннику и гостям</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Оформление воздушными шарами</p> {BlackCheck}</div>
+            <div className={styles.mRow}><p>Квест по локациям парка (40 мин)</p> {BlackCheck}</div>
+
+            <div className={styles.mPrice}>
+              <div className={styles.tariff}><span>Будние дни</span> <strong>12 000 ₽</strong></div>
+              <div className={styles.tariff}><span>Выходные дни</span> <strong>14 000 ₽</strong></div>
+              <div className={styles.tariff}><span>Доп. гость в будни</span> <strong>1 100 ₽</strong></div>
+              <div className={styles.tariff}><span>Доп. гость в выходные</span> <strong>1 300 ₽</strong></div>
+            </div>
+            <button className={`${styles.mBtn}`}>Заказать</button>
+          </div>
+        </div>
+
+        {/* --- VIP CARD --- */}
+        <div className={`${styles.mCard} ${styles.vip} ${activeTab === 'vip' ? styles.isOpen : ''}`}>
+          <div className={styles.mHeader} onClick={() => toggleTab('vip')}>
+            <span>VIP</span>
+            <div className={styles.mIcon}>{activeTab === 'vip' ? '−' : '+'}</div>
+          </div>
+          <div className={`${styles.mContent} ${activeTab === 'vip' ? styles.active : ''}`}>
+            <div className={styles.mRow}><p>Персональный банкетный менеджер</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>Пати-рум 3 часа</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>Интерактивный стол</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>Праздничная сервировка стола</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>Электронные приглашения</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>Подарок имениннику и гостям</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>Оформление воздушными шарами</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>Квест по локациям парка (40 мин)</p> {WhiteCheck}</div>
+            <div className={styles.mRow}><p>МК/Турнир (айсхук или ралли) на выбор (40 мин)</p> {WhiteCheck}</div>
+            <div className={styles.mPrice}>
+              <div className={styles.tariff}><span>Будние дни</span> <strong>15 000 ₽</strong></div>
+              <div className={styles.tariff}><span>Выходные дни</span> <strong>17 000 ₽</strong></div>
+              <div className={styles.tariff}><span>Доп. гость в будни</span> <strong>1 300 ₽</strong></div>
+              <div className={styles.tariff}><span>Доп. гость в выходные</span> <strong>1 500 ₽</strong></div>
+            </div>
+          <button className={`${styles.mBtn} ${styles.mBtn2}`}>Заказать</button>
+          </div>
+        </div>
+
+        {/* --- CUSTOM CARD --- */}
+        <div className={`${styles.mCard} ${styles.custom} ${activeTab === 'custom' ? styles.isOpen : ''}`}>
+          <div className={styles.mHeader} onClick={() => toggleTab('custom')}>
+            <span>СОБЕРУ САМ</span>
+            <div className={styles.mIcon}>{activeTab === 'custom' ? '−' : '+'}</div>
+          </div>
+          <div className={`${styles.mContent} ${activeTab === 'custom' ? styles.active : ''}`}>
+            <p className={styles.customText}>
+              Обсудите детали с персональным менеджером и превратите день рождения в незабываемое приключение
+            </p>
+            <button className={`${styles.mBtn} ${styles.mBtn2}`}>Заказать</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -3,8 +3,8 @@ import Hero from './Components/Hero/Hero';
 import Info from './Components/Info/Info';
 import Questions from './Components/Questions/Questions';
 import Price from './Components/Price/Price';
-// import Birthday from "./Components/Birthday/Birthday"
-
+import Birthday from "./Components/Birthday/Birthday"
+import Mero from './Components/Mero/Mero.jsx'
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 export async function generateMetadata() {
@@ -66,8 +66,9 @@ export default function Home() {
       <Hero />
       <main>
         <Info />
+        <Mero />
         <Price />
-        {/* <Birthday /> */}
+        <Birthday />
         <Questions />
 
         <Contacts />
