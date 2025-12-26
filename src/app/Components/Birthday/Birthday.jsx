@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from './Birthday.module.scss';
 
 export default function Birthday() {
-  const [activeTab, setActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState('standart');
 
   const toggleTab = (tab) => {
     setActiveTab(activeTab === tab ? null : tab);
