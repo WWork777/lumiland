@@ -1,50 +1,41 @@
-
-.wrapperB{
-    position: relative;
-
+.wrapperB {
+  position: relative;
 }
 .container {
   max-width: 1200px;
   margin: 40px auto;
   font-family: sans-serif;
-  text-transform: uppercase;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
-    
   }
 }
 
-.birthdayTitle{
-          letter-spacing: 3%;
+.birthdayTitle {
+  letter-spacing: 3%;
 
-    text-align: center;
-        font-family: "TT Black";
-        font-size: 45px;
-        color: #4c365a;
-        margin-bottom: 36px;
-        span {
-            color: #7C2DAE;
-        }
-    @media (max-width: 666px) {
-        font-size: 23px;
-        letter-spacing: 3%;
-
-      
-    };
+  text-align: center;
+  font-family: 'TT Black';
+  font-size: 45px;
+  color: #4c365a;
+  margin-bottom: 36px;
+  span {
+    color: #7c2dae;
+  }
+  @media (max-width: 666px) {
+    font-size: 23px;
+    letter-spacing: 3%;
+  }
 }
-.header h2{
-  color: #4C365A;
-    font-family: "TT 600";
-    font-size: 22px;
-            margin-bottom: 36px;
+.header h2 {
+  color: #4c365a;
+  font-family: 'TT 600';
+  font-size: 22px;
+  margin-bottom: 36px;
 
-    text-align: center;
-   @media (max-width: 666px) {
-        font-size: 14px;
-        
-
-      
-    };
+  text-align: center;
+  @media (max-width: 666px) {
+    font-size: 14px;
+  }
 }
 
 .grid {
@@ -53,7 +44,6 @@
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   border-radius: 20px;
   overflow: hidden;
-
 }
 
 .cell {
@@ -61,42 +51,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-family: 'TT';
+  font-size: 14px;
   font-weight: 800;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  min-width: 0; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .label {
   justify-content: flex-start;
-  background: linear-gradient(180deg, #F1E6F5 0%, #FAE1F0 100%);
+  background: linear-gradient(180deg, #f1e6f5 0%, #fae1f0 100%);
+  align-items: flex-start;
 }
 
-.standart { background-color: #DCFF00; color: #000; }
-.premium { background-color: #FFFF00; color: #000; }
-.vip { background-color: #9117BA; color: #fff; }
-.custom { background-color: #F55F41; color: #fff; }
-
+.standart {
+  background-color: #dcff00;
+  color: #000;
+}
+.premium {
+  background-color: #ffff00;
+  color: #000;
+}
+.vip {
+  background-color: #9117ba;
+  color: #fff;
+}
+.custom {
+  background-color: #f55f41;
+  color: #fff;
+}
 
 .customSideBlock {
-    text-transform: uppercase;
-    font-size: 12px;
-  font-family: "TT 700";
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: 'TT 700';
   grid-column: 5;
   grid-row: 2 / 15; // Проверьте, чтобы диапазон строк охватывал все услуги
-  background-color: #F55F41; // Оранжевый цвет блока
+  background-color: #f55f41; // Оранжевый цвет блока
   color: white;
-  
+
   display: flex;
   flex-direction: column;
-  align-items: center;    // Центрируем текст по горизонтали
+  align-items: center; // Центрируем текст по горизонтали
   justify-content: flex-start; // Выравниваем контент по ВЕРХНЕМУ краю
-  
-  padding: 30px 15px;     // 30px — отступ сверху, 15px — по бокам
+
+  padding: 30px 15px; // 30px — отступ сверху, 15px — по бокам
   text-align: center;
   font-size: 11px;
   line-height: 1.4;
-  border-bottom: none;    // Убираем нижнюю рамку, так как это единый блок
+  border-bottom: none; // Убираем нижнюю рамку, так как это единый блок
 }
 .check {
   width: 22px;
@@ -109,80 +114,100 @@
   justify-content: center;
 }
 
-.vip .check { background: #fff; color: #8b22c3; }
+.vip .check {
+  background: #fff;
+  color: #8b22c3;
+}
 
 .footerButtons {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; /* Такая же сетка */
   gap: 10px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .btn {
-  padding: 15px;
+  padding: 14px;
   border-radius: 30px;
   border: none;
+  font-family: 'TT';
+  font-size: 16px;
   font-weight: 800;
   cursor: pointer;
+}
+
+.labelTitle {
+  color: #1d1d1d;
+  font-family: 'TT 600';
+  font-size: 19px;
+  line-height: 33px;
+  align-self: center;
+}
+.standartTitle {
+  font-family: 'TT 700';
+  font-size: 17px;
+  line-height: 33px;
   text-transform: uppercase;
 }
-
-.labelTitle{
-    color: #1D1D1D;
-    font-family: "TT 600";
-    font-size: 19px;
-    line-height: 33px;
-    align-self: center;
+.premiumTitle {
+  font-family: 'TT 700';
+  font-size: 17px;
+  line-height: 33px;
+  text-transform: uppercase;
 }
-.standartTitle{
-    font-family: "TT 700";
-    font-size: 17px;
-    line-height: 33px;
-    text-transform: uppercase;
+.vipTitle {
+  font-family: 'TT 700';
+  font-size: 17px;
+  line-height: 33px;
+  text-transform: uppercase;
+  color: #ffff;
 }
-.premiumTitle{
-    font-family: "TT 700";
-    font-size: 17px;
-    line-height: 33px;
-    text-transform: uppercase;
-}
-.vipTitle{
-    font-family: "TT 700";
-    font-size: 17px;
-    line-height: 33px;
-    text-transform: uppercase;
-    color: #FFFF;
-}
-.customTitle{
-    font-family: "TT 700";
-    font-size: 17px;
-    line-height: 33px;
-    text-transform: uppercase;
-    color: #FFFF;
+.customTitle {
+  font-family: 'TT 700';
+  font-size: 17px;
+  line-height: 33px;
+  text-transform: uppercase;
+  color: #ffff;
 }
 
-.sellPrice{
-    font-size: 19px;
-    font-family: "TT 700";
+.sellPrice {
+  font-size: 19px;
+  font-family: 'TT 700';
 }
 
 .sellTariff {
-    font-size: 17px;
-    font-family: "TT 700";
-   
+  font-size: 15px;
+  font-family: 'TT 700';
 }
 
-.sellTopic{
-    font-family: "TT";
-    color: #655E69;
-    font-weight: 500;
+.cell.label.sellTopic {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
 }
 
+.sellTopic {
+  font-family: 'TT';
+  color: #655e69;
+  font-weight: 500;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  box-sizing: border-box;
+  small {
+    display: block;
+    margin-top: 4px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+}
 
 .spin {
   position: absolute;
   left: 0;
-  
+
   width: 250px;
   height: auto;
   transform: translateY(-150%);
@@ -196,44 +221,41 @@
     display: none;
   }
 }
-.mobileWrapper{
+.mobileWrapper {
   padding: 24px 16px;
   @media (min-width: 768px) {
     display: none;
-    
   }
 }
 
-
 .mContent {
-    margin-bottom: 20px;
-  max-height: 0;         // Изначально схлопнуто
-  overflow: hidden;      // Прячем контент
+  margin-bottom: 20px;
+  max-height: 0; // Изначально схлопнуто
+  overflow: hidden; // Прячем контент
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.3s ease;
-  display: flex;         // Чтобы внутри работали флексы для mRow
+  display: flex; // Чтобы внутри работали флексы для mRow
   flex-direction: column;
 }
 .mCard {
-    border-radius: 20px;
-
+  border-radius: 20px;
 }
 .mContent.active {
-  max-height: 1500px;    // Большое значение, чтобы всё влезло
+  max-height: 1500px; // Большое значение, чтобы всё влезло
   opacity: 1;
-  padding-bottom: 25px;  // Добавляем отступ только когда открыто
+  padding-bottom: 25px; // Добавляем отступ только когда открыто
 }
-.mHeader{
-  font-family: "TT 700";
+.mHeader {
+  font-family: 'TT 700';
   display: flex;
   font-size: 18px;
   justify-content: space-between;
   padding: 24px 25px;
 }
 .mRow {
-    border-radius: 20px;
-font-family: "TT 500";
-font-size: 15px;
+  border-radius: 20px;
+  font-family: 'TT 500';
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -241,8 +263,8 @@ font-size: 15px;
   text-align: center;
   padding: 15px 2px;
   gap: 14px;
-  border-bottom: 1px solid #0000001A;
-  
+  border-bottom: 1px solid #0000001a;
+
   p {
     font-size: 14px;
     text-transform: none; // Обычно услуги лучше читать в обычном регистре
@@ -265,57 +287,55 @@ font-size: 15px;
 }
 
 // Инверсия для VIP
-.vip .mIcon, .custom .mIcon {
+.vip .mIcon,
+.custom .mIcon {
   background: white;
   color: black;
 }
 
 .mBtn {
-   padding: 15px;
+  padding: 15px;
   border-radius: 30px;
   border: none;
   font-weight: 800;
   cursor: pointer;
   // text-transform: uppercase;
-      width: 80%;
-      margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
   background-color: #000;
   color: white;
-  font-family: "TT 700";
+  font-family: 'TT 700';
 }
-.mBtn2{
+.mBtn2 {
   background-color: #ffffff !important;
   color: rgb(0, 0, 0) !important;
 }
-.mPrice{
+.mPrice {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.tariff{
+.tariff {
   display: flex;
   flex-direction: column;
   gap: 15px;
   text-align: center;
   padding: 14px 1px 16px 1px;
-    border-bottom: 1px solid #0000001A;
-
+  border-bottom: 1px solid #0000001a;
 }
 
 .mPrice span {
-font-size: 16px;
-font-family: "TT 700";
-
+  font-size: 16px;
+  font-family: 'TT 700';
 }
 
 .mPrice strong {
-font-size: 19px;
-font-family: "TT 700" !important;
-
+  font-size: 19px;
+  font-family: 'TT 700' !important;
 }
 
 .customText {
   text-align: center;
-      padding: 25px 20px;
+  padding: 25px 20px;
 }

@@ -1,34 +1,33 @@
 /* Контейнер и общие настройки */
 .container {
-//   max-width: 1200px;
+  //   max-width: 1200px;
   position: relative;
   z-index: 2;
   padding: 55px 17vw;
   font-family: 'TT 700';
-  color: #4A2B6A;
-  background: linear-gradient(180deg, #F1E6F5 0%, #FAE1F0 100%);
+  color: #4a2b6a;
+  background: linear-gradient(180deg, #f1e6f5 0%, #fae1f0 100%);
   @media (max-width: 1601px) {
-      padding: 50px 15vw;
-  };
+    padding: 50px 15vw;
+  }
   @media (max-width: 1360px) {
-      padding: 50px 12vw;
-  };
+    padding: 50px 12vw;
+  }
   @media (max-width: 1024px) {
-      padding: 50px 10vw;
-  };
+    padding: 50px 10vw;
+  }
   @media (max-width: 768px) {
-      padding: 50px 8vw;
-  };
+    padding: 50px 8vw;
+  }
   @media (max-width: 480px) {
-      padding: 50px 5vw;
-  };
+    padding: 50px 5vw;
+  }
 }
-
 
 .firstCard {
   position: relative; /* Обязательно для absolute внутри */
-  overflow: hidden;   /* Обрезает картинку, которая выходит за край */
-  min-height: 380px;  /* Чтобы было место для картинки внизу */
+  overflow: hidden; /* Обрезает картинку, которая выходит за край */
+  min-height: 380px; /* Чтобы было место для картинки внизу */
 }
 
 .decorationWrapper {
@@ -40,51 +39,58 @@
   display: flex;
   justify-content: center;
   pointer-events: none; /* Чтобы картинка не мешала выделять текст */
-  @media (max-width: 666px){
+  @media (max-width: 666px) {
     display: none;
   }
 }
-.spiral{
-    position: absolute;
-    bottom: 0;
+.spiral {
+  position: absolute;
+  bottom: 0;
 }
 
 .titleDesktop {
-    font-family: "TT Black" !important;
+  font-family: 'TT Black' !important;
   text-align: center;
   text-transform: uppercase;
-  font-size: 32px;
+  font-size: 45px;
   font-weight: 900;
   margin-bottom: 50px;
-  @media (max-width: 666px){
+  @media (max-width: 666px) {
     display: none;
   }
   span {
-            color: #7C2DAE;
-        }
+    color: #9117ba;
+  }
 }
 
-.titleMobile{
-    font-family: "TT Black" !important;
+.titleMobile {
+  font-family: 'TT Black' !important;
 
   text-align: center;
   text-transform: uppercase;
   font-size: 23px;
   font-weight: 900;
   margin-bottom: 32px;
-  @media (min-width: 666px){
+  @media (min-width: 666px) {
     display: none;
   }
   span {
-            color: #7C2DAE;
-        }
+    color: #9117ba;
+  }
 }
 
 /* Сетка карточек */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  column-gap: 30px;
+  column-gap: 50px;
+  row-gap: 30px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    column-gap: 0;
+    row-gap: 20px;
+  }
 }
 
 /* Стили карточки дня */
@@ -93,48 +99,50 @@
   flex-direction: column;
   gap: 24px; /* Отступ между мероприятиями */
   max-width: 400px; /* Для примера под одну карточку */
-  min-height: 280px; 
-  padding-bottom: 36px; 
-  @media (max-width: 666px){    
-  min-height: 50px; ;
-    padding-bottom: 20px; 
+  min-height: 280px;
+  padding-bottom: 36px;
+  @media (max-width: 768px) {
+    max-width: 100%;
+    width: 100%;
+  }
+  @media (max-width: 666px) {
+    min-height: 50px;
+    padding-bottom: 20px;
     gap: 13px;
-
   }
 }
 
 .header {
   padding: 22px 40px;
   border-radius: 15px;
-  background-color: #DCFF00;
+  background-color: #dcff00;
   color: #000;
-  @media (max-width: 666px){    
-  padding: 12px 25px 14px 24px;
+  @media (max-width: 666px) {
+    padding: 12px 25px 14px 24px;
   }
 }
 
 .headerPurple {
-  background-color: #9117BA !important; /* Фиолетовый для 28 декабря */
+  background-color: #9117ba !important; /* Фиолетовый для 28 декабря */
   color: white;
 }
 
 .date {
-      font-family: "TT 700";
+  font-family: 'TT 700';
 
   font-size: 32px;
   margin-bottom: 2px;
-   @media (max-width: 666px){
+  @media (max-width: 666px) {
     font-size: 18px;
-      margin-bottom: 3px;
-
+    margin-bottom: 3px;
   }
 }
 
 .weekday {
-  font-family: "TT 500";
+  font-family: 'TT 500';
   font-size: 20px;
   font-weight: 500;
-  @media (max-width: 666px){
+  @media (max-width: 666px) {
     font-size: 14px;
   }
 }
@@ -147,11 +155,11 @@
 }
 
 .time {
-color: #655E69;
-    font-family: "TT 600";
+  color: #655e69;
+  font-family: 'TT 600';
   font-size: 16px;
   min-width: 45px;
-  @media (max-width: 666px){
+  @media (max-width: 666px) {
     display: none;
   }
 }
@@ -195,23 +203,26 @@ color: #655E69;
 .timeCol {
   min-width: 70px; /* Фиксированная ширина, чтобы текст справа стоял ровно в ряд */
   font-size: 20px;
-  font-family: "TT 600";
-  color: #655E69; /* Цвет с небольшим приглушением как на фото */
-//   opacity: 0.6;
-  @media (max-width: 666px){
+  font-family: 'TT 600';
+  color: #655e69; /* Цвет с небольшим приглушением как на фото */
+  //   opacity: 0.6;
+  @media (max-width: 666px) {
     font-size: 13px;
   }
 }
 
 /* Маркер (точка) */
 .dot {
-  color: #9117BA;
+  color: #9117ba;
   font-size: 20px;
   font-weight: bold;
-  margin-top: -1px;
+  line-height: 1.2;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
   @media (max-width: 666px) {
-      margin-top: -7px;
-
+    font-size: 14px;
+    margin-top: 0;
   }
 }
 
@@ -220,44 +231,43 @@ color: #655E69;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  align-items: flex-start;
 }
 
 .eventName {
-font-family: "TT 800" !important;
+  font-family: 'TT 800' !important;
   font-size: 17px;
-  
+
   text-transform: uppercase;
-  color: #4C365A;
+  color: #4c365a;
   line-height: 1.2;
-  letter-spacing: 2%;
-  @media (max-width: 666px){
+  letter-spacing: 0.02em;
+  @media (max-width: 666px) {
     font-size: 14px;
   }
-
 }
 
 .eventSubText {
-    font-family: "TT 600" !important;
+  font-family: 'TT 600' !important;
 
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #655E69;
-//   opacity: 0.7;
+  color: #655e69;
+  //   opacity: 0.7;
   line-height: 1.3;
-  letter-spacing: 2%;
-  @media (max-width: 666px){
+  letter-spacing: 0.02em;
+  @media (max-width: 666px) {
     font-size: 9px;
   }
 }
 
-.back{
-    position: absolute;
-    z-index: -1;
-    bottom: 10%;
-    right: 0;
-    @media (max-width: 666px){
+.back {
+  position: absolute;
+  z-index: -1;
+  bottom: 10%;
+  right: 0;
+  @media (max-width: 768px) {
     display: none;
   }
 }
-

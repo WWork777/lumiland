@@ -3,9 +3,7 @@
   position: relative;
   margin-bottom: 120px;
   @media (max-width: 430px) {
-    
-      margin-bottom: 0;
-
+    margin-bottom: 0;
   }
 }
 
@@ -38,6 +36,8 @@
   width: fit-content;
   margin: 0 auto;
   height: 700px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .cell {
   padding: 20px;
@@ -129,6 +129,44 @@
     display: none;
   }
 }
+@media (max-width: 1024px) and (min-width: 769px) {
+  .spin {
+    display: none;
+  }
+  .grid {
+    grid-template-columns: 200px 200px 180px 180px;
+    max-width: calc(100% - 40px);
+    width: 100%;
+  }
+  .prices {
+    padding: 20px;
+  }
+  .cell {
+    padding: 15px 10px;
+    font-size: 13px;
+  }
+  .head {
+    font-size: 16px;
+  }
+  .ticket {
+    font-size: 15px;
+    small {
+      font-size: 12px;
+    }
+  }
+  .ticketBig {
+    font-size: 15px;
+  }
+  .time {
+    font-size: 18px;
+  }
+  .price {
+    font-size: 18px;
+  }
+  .freeWide {
+    font-size: 18px;
+  }
+}
 @media (max-width: 768px) {
   .desktop {
     display: none;
@@ -136,7 +174,7 @@
   .prices {
     padding: 24px 16px;
   }
-  
+
   .title {
     text-align: center;
     font-family: 'TT Black' !important;
@@ -261,7 +299,6 @@
     font-weight: 800;
     text-align: center;
   }
-  
 }
 
 .spin {
@@ -280,17 +317,16 @@
   }
 }
 
-
 .WhiteBg2 {
-    background: #ffffff;
-    border-radius: 50% / 175px;
-    width: 175vw;
-    height: 800px;
-    position: absolute;
-    top: -30px;
-    left: -36.5vw;
-    z-index: -2;
-  }
+  background: #ffffff;
+  border-radius: 50% / 175px;
+  width: 175vw;
+  height: 800px;
+  position: absolute;
+  top: -30px;
+  left: -36.5vw;
+  z-index: -2;
+}
 
 .prices {
   @media (max-width: 450px) {
