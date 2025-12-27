@@ -28,7 +28,7 @@ export default function Price() {
           <div className={`${styles.cell} ${styles.price}`}>800 ₽</div>
           <div className={`${styles.cell} ${styles.price}`}>1000 ₽</div>
 
-          <div className={`${styles.cell} ${styles.time}`}>14:00 – 16:00</div>
+          <div className={`${styles.cell} ${styles.time}`}>12:00 – 19:00</div>
           <div className={`${styles.cell} ${styles.price}`}>900 ₽</div>
           <div className={`${styles.cell} ${styles.price}`}>1200 ₽</div>
 
@@ -79,7 +79,7 @@ export default function Price() {
             <div className={styles.price}>800 ₽</div>
             <div className={styles.price}>1000 ₽</div>
 
-            <div className={styles.time}>14:00–16:00</div>
+            <div className={styles.time}>12:00–19:00</div>
             <div className={styles.price}>900 ₽</div>
             <div className={styles.price}>1200 ₽</div>
 
@@ -139,7 +139,6 @@ export default function Price() {
         height={900}
       />
       <div className={styles.WhiteBg2}></div>
-
     </div>
   );
 }
