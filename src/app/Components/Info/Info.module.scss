@@ -61,17 +61,29 @@
     margin-top: 30px;
   }
   .swiperGalary {
+    
+   
     margin-top: -70px;
+  
     display: flex;
+    @media (min-width: 1024px) {
+         position: relative;
+           z-index: 1;
+      }
     .swiperSlide {
       width: 100%;
       img {
-        object-fit: contain;
+        // object-fit: contain;
         width: 100%;
         border-radius: 50px;
       }
     }
     .swiperDescription {
+     
+      z-index: 2;
+      top: 0;
+      left: 0;
+      position: absolute;
       text-align: center;
       margin: 0 auto;
       margin-top: -65px;
@@ -85,6 +97,19 @@
         font-family: 'TT 700';
         font-size: 25px;
         font-weight: 700;
+      }
+       @media (min-width: 768px) {
+        border-radius: 0px;
+       
+        border-bottom-right-radius: 15px;
+        border-top-left-radius: 50px;
+        z-index: 2;
+        
+        top: 0;
+        left: 0;
+        position: absolute;
+        transform: none;
+        margin-top: 0;
       }
     }
   }
@@ -400,3 +425,19 @@
     left: -36.5vw;
     
   }
+
+
+.aboutGames{
+  background-color: #dcff00;
+  max-width: 408px;
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  font-family: "TT 700";
+  margin-top: 55px;
+        padding: 20px 36px;
+        width: 400px;
+        span {
+          font-size: 22px;
+        }
+}

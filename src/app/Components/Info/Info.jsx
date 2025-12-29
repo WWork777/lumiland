@@ -194,6 +194,7 @@ export default function Info() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <button className={styles.aboutGames}>Подробнее об играх</button>
       <div className={styles.WhiteBg}></div>
     </section>
   );

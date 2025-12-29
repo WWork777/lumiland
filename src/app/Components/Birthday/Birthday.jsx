@@ -204,7 +204,7 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            9 000 ₽
+            900 ₽
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
