@@ -19,6 +19,7 @@ export default function Birthday() {
 
   const services = [
     { name: 'Персональный банкетный менеджер', s: true, p: true, v: true },
+    { name: 'Посещение парка безлимит', s: true, p: true, v: true },
     { name: 'Пати-рум 3 часа', s: true, p: true, v: true },
     { name: 'Интерактивный стол', s: true, p: true, v: true },
     { name: 'Праздничная сервировка стола', s: true, p: true, v: true },
@@ -84,6 +85,17 @@ export default function Birthday() {
             ОБСУДИТЕ ДЕТАЛИ С ПЕРСОНАЛЬНЫМ МЕНЕДЖЕРОМ И ПРЕВРАТИТЕ ДЕНЬ РОЖДЕНИЯ
             В НЕЗАБЫВАЕМОЕ ПРИКЛЮЧЕНИЕ
           </div>
+
+
+          <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
+            Посещение парка безлимит
+          </div>
+          <div className={`${styles.cell} ${styles.standart}`}>
+            {BlackCheck}
+          </div>
+          <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
+          <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+          
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
             Пати-рум 3 часа
           </div>
@@ -304,6 +316,9 @@ export default function Birthday() {
               <p>Персональный банкетный менеджер</p> {BlackCheck}
             </div>
             <div className={styles.mRow}>
+              <p>Посещение парка безлимит</p> {BlackCheck}
+            </div>
+            <div className={styles.mRow}>
               <p>Пати-рум 3 часа</p> {BlackCheck}
             </div>
             <div className={styles.mRow}>
@@ -363,6 +378,9 @@ export default function Birthday() {
           >
             <div className={styles.mRow}>
               <p>Персональный банкетный менеджер</p> {BlackCheck}
+            </div>
+            <div className={styles.mRow}>
+              <p>Посещение парка безлимит</p> {BlackCheck}
             </div>
             <div className={styles.mRow}>
               <p>Пати-рум 3 часа</p> {BlackCheck}
@@ -428,6 +446,9 @@ export default function Birthday() {
           >
             <div className={styles.mRow}>
               <p>Персональный банкетный менеджер</p> {WhiteCheck}
+            </div>
+            <div className={styles.mRow}>
+              <p>Посещение парка безлимит</p> {BlackCheck}
             </div>
             <div className={styles.mRow}>
               <p>Пати-рум 3 часа</p> {WhiteCheck}
