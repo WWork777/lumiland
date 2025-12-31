@@ -80,27 +80,27 @@ export default function Hero() {
           <p>Детские и взрослые мечты сбываются в LUMILAND</p>
         </div>
         <h1>
-          <span>ОТКРЫТИЕ ПЕРВОГО</span>
+          <span>ЖДЕМ ВАС В ПЕРВОМ</span>
           <br />
-          <span>МУЛЬТИМЕДИЙНОГО</span>
+          <span>МУЛЬТИМЕДИЙНОМ</span>
           <br />
-          <span>ПАРКА В ТОМСКЕ</span>
-          <br />
-          <span>27-28 ДЕКАБРЯ</span>
-        </h1>
-        <div className={styles.geo}>
-          <Image
-            src={'/icons/geo.svg'}
-            width={53}
-            height={53}
-            alt='ул. Котовского 19/1, ТЦ Смайлcity'
-          />
-          <span>
-            ул. Котовского 19/1,
-            <br />
-            ТЦ Смайлcity
+          <span className={styles.titleWithGeo}>
+            <span>ПАРКЕ В ТОМСКЕ</span>
+            <span className={styles.geoInline}>
+              <Image
+                src={'/icons/geo.svg'}
+                width={53}
+                height={53}
+                alt='ул. Котовского 19/1, ТЦ Смайлcity'
+              />
+              <span>
+                ул. Котовского 19/1,
+                <br />
+                ТЦ Смайлcity
+              </span>
+            </span>
           </span>
-        </div>
+        </h1>
         <div className={styles.buttonsContainer}>
           <Link href='tel:79528800330' className={styles.phoneButton}>
             <span>Позвонить в парк</span>

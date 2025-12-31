@@ -5,6 +5,7 @@ import Questions from './Components/Questions/Questions';
 import Price from './Components/Price/Price';
 import Birthday from "./Components/Birthday/Birthday"
 import Mero from './Components/Mero/Mero.jsx'
+import Gallery from './Components/Gallery/Gallery';
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 export async function generateMetadata() {
@@ -69,8 +70,8 @@ export default function Home() {
         <Mero />
         <Price />
         <Birthday />
+        <Gallery />
         <Questions />
-
         <Contacts />
       </main>
     </>

@@ -1,0 +1,151 @@
+.videosSection {
+  padding: 60px 0;
+  background-color: #fff;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 40px 0;
+    overflow-x: hidden; // Предотвращаем горизонтальный скролл
+  }
+}
+
+.mainTitle {
+  text-align: center;
+  color: #4c365a;
+  margin-bottom: 36px;
+  font-family: "TT Black";
+  font-size: 45px;
+  text-transform: uppercase;
+ 
+  .purpleText {
+    color: #7c2dae;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    margin-bottom: 24px;
+    padding: 0 20px;
+  }
+}
+
+// --- УПРАВЛЕНИЕ ОТОБРАЖЕНИЕМ КОНТЕЙНЕРОВ ---
+.desktopContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  @media (max-width: 768px) {
+    display: none; // Скрываем ПК версию
+  }
+}
+
+.mobileContainer {
+  display: none; // Скрываем мобильную версию на ПК
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; // Расстояние между 4-мя слайдерами
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// --- НАСТРОЙКИ SWIPER ---
+.pcSwiper {
+  width: 100%;
+  overflow: visible !important; // Чтобы слайды не обрезались по бокам на ПК
+  cursor: grab;
+  padding: 0 40px; 
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.mobSwiper {
+  width: 100%;
+  cursor: grab;
+  padding: 0 20px; 
+  overflow-x: hidden; // Предотвращаем горизонтальный скролл на мобильных
+  overflow-y: visible;
+
+  @media (max-width: 768px) {
+    overflow-x: hidden !important;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.autoSlide {
+  width: auto !important; // Позволяет карточке диктовать ширину
+  height: auto;
+}
+
+// --- КАРТОЧКА ---
+.card {
+  position: relative;
+  height: 350px; 
+  width: 450px; // Базовая ширина на ПК
+  border-radius: 30px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  .cardImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Специфические настройки для мобилки
+  @media (max-width: 768px) {
+    height: 180px; // Высота ряда
+    width: 140px;  // Обычная ширина фото
+    border-radius: 20px;
+  }
+}
+
+// --- МОДИФИКАТОРЫ ШИРИНЫ ---
+.wideCard {
+  width: 600px; // Широкая для ПК
+
+  @media (max-width: 768px) {
+    width: 260px; // Широкая для мобилки (видео)
+  }
+}
+
+// --- ОВЕРЛЕЙ И КНОПКА PLAY ---
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  svg {
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.4));
+    transition: transform 0.2s ease;
+    width: 80px;
+    height: 80px;
+
+    @media (max-width: 768px) {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+}
