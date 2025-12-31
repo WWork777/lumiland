@@ -66,14 +66,7 @@ export default function Mero() {
                 <div className={styles.date}>2 января</div>
                 <div className={styles.weekday}>Пятница</div>
             </div>
-            <div className={styles.eventRow}>
-                <div className={styles.timeCol}>11:00</div>
-                <div className={styles.dot}>•</div>
-                <div className={styles.contentCol}>
-                <span className={styles.eventName}>Делаем брелок</span>
-                <span className={styles.eventSubText}>(Разукрашиваем спил дерева акриловыми красками)</span>
-                </div>
-            </div>
+            
             <div className={styles.eventRow}>
                 <div className={styles.timeCol}>15:00</div>
                 <div className={styles.dot}>•</div>
