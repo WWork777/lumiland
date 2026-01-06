@@ -2,10 +2,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
+// import Link from 'next/link';
 import styles from "./Info.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 export default function Info() {
+  
   const slides = [
     {
       id: 1,
@@ -194,7 +196,9 @@ export default function Info() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className={styles.aboutGames}>Подробнее об играх</button>
+        <a href="#gallery">
+          <button className={styles.aboutGames}>Подробнее об играх</button>
+        </a>      
       <div className={styles.WhiteBg}></div>
     </section>
   );
