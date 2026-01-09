@@ -242,6 +242,12 @@
   opacity: 1;
   padding-bottom: 25px; // Добавляем отступ только когда открыто
 }
+
+// Увеличиваем max-height для VIP блока, чтобы весь контент помещался
+.vip .mContent.active {
+  max-height: 2000px; // Увеличиваем высоту для VIP блока (там больше контента)
+  padding-bottom: 25px; // Оставляем обычный отступ
+}
 .mCard {
   border-radius: 20px;
 }
@@ -302,7 +308,7 @@
   cursor: pointer;
   // text-transform: uppercase;
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto 0 auto; // Добавляем отступ сверху для выравнивания по середине
   background-color: #000;
   color: white;
   font-family: 'TT 700';

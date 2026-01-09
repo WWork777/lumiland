@@ -162,13 +162,16 @@
       flex-direction: column;
       gap: 16px;
       .numberGeo {
+        gap: 0px;
         a {
           color: black;
           display: block;
           font-size: 20px;
+          line-height: 1.1;
         }
         span:last-child {
           font-size: 12px;
+          line-height: 1.2;
         }
       }
     }

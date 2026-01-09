@@ -4,19 +4,30 @@ import Image from 'next/image';
 import styles from './Birthday.module.scss';
 
 export default function Birthday() {
-  const [activeTab, setActiveTab] = useState('standart');
+  // Храним состояние открытости для каждого блока отдельно
+  // Изначально только стандарт открыт
+  const [openTabs, setOpenTabs] = useState({
+    standart: true,
+    premium: false,
+    vip: false,
+    custom: false,
+  });
 
   const toggleTab = (tab) => {
-  // Запоминаем текущую позицию скролла
-  const scrollPos = window.scrollY;
-  
-  setActiveTab(activeTab === tab ? null : tab);
-  
-  // Возвращаем скролл на место в следующем кадре анимации
-  requestAnimationFrame(() => {
-    window.scrollTo(0, scrollPos);
-  });
-};
+    // Запоминаем текущую позицию скролла
+    const scrollPos = window.scrollY;
+
+    // Переключаем только конкретный блок, не трогая остальные
+    setOpenTabs((prev) => ({
+      ...prev,
+      [tab]: !prev[tab],
+    }));
+
+    // Возвращаем скролл на место в следующем кадре анимации
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollPos);
+    });
+  };
 
   const handleOrder = (packageName) => {
     const telegramUrl = `https://t.me/+79528800330?text=${encodeURIComponent(
@@ -93,8 +104,6 @@ export default function Birthday() {
             ОБСУДИТЕ ДЕТАЛИ С ПЕРСОНАЛЬНЫМ МЕНЕДЖЕРОМ И ПРЕВРАТИТЕ ДЕНЬ РОЖДЕНИЯ
             В НЕЗАБЫВАЕМОЕ ПРИКЛЮЧЕНИЕ
           </div>
-
-
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
             Посещение парка безлимит
           </div>
@@ -103,7 +112,6 @@ export default function Birthday() {
           </div>
           <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
-          
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
             Пати-рум 3 часа
           </div>
@@ -306,18 +314,16 @@ export default function Birthday() {
         {/* --- STANDART CARD --- */}
         <div
           className={`${styles.mCard} ${styles.standart}  ${
-            activeTab === 'standart' ? styles.isOpen : ''
+            openTabs.standart ? styles.isOpen : ''
           }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('standart')}>
             <span>STANDART</span>
-            <div className={styles.mIcon}>
-              {activeTab === 'standart' ? '−' : '+'}
-            </div>
+            <div className={styles.mIcon}>{openTabs.standart ? '−' : '+'}</div>
           </div>
           <div
             className={`${styles.mContent} ${
-              activeTab === 'standart' ? styles.active : ''
+              openTabs.standart ? styles.active : ''
             }`}
           >
             <div className={styles.mRow}>
@@ -370,18 +376,16 @@ export default function Birthday() {
         {/* --- PREMIUM CARD --- */}
         <div
           className={`${styles.mCard} ${styles.premium} ${
-            activeTab === 'premium' ? styles.isOpen : ''
+            openTabs.premium ? styles.isOpen : ''
           }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('premium')}>
             <span>PREMIUM</span>
-            <div className={styles.mIcon}>
-              {activeTab === 'premium' ? '−' : '+'}
-            </div>
+            <div className={styles.mIcon}>{openTabs.premium ? '−' : '+'}</div>
           </div>
           <div
             className={`${styles.mContent} ${
-              activeTab === 'premium' ? styles.active : ''
+              openTabs.premium ? styles.active : ''
             }`}
           >
             <div className={styles.mRow}>
@@ -438,18 +442,16 @@ export default function Birthday() {
         {/* --- VIP CARD --- */}
         <div
           className={`${styles.mCard} ${styles.vip} ${
-            activeTab === 'vip' ? styles.isOpen : ''
+            openTabs.vip ? styles.isOpen : ''
           }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('vip')}>
             <span>VIP</span>
-            <div className={styles.mIcon}>
-              {activeTab === 'vip' ? '−' : '+'}
-            </div>
+            <div className={styles.mIcon}>{openTabs.vip ? '−' : '+'}</div>
           </div>
           <div
             className={`${styles.mContent} ${
-              activeTab === 'vip' ? styles.active : ''
+              openTabs.vip ? styles.active : ''
             }`}
           >
             <div className={styles.mRow}>
@@ -508,18 +510,16 @@ export default function Birthday() {
         {/* --- CUSTOM CARD --- */}
         <div
           className={`${styles.mCard} ${styles.custom} ${
-            activeTab === 'custom' ? styles.isOpen : ''
+            openTabs.custom ? styles.isOpen : ''
           }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('custom')}>
             <span>СОБЕРУ САМ</span>
-            <div className={styles.mIcon}>
-              {activeTab === 'custom' ? '−' : '+'}
-            </div>
+            <div className={styles.mIcon}>{openTabs.custom ? '−' : '+'}</div>
           </div>
           <div
             className={`${styles.mContent} ${
-              activeTab === 'custom' ? styles.active : ''
+              openTabs.custom ? styles.active : ''
             }`}
           >
             <p className={styles.customText}>
