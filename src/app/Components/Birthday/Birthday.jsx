@@ -7,8 +7,16 @@ export default function Birthday() {
   const [activeTab, setActiveTab] = useState('standart');
 
   const toggleTab = (tab) => {
-    setActiveTab(activeTab === tab ? null : tab);
-  };
+  // Запоминаем текущую позицию скролла
+  const scrollPos = window.scrollY;
+  
+  setActiveTab(activeTab === tab ? null : tab);
+  
+  // Возвращаем скролл на место в следующем кадре анимации
+  requestAnimationFrame(() => {
+    window.scrollTo(0, scrollPos);
+  });
+};
 
   const handleOrder = (packageName) => {
     const telegramUrl = `https://t.me/+79528800330?text=${encodeURIComponent(
@@ -40,7 +48,7 @@ export default function Birthday() {
       <div className={styles.container}>
         <header className={styles.header}>
           <h1 className={styles.birthdayTitle}>
-            ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМОЕ</span> ДЕНЬ РОЖДЕНИЯ В LUMILAND
+            ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМЫЙ</span> ДЕНЬ РОЖДЕНИЯ В LUMILAND
           </h1>
           <h2>Пакетов рассчитаны на 6 человек</h2>
         </header>
@@ -290,7 +298,7 @@ export default function Birthday() {
       <div className={styles.mobileWrapper}>
         <header className={styles.header}>
           <h1 className={styles.birthdayTitle}>
-            ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМОЕ ДЕНЬ РОЖДЕНИЯ</span> В LUMILAND
+            ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМЫЙ ДЕНЬ РОЖДЕНИЯ</span> В LUMILAND
           </h1>
           <h2>Пакет рассчитан на 6 человек</h2>
         </header>
@@ -448,7 +456,7 @@ export default function Birthday() {
               <p>Персональный банкетный менеджер</p> {WhiteCheck}
             </div>
             <div className={styles.mRow}>
-              <p>Посещение парка безлимит</p> {BlackCheck}
+              <p>Посещение парка безлимит</p> {WhiteCheck}
             </div>
             <div className={styles.mRow}>
               <p>Пати-рум 3 часа</p> {WhiteCheck}

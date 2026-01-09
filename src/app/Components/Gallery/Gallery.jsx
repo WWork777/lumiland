@@ -243,8 +243,8 @@ export default function Gallery() {
     { id: 'm1_11', src: '/images/Gallery/11.webp', isWide: true },
     { id: 'm1_12', src: '/images/Gallery/12.webp' },
     { id: 'm1_13', src: '/images/Gallery/13.webp' },
-    { id: 'm1_14', src: '/images/Gallery/14.webp' },
-    { id: 'm1_15', src: '/images/Gallery/15.webp' },
+    // { id: 'm1_14', src: '/images/Gallery/14.webp' },
+    // { id: 'm1_15', src: '/images/Gallery/15.webp' },
     { id: 'm1_16', src: '/images/Gallery/16.webp' },
     { id: 'm1_17', src: '/images/Gallery/17.webp' },
     { id: 'm1_18', src: '/images/Gallery/18.webp' },
@@ -272,7 +272,7 @@ export default function Gallery() {
     { id: 'm2_3', src: '/images/Gallery/37.webp', isWide: true },
     { id: 'm2_4', src: '/images/Gallery/38.webp' },
     { id: 'm2_5', src: '/images/Gallery/39.webp' },
-    { id: 'm2_6', src: '/images/Gallery/40.webp' },
+    // { id: 'm2_6', src: '/images/Gallery/40.webp' },
     { id: 'm2_7', src: '/images/Gallery/41.webp' },
     { id: 'm2_8', src: '/images/Gallery/42.webp' },
     { id: 'm2_9', src: '/images/Gallery/43.webp' },
@@ -305,8 +305,8 @@ export default function Gallery() {
   ];
 
   const mobRow3 = [
-    { id: 'm3_1', src: '/images/Gallery/70.webp' },
-    { id: 'm3_2', src: '/images/Gallery/71.webp' },
+    // { id: 'm3_1', src: '/images/Gallery/70.webp' },
+    // { id: 'm3_2', src: '/images/Gallery/71.webp' },
     { id: 'm3_3', src: '/images/Gallery/72.webp' },
     { id: 'm3_4', src: '/images/Gallery/73.webp' },
     { id: 'm3_5', src: '/images/Gallery/74.webp' },
@@ -315,8 +315,8 @@ export default function Gallery() {
     { id: 'm3_8', src: '/images/Gallery/77.webp' },
     { id: 'm3_9', src: '/images/Gallery/78.webp' },
     { id: 'm3_10', src: '/images/Gallery/79.webp' },
-    { id: 'm3_11', src: '/images/Gallery/80.webp' },
-    { id: 'm3_12', src: '/images/Gallery/81.webp' },
+    // { id: 'm3_11', src: '/images/Gallery/80.webp' },
+    // { id: 'm3_12', src: '/images/Gallery/81.webp' },
     { id: 'm3_13', src: '/images/Gallery/82.webp' },
     { id: 'm3_14', src: '/images/Gallery/83.webp', isWide: true },
     { id: 'm3_15', src: '/images/Gallery/84.webp' },
@@ -344,7 +344,7 @@ export default function Gallery() {
 
   const mobRow4 = [
     { id: 'm4_1', src: '/images/Gallery/105.webp' },
-    { id: 'm4_2', src: '/images/Gallery/106.webp' },
+    // { id: 'm4_2', src: '/images/Gallery/106.webp' },
     { id: 'm4_3', src: '/images/Gallery/107.webp' },
     { id: 'm4_4', src: '/images/Gallery/108.webp' },
     { id: 'm4_5', src: '/images/Gallery/109.webp', isWide: true },

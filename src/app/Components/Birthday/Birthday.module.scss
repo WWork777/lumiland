@@ -237,14 +237,15 @@
   display: flex; // Чтобы внутри работали флексы для mRow
   flex-direction: column;
 }
-.mCard {
-  border-radius: 20px;
-}
 .mContent.active {
-  max-height: 1500px; // Большое значение, чтобы всё влезло
+  max-height: 1500px; 
   opacity: 1;
   padding-bottom: 25px; // Добавляем отступ только когда открыто
 }
+.mCard {
+  border-radius: 20px;
+}
+
 .mHeader {
   font-family: 'TT 700';
   display: flex;

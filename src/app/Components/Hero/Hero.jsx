@@ -41,21 +41,24 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.imageTop}>
         <div className={styles.imageLeft}>
-          <Image
-            src={'/images/Hero/imageLeft.webp'}
-            width={260}
-            height={260}
-            alt='lumiland'
-          />
-        </div>
-        <div className={styles.imageRight}>
-          <Image
-            src={'/images/Hero/imageRight.webp'}
-            width={281}
-            height={282}
-            alt='lumiland'
-          />
-        </div>
+            <Image
+              src='/images/Hero/imageLeft.webp'
+              alt='lumiland'
+              fill
+              sizes="(max-width: 768px) 150px, 260px" // Подсказка для браузера
+              className={styles.responsiveImg}
+            />
+          </div>
+
+          <div className={styles.imageRight}>
+            <Image
+              src='/images/Hero/imageRight.webp'
+              alt='lumiland'
+              fill
+              sizes="(max-width: 768px) 160px, 281px"
+              className={styles.responsiveImg}
+            />
+          </div>
       </div>
       <div className={styles.imageBg}>
         <div className={styles.imageBgLeft}>
