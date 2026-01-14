@@ -61,7 +61,7 @@ export default function Birthday() {
           <h1 className={styles.birthdayTitle}>
             ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМЫЙ</span> ДЕНЬ РОЖДЕНИЯ В LUMILAND
           </h1>
-          <h2>Пакетов рассчитаны на 6 человек</h2>
+          <h2>Пакеты рассчитаны на 6 человек</h2>
         </header>
         <div className={styles.grid}>
           <div
