@@ -33,7 +33,7 @@
 .decorationWrapper {
   position: absolute;
   left: 50%;
-  bottom: -100px; /* Регулируйте это значение, чтобы "утопить" картинку сильнее или меньше */
+  bottom: -190px; /* Регулируйте это значение, чтобы "утопить" картинку сильнее или меньше */
   transform: translateX(-50%);
   width: 100%;
   display: flex;
@@ -84,7 +84,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   column-gap: 50px;
-  row-gap: 30px;
+  row-gap: 0px;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -99,14 +99,15 @@
   flex-direction: column;
   gap: 24px; /* Отступ между мероприятиями */
   max-width: 400px; /* Для примера под одну карточку */
-  min-height: 280px;
+  min-height: 140px;
   padding-bottom: 36px;
   @media (max-width: 768px) {
     max-width: 100%;
     width: 100%;
   }
   @media (max-width: 666px) {
-    min-height: 50px;
+    
+    min-height: 20px;
     padding-bottom: 20px;
     gap: 13px;
   }
@@ -122,10 +123,10 @@
   }
 }
 
-.headerPurple {
-  background-color: #9117ba !important; /* Фиолетовый для 28 декабря */
-  color: white;
-}
+// .headerPurple {
+//   background-color: #9117ba !important; /* Фиолетовый для 28 декабря */
+//   color: white;
+// }
 
 .date {
   font-family: 'TT 700';
@@ -197,7 +198,12 @@
   align-items: flex-start; /* Выравнивание по верху */
   gap: 16px;
   padding: 0 10px;
+
+  @media (max-width: 666px) {
+    margin-top: 10px;
+  }
 }
+
 
 /* Колонка со временем */
 .timeCol {
