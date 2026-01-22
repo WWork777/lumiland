@@ -23,16 +23,26 @@ export default function Price() {
             <br />
             билет
           </div>
-
-          <div className={`${styles.cell} ${styles.time}`}>10:00 – 12:00</div>
+          <div className={`${styles.cell} ${styles.time_cont}`} >
+              <div className={styles.time}>10:00–12:00</div>
+              <div className={styles.text_time}>Безлимит на весь день</div>
+            </div>
+          {/* <div className={`${styles.cell} ${styles.time}`}>10:00 – 12:00</div> */}
           <div className={`${styles.cell} ${styles.price}`}>800 ₽</div>
           <div className={`${styles.cell} ${styles.price}`}>1000 ₽</div>
-
-          <div className={`${styles.cell} ${styles.time}`}>12:00 – 19:00</div>
+          <div className={`${styles.cell} ${styles.time_cont}`} >
+              <div className={styles.time}>12:00–19:00</div>
+              <div className={styles.text_time}>Безлимит на весь день</div>
+            </div>
+          {/* <div className={`${styles.cell} ${styles.time}`}>12:00 – 19:00</div> */}
           <div className={`${styles.cell} ${styles.price}`}>900 ₽</div>
           <div className={`${styles.cell} ${styles.price}`}>1200 ₽</div>
 
-          <div className={`${styles.cell} ${styles.time}`}>19:00 – 21:00</div>
+           <div className={`${styles.cell} ${styles.time_cont}`} >
+              <div className={styles.time}>19:00–21:00</div>
+              <div className={styles.text_time}>Безлимит на весь день</div>
+            </div>
+          {/* <div className={`${styles.cell} ${styles.time}`}>19:00 – 21:00</div> */}
           <div className={`${styles.cell} ${styles.price}`}>800 ₽</div>
           <div className={`${styles.cell} ${styles.price}`}>1000 ₽</div>
 
@@ -74,16 +84,24 @@ export default function Price() {
             <div className={styles.head}>Время</div>
             <div className={styles.head}>Будни</div>
             <div className={styles.head}>Выходные</div>
-
-            <div className={styles.time}>10:00–12:00</div>
+            <div className={styles.time_cont}>
+              <div className={styles.time}>10:00–12:00</div>
+              <div className={styles.text_time}>Безлимит на весь день</div>
+            </div>
             <div className={styles.price}>800 ₽</div>
             <div className={styles.price}>1000 ₽</div>
 
-            <div className={styles.time}>12:00–19:00</div>
+            <div className={styles.time_cont}>
+              <div className={styles.time}>12:00–19:00</div>
+              <div className={styles.text_time}>Безлимит на весь день</div>
+            </div>
             <div className={styles.price}>900 ₽</div>
             <div className={styles.price}>1200 ₽</div>
+            <div className={styles.time_cont} >
+              <div className={styles.time}>19:00–21:00</div>
+              <div className={styles.text_time}>Безлимит на весь день</div>
+            </div>
 
-            <div className={styles.time}>19:00–21:00</div>
             <div className={styles.price}>800 ₽</div>
             <div className={styles.price}>1000 ₽</div>
           </div>
