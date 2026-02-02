@@ -22,7 +22,7 @@ export default function YandexMetrika() {
         a.parentNode.insertBefore(k, a);
     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(105405917, "init", {
+    ym(106241998, "init", {
       clickmap: true,
       trackLinks: true,
       accurateTrackBounce: true,
