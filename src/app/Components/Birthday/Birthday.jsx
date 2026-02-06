@@ -36,6 +36,28 @@ export default function Birthday() {
     window.open(telegramUrl, '_blank');
   };
 
+  // Все цены в одном месте - меняйте здесь и они обновятся везде
+  const prices = {
+    standart: {
+      weekday: '9 900 ₽',
+      weekend: '11 900 ₽',
+      extraGuestWeekday: '1000 ₽',
+      extraGuestWeekend: '1 100 ₽',
+    },
+    premium: {
+      weekday: '12 900 ₽',
+      weekend: '14 900 ₽',
+      extraGuestWeekday: '1 100 ₽',
+      extraGuestWeekend: '1 400 ₽',
+    },
+    vip: {
+      weekday: '15 900 ₽',
+      weekend: '17 900 ₽',
+      extraGuestWeekday: '1 400 ₽',
+      extraGuestWeekend: '1 600 ₽',
+    },
+  };
+
   const services = [
     { name: 'Персональный банкетный менеджер', s: true, p: true, v: true },
     { name: 'Посещение парка безлимит', s: true, p: true, v: true },
@@ -194,15 +216,15 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            9 000 ₽
+            {prices.standart.weekday}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            12 000 ₽
+            {prices.premium.weekday}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
-            15 000 ₽
+            {prices.vip.weekday}
           </div>
           {/* Здесь ячейка под "Соберу сам" уже занята блоком customSideBlock, 
             но нам нужно закрыть строку цены */}
@@ -214,15 +236,15 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            11 000 ₽
+            {prices.standart.weekend}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            14 000 ₽
+            {prices.premium.weekend}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
-            17 000 ₽
+            {prices.vip.weekend}
           </div>
           <div
             className={`${styles.cell} ${styles.label} ${styles.sellTariff}`}
@@ -232,15 +254,15 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            900 ₽
+            {prices.standart.extraGuestWeekday}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            1 100 ₽
+            {prices.premium.extraGuestWeekday}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
-            1 300 ₽
+            {prices.vip.extraGuestWeekday}
           </div>
           <div
             className={`${styles.cell} ${styles.label} ${styles.sellTariff}`}
@@ -250,15 +272,15 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            1 000 ₽
+            {prices.standart.extraGuestWeekend}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            1 300 ₽
+            {prices.premium.extraGuestWeekend}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
-            1 500 ₽
+            {prices.vip.extraGuestWeekend}
           </div>
           {/* <div className={`${styles.cell} ${styles.label}`}></div>
         <div className={`${styles.cell} ${styles.standart}`}></div>
@@ -313,18 +335,16 @@ export default function Birthday() {
 
         {/* --- STANDART CARD --- */}
         <div
-          className={`${styles.mCard} ${styles.standart}  ${
-            openTabs.standart ? styles.isOpen : ''
-          }`}
+          className={`${styles.mCard} ${styles.standart}  ${openTabs.standart ? styles.isOpen : ''
+            }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('standart')}>
             <span>STANDART</span>
             <div className={styles.mIcon}>{openTabs.standart ? '−' : '+'}</div>
           </div>
           <div
-            className={`${styles.mContent} ${
-              openTabs.standart ? styles.active : ''
-            }`}
+            className={`${styles.mContent} ${openTabs.standart ? styles.active : ''
+              }`}
           >
             <div className={styles.mRow}>
               <p>Персональный банкетный менеджер</p> {BlackCheck}
@@ -352,16 +372,16 @@ export default function Birthday() {
             </div>
             <div className={styles.mPrice}>
               <div className={styles.tariff}>
-                <span>Будние дни</span> <strong>9 000 ₽</strong>
+                <span>Будние дни</span> <strong>{prices.standart.weekday}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Выходные дни</span> <strong>11 000 ₽</strong>
+                <span>Выходные дни</span> <strong>{prices.standart.weekend}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Доп. гость в будни</span> <strong>900 ₽</strong>
+                <span>Доп. гость в будни</span> <strong>{prices.standart.extraGuestWeekday}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Доп. гость в выходные</span> <strong>1 000 ₽</strong>
+                <span>Доп. гость в выходные</span> <strong>{prices.standart.extraGuestWeekend}</strong>
               </div>
             </div>
             <button
@@ -375,18 +395,16 @@ export default function Birthday() {
 
         {/* --- PREMIUM CARD --- */}
         <div
-          className={`${styles.mCard} ${styles.premium} ${
-            openTabs.premium ? styles.isOpen : ''
-          }`}
+          className={`${styles.mCard} ${styles.premium} ${openTabs.premium ? styles.isOpen : ''
+            }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('premium')}>
             <span>PREMIUM</span>
             <div className={styles.mIcon}>{openTabs.premium ? '−' : '+'}</div>
           </div>
           <div
-            className={`${styles.mContent} ${
-              openTabs.premium ? styles.active : ''
-            }`}
+            className={`${styles.mContent} ${openTabs.premium ? styles.active : ''
+              }`}
           >
             <div className={styles.mRow}>
               <p>Персональный банкетный менеджер</p> {BlackCheck}
@@ -418,16 +436,16 @@ export default function Birthday() {
 
             <div className={styles.mPrice}>
               <div className={styles.tariff}>
-                <span>Будние дни</span> <strong>12 000 ₽</strong>
+                <span>Будние дни</span> <strong>{prices.premium.weekday}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Выходные дни</span> <strong>14 000 ₽</strong>
+                <span>Выходные дни</span> <strong>{prices.premium.weekend}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Доп. гость в будни</span> <strong>1 100 ₽</strong>
+                <span>Доп. гость в будни</span> <strong>{prices.premium.extraGuestWeekday}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Доп. гость в выходные</span> <strong>1 300 ₽</strong>
+                <span>Доп. гость в выходные</span> <strong>{prices.premium.extraGuestWeekend}</strong>
               </div>
             </div>
             <button
@@ -441,18 +459,16 @@ export default function Birthday() {
 
         {/* --- VIP CARD --- */}
         <div
-          className={`${styles.mCard} ${styles.vip} ${
-            openTabs.vip ? styles.isOpen : ''
-          }`}
+          className={`${styles.mCard} ${styles.vip} ${openTabs.vip ? styles.isOpen : ''
+            }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('vip')}>
             <span>VIP</span>
             <div className={styles.mIcon}>{openTabs.vip ? '−' : '+'}</div>
           </div>
           <div
-            className={`${styles.mContent} ${
-              openTabs.vip ? styles.active : ''
-            }`}
+            className={`${styles.mContent} ${openTabs.vip ? styles.active : ''
+              }`}
           >
             <div className={styles.mRow}>
               <p>Персональный банкетный менеджер</p> {WhiteCheck}
@@ -486,16 +502,16 @@ export default function Birthday() {
             </div>
             <div className={styles.mPrice}>
               <div className={styles.tariff}>
-                <span>Будние дни</span> <strong>15 000 ₽</strong>
+                <span>Будние дни</span> <strong>{prices.vip.weekday}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Выходные дни</span> <strong>17 000 ₽</strong>
+                <span>Выходные дни</span> <strong>{prices.vip.weekend}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Доп. гость в будни</span> <strong>1 300 ₽</strong>
+                <span>Доп. гость в будни</span> <strong>{prices.vip.extraGuestWeekday}</strong>
               </div>
               <div className={styles.tariff}>
-                <span>Доп. гость в выходные</span> <strong>1 500 ₽</strong>
+                <span>Доп. гость в выходные</span> <strong>{prices.vip.extraGuestWeekend}</strong>
               </div>
             </div>
             <button
@@ -509,18 +525,16 @@ export default function Birthday() {
 
         {/* --- CUSTOM CARD --- */}
         <div
-          className={`${styles.mCard} ${styles.custom} ${
-            openTabs.custom ? styles.isOpen : ''
-          }`}
+          className={`${styles.mCard} ${styles.custom} ${openTabs.custom ? styles.isOpen : ''
+            }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('custom')}>
             <span>СОБЕРУ САМ</span>
             <div className={styles.mIcon}>{openTabs.custom ? '−' : '+'}</div>
           </div>
           <div
-            className={`${styles.mContent} ${
-              openTabs.custom ? styles.active : ''
-            }`}
+            className={`${styles.mContent} ${openTabs.custom ? styles.active : ''
+              }`}
           >
             <p className={styles.customText}>
               Обсудите детали с персональным менеджером и превратите день
