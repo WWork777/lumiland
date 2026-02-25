@@ -8,7 +8,7 @@ export default function Price() {
     standardTicket: {
       morning: { weekday: '800 ₽', weekend: '1000 ₽' }, // 10:00–12:00
       afternoon: { weekday: '900 ₽', weekend: '1200 ₽' }, // 12:00–19:00
-      evening: { weekday: '500 ₽', weekend: '1000 ₽' }, // 19:00–21:00
+      evening: { weekday: '500 ₽', weekend: '500 ₽' }, // 19:00–21:00
     },
     adultWithAccess: {
       weekday: '500 ₽',
