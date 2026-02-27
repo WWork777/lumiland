@@ -106,10 +106,31 @@
     width: 100%;
   }
   @media (max-width: 666px) {
-    
     min-height: 20px;
     padding-bottom: 20px;
     gap: 13px;
+  }
+}
+
+/* Карточка с фиолетовым фоном (только 21 и 22 марта) — как у зелёных: цвет только у шапки, мероприятия на фоне сайта */
+.cardPurple {
+  .header {
+    background-color: #9117ba;
+    color: white;
+  }
+  .date,
+  .weekday {
+    color: white;
+  }
+  /* Мероприятия и время — на фоне сайта, те же цвета что у зелёных карточек */
+  .eventName {
+    color: #4c365a;
+  }
+  .timeCol {
+    color: #655e69;
+  }
+  .dot {
+    color: #9117ba;
   }
 }
 
@@ -123,10 +144,10 @@
   }
 }
 
-// .headerPurple {
-//   background-color: #9117ba !important; /* Фиолетовый для 28 декабря */
-//   color: white;
-// }
+.headerPurple {
+  background-color: #9117ba !important;
+  color: white;
+}
 
 .date {
   font-family: 'TT 700';
@@ -203,7 +224,6 @@
     margin-top: 10px;
   }
 }
-
 
 /* Колонка со временем */
 .timeCol {
