@@ -7,7 +7,7 @@ import styles from "./Info.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 export default function Info() {
-  
+
   const slides = [
     {
       id: 1,
@@ -42,7 +42,7 @@ export default function Info() {
         <span> НОВОЙ РЕАЛЬНОСТЬЮ</span>
       </h2>
       <p className={styles.infoDescrition}>
-        Десятки phygital-аттракционов и не(реальные) впечатления, в которых
+        Десятки аттракционов и не(реальные) впечатления, в которых
         сочетается взаимодействие с реальными и мультимедийными объектами
       </p>
       <div className={styles.fireIcone}>
@@ -196,9 +196,9 @@ export default function Info() {
           </SwiperSlide>
         ))}
       </Swiper>
-        <a href="#gallery">
-          <button className={styles.aboutGames}>Подробнее об играх</button>
-        </a>      
+      <a href="#gallery">
+        <button className={styles.aboutGames}>Подробнее об играх</button>
+      </a>
       <div className={styles.WhiteBg}></div>
     </section>
   );

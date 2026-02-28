@@ -94,15 +94,15 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.standartTitle}`}
           >
-            Standart
+            Стандарт
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.premiumTitle}`}
           >
-            Premium
+            Премиум
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.vipTitle}`}>
-            Vip
+            Максимум
           </div>
           <div
             className={`${styles.cell} ${styles.custom} ${styles.customTitle}`}
