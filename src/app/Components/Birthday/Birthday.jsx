@@ -293,19 +293,19 @@ export default function Birthday() {
           <div /> {/* Пустое место под первой колонкой */}
           <button
             className={`${styles.btn} ${styles.standart}`}
-            onClick={() => handleOrder('Standart')}
+            onClick={() => handleOrder('Стандарт')}
           >
             Заказать
           </button>
           <button
             className={`${styles.btn} ${styles.premium}`}
-            onClick={() => handleOrder('Premium')}
+            onClick={() => handleOrder('Премиум')}
           >
             Заказать
           </button>
           <button
             className={`${styles.btn} ${styles.vip}`}
-            onClick={() => handleOrder('VIP')}
+            onClick={() => handleOrder('Максимум')}
           >
             Заказать
           </button>
@@ -339,7 +339,7 @@ export default function Birthday() {
             }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('standart')}>
-            <span>STANDART</span>
+            <span>СТАНДАРТ</span>
             <div className={styles.mIcon}>{openTabs.standart ? '−' : '+'}</div>
           </div>
           <div
@@ -386,7 +386,7 @@ export default function Birthday() {
             </div>
             <button
               className={styles.mBtn}
-              onClick={() => handleOrder('Standart')}
+              onClick={() => handleOrder('Стандарт')}
             >
               Заказать
             </button>
@@ -399,7 +399,7 @@ export default function Birthday() {
             }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('premium')}>
-            <span>PREMIUM</span>
+            <span>ПРЕМИУМ</span>
             <div className={styles.mIcon}>{openTabs.premium ? '−' : '+'}</div>
           </div>
           <div
@@ -450,7 +450,7 @@ export default function Birthday() {
             </div>
             <button
               className={`${styles.mBtn}`}
-              onClick={() => handleOrder('Premium')}
+              onClick={() => handleOrder('Премиум')}
             >
               Заказать
             </button>
@@ -463,7 +463,7 @@ export default function Birthday() {
             }`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('vip')}>
-            <span>VIP</span>
+            <span>МАКСИМУМ</span>
             <div className={styles.mIcon}>{openTabs.vip ? '−' : '+'}</div>
           </div>
           <div
@@ -516,7 +516,7 @@ export default function Birthday() {
             </div>
             <button
               className={`${styles.mBtn} ${styles.mBtn2}`}
-              onClick={() => handleOrder('VIP')}
+              onClick={() => handleOrder('Максимум')}
             >
               Заказать
             </button>
