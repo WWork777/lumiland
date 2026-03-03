@@ -1,4 +1,8 @@
+
+
 .contacts {
+
+
   position: relative;
   padding-top: 50px;
   .iconBg {
@@ -129,6 +133,12 @@
   }
 
   .copyright {
+    a{
+      color: black !important;
+      span{
+        text-decoration: underline;
+      }
+    }
     font-size: 14px;
     white-space: nowrap;
 

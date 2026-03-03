@@ -130,8 +130,10 @@ export default function Contacts() {
         </div>
         <div className={styles.footer}>
           <span className={styles.copyright}>
-            @ 2025 - Lumi Land. Все права защищены
+            @ 2025 - Lumi Land. Все права защищены <br />
+            <a href="https://virlab42.ru">Сайт разработан компанией <span>Вирлаб</span></a>
           </span>
+          
           <div className={styles.socials}>
             <span className={styles.socialsLabel}>Соц сети:</span>
             <Link href='https://t.me/+vrRGysdyfs5hMDI6'>
@@ -169,6 +171,7 @@ export default function Contacts() {
           </div>
         </div>
       </div>
+      
     </section>
   );
 }
