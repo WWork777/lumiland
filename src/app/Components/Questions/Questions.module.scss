@@ -29,21 +29,28 @@
                 align-items: center;
                 background: #DCFF00;
                 border-radius: 15px;
+                cursor: pointer;
                 .questionText {
                     .question {
                         font-size: 23px;
                     }
                     .questionAnswer {
                         display: none;
-                    }
-                    .questionAnswerActive {
                         margin-top: 10px;
+                        &.questionAnswerOpen {
+                            display: block;
+                        }
+                        p {
+                            margin: 0 0 0.75em 0;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
                     }
                 }
-                button {
-                    background: none;
-                    border: none;
-                    border: 50%;
+                .accordionIcon {
+                    flex-shrink: 0;
+                    display: inline-flex;
                 }
             }
         }
@@ -67,9 +74,8 @@
                         font-size: 20px;
                     }
                 }
-                button {
-                    background: none;
-                    border: none;
+                .accordionIcon {
+                    flex-shrink: 0;
                 }
             }
         }

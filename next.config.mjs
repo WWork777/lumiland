@@ -61,6 +61,11 @@ const nextConfig = {
   // 5. Включение сжатия
   compress: true,
 
+  // Разрешённые качества для next/image (по умолчанию только 75)
+  images: {
+    qualities: [75, 85, 95, 100],
+  },
+
   // 6. Настройка перенаправлений для защиты
   async redirects() {
     return [

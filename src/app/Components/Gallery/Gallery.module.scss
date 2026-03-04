@@ -36,10 +36,91 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+  position: relative;
 
   @media (max-width: 768px) {
     display: none; // Скрываем ПК версию
   }
+}
+
+// --- ПАГИНАЦИЯ (стиль как в Info — aboutGames) ---
+.paginationRowTop {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-right: 40px;
+}
+
+.paginationRowBottom {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 16px;
+  padding-left: 40px;
+}
+
+.paginationBtn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  display: inline-flex;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.08);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+// --- ЛАЙТБОКС И МОДАЛКИ ---
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.modalVideo {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .mobileContainer {
@@ -95,6 +176,13 @@
   border-radius: 30px;
   overflow: hidden;
   transition: transform 0.3s ease;
+
+  &.clickablePhoto {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
 
   .cardImage {
     object-fit: cover;

@@ -233,12 +233,16 @@
   max-height: 0; // Изначально схлопнуто
   overflow: hidden; // Прячем контент
   opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+  padding-bottom: 0;
+  transition:
+    max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    padding-bottom 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex; // Чтобы внутри работали флексы для mRow
   flex-direction: column;
 }
 .mContent.active {
-  max-height: 1500px; 
+  max-height: 1500px;
   opacity: 1;
   padding-bottom: 25px; // Добавляем отступ только когда открыто
 }
@@ -279,7 +283,7 @@
   }
 }
 .mIcon {
-  transition: transform 0.2s ease;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   // Стили из твоего SVG кружка
   width: 32px;
   height: 32px;

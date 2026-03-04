@@ -1,244 +1,61 @@
-// Данные для галереи - удобно редактировать и управлять фотографиями
+// Данные для галереи - все фото из папки Gallery (01–36, 38–87)
 
-// Верхний слайдер для ПК
-export const desktopTop = [
-  { id: 'dt1', type: 'photo', src: '/images/Gallery/01.webp' },
-  {
-    id: 'dt2',
-    type: 'photo',
-    src: '/images/Gallery/02.webp',
-    isWide: true,
-  },
-  { id: 'dt3', type: 'photo', src: '/images/Gallery/03.webp' },
-  { id: 'dt4', type: 'photo', src: '/images/Gallery/04.webp' },
-  { id: 'dt5', type: 'photo', src: '/images/Gallery/05.webp' },
-  { id: 'dt8', type: 'photo', src: '/images/Gallery/08.webp' },
-  { id: 'dt9', type: 'photo', src: '/images/Gallery/09.webp' },
-  {
-    id: 'dt12',
-    type: 'photo',
-    src: '/images/Gallery/12.webp',
-  },
-  { id: 'dt13', type: 'photo', src: '/images/Gallery/13.webp' },
-  { id: 'dt14', type: 'photo', src: '/images/Gallery/14.webp' },
-  { id: 'dt16', type: 'photo', src: '/images/Gallery/16.webp' },
-  { id: 'dt17', type: 'photo', src: '/images/Gallery/17.webp' },
-  { id: 'dt19', type: 'photo', src: '/images/Gallery/19.webp' },
-  { id: 'dt20', type: 'photo', src: '/images/Gallery/20.webp' },
-  { id: 'dt21', type: 'photo', src: '/images/Gallery/21.webp' },
-  {
-    id: 'dt22',
-    type: 'photo',
-    src: '/images/Gallery/22.webp',
-    isWide: true,
-  },
-  { id: 'dt23', type: 'photo', src: '/images/Gallery/23.webp' },
-  { id: 'dt25', type: 'photo', src: '/images/Gallery/25.webp' },
-  { id: 'dt26', type: 'photo', src: '/images/Gallery/26.webp' },
-  { id: 'dt28', type: 'photo', src: '/images/Gallery/28.webp' },
-  { id: 'dt29', type: 'photo', src: '/images/Gallery/29.webp' },
-  { id: 'dt30', type: 'photo', src: '/images/Gallery/30.webp' },
-  {
-    id: 'dt33',
-    type: 'photo',
-    src: '/images/Gallery/33.webp',
-  },
-  { id: 'dt35', type: 'photo', src: '/images/Gallery/35.webp' },
-  { id: 'dt36', type: 'photo', src: '/images/Gallery/36.webp' },
-  { id: 'dt37', type: 'photo', src: '/images/Gallery/37.webp' },
-  { id: 'dt38', type: 'photo', src: '/images/Gallery/38.webp' },
-  { id: 'dt40', type: 'photo', src: '/images/Gallery/40.webp' },
-  {
-    id: 'dt43',
-    type: 'photo',
-    src: '/images/Gallery/43.webp',
-    isWide: true,
-  },
-  { id: 'dt45', type: 'photo', src: '/images/Gallery/45.webp' },
-  { id: 'dt46', type: 'photo', src: '/images/Gallery/46.webp' },
-  { id: 'dt49', type: 'photo', src: '/images/Gallery/49.webp' },
-  {
-    id: 'dt53',
-    type: 'photo',
-    src: '/images/Gallery/53.webp',
-  },
-  { id: 'dt55', type: 'photo', src: '/images/Gallery/55.webp' },
-  { id: 'dt58', type: 'photo', src: '/images/Gallery/58.webp' },
-  { id: 'dt61', type: 'photo', src: '/images/Gallery/61.webp' },
-  {
-    id: 'dt63',
-    type: 'photo',
-    src: '/images/Gallery/63.webp',
-    isWide: true,
-  },
-  { id: 'dt65', type: 'photo', src: '/images/Gallery/65.webp' },
-  { id: 'dt67', type: 'photo', src: '/images/Gallery/67.webp' },
-  { id: 'dt69', type: 'photo', src: '/images/Gallery/69.webp' },
+const allGalleryFiles = [
+  '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp', '07.webp', '08.webp', '09.webp', '10.webp',
+  '11.webp', '12.webp', '13.webp', '14.webp', '15.webp', '16.webp', '17.webp', '18.webp', '19.webp', '20.webp',
+  '21.webp', '22.webp', '23.webp', '24.webp', '25.webp', '26.webp', '27.webp', '28.webp', '29.webp', '30.webp',
+  '31.webp', '32.webp', '33.webp', '34.webp', '35.webp', '36.webp', '38.webp', '39.webp', '40.webp', '41.webp',
+  '42.webp', '43.webp', '44.webp', '45.webp', '46.webp', '47.webp', '48.webp', '49.webp', '50.webp', '51.webp',
+  '52.webp', '53.webp', '54.webp', '55.webp', '56.webp', '57.webp', '58.webp', '59.webp', '60.webp', '61.webp',
+  '62.webp', '63.webp', '64.webp', '65.webp', '66.webp', '67.webp', '68.webp', '69.webp', '70.webp', '71.webp',
+  '72.webp', '73.webp', '74.webp', '75.webp', '76.webp', '77.webp', '78.webp', '79.webp', '80.webp', '81.webp',
+  '82.webp', '83.webp', '84.webp', '85.webp', '86.webp', '87.webp',
 ];
 
-// Нижний слайдер для ПК
-export const desktopBottom = [
-  { id: 'db1', type: 'photo', src: '/images/Gallery/70.webp' },
-  { id: 'db7', type: 'photo', src: '/images/Gallery/76.webp' },
-  { id: 'db8', type: 'photo', src: '/images/Gallery/77.webp' },
-  { id: 'db9', type: 'photo', src: '/images/Gallery/78.webp' },
-  {
-    id: 'db11',
-    type: 'photo',
-    src: '/images/Gallery/80.webp',
-  },
-  { id: 'db14', type: 'photo', src: '/images/Gallery/83.webp' },
-  { id: 'db17', type: 'photo', src: '/images/Gallery/86.webp' },
-  { id: 'db18', type: 'photo', src: '/images/Gallery/87.webp' },
-  { id: 'db20', type: 'photo', src: '/images/Gallery/89.webp' },
-  {
-    id: 'db21',
-    type: 'photo',
-    src: '/images/Gallery/90.webp',
-    isWide: true,
-  },
-  { id: 'db26', type: 'photo', src: '/images/Gallery/95.webp' },
-  { id: 'db27', type: 'photo', src: '/images/Gallery/96.webp' },
-  { id: 'db30', type: 'photo', src: '/images/Gallery/99.webp' },
-  { id: 'db31', type: 'photo', src: '/images/Gallery/100.webp' },
-  {
-    id: 'db32',
-    type: 'photo',
-    src: '/images/Gallery/101.webp',
-  },
-  { id: 'db33', type: 'photo', src: '/images/Gallery/102.webp' },
-  { id: 'db34', type: 'photo', src: '/images/Gallery/103.webp' },
-  { id: 'db37', type: 'photo', src: '/images/Gallery/106.webp' },
-  { id: 'db39', type: 'photo', src: '/images/Gallery/108.webp' },
-  { id: 'db41', type: 'photo', src: '/images/Gallery/110.webp' },
-  {
-    id: 'db42',
-    type: 'photo',
-    src: '/images/Gallery/111.webp',
-    isWide: true,
-  },
-  { id: 'db43', type: 'photo', src: '/images/Gallery/112.webp' },
-  { id: 'db45', type: 'photo', src: '/images/Gallery/114.webp' },
-  { id: 'db46', type: 'photo', src: '/images/Gallery/115.webp' },
-  { id: 'db48', type: 'photo', src: '/images/Gallery/117.webp' },
-  { id: 'db49', type: 'photo', src: '/images/Gallery/118.webp' },
-  {
-    id: 'db52',
-    type: 'photo',
-    src: '/images/Gallery/121.webp',
-  },
-  { id: 'db54', type: 'photo', src: '/images/Gallery/123.webp' },
-  { id: 'db56', type: 'photo', src: '/images/Gallery/125.webp' },
-  { id: 'db57', type: 'photo', src: '/images/Gallery/126.webp' },
-  { id: 'db59', type: 'photo', src: '/images/Gallery/128.webp' },
-  {
-    id: 'db62',
-    type: 'photo',
-    src: '/images/Gallery/131.webp',
-    isWide: true,
-  },
-  { id: 'db64', type: 'photo', src: '/images/Gallery/133.webp' },
-  { id: 'db65', type: 'photo', src: '/images/Gallery/134.webp' },
-  { id: 'db67', type: 'photo', src: '/images/Gallery/136.webp' },
-  { id: 'db68', type: 'photo', src: '/images/Gallery/137.webp' },
-  { id: 'db70', type: 'photo', src: '/images/Gallery/139.webp' },
-];
+const base = '/images/Gallery/';
 
-// --- ДАННЫЕ ДЛЯ МОБИЛКИ (4 РЯДА) ---
-// Первый ряд для мобильных устройств
-export const mobRow1 = [
-  { id: 'm1_1', src: '/images/Gallery/01.webp' },
-  { id: 'm1_2', src: '/images/Gallery/02.webp', isWide: true },
-  { id: 'm1_3', src: '/images/Gallery/03.webp' },
-  { id: 'm1_5', src: '/images/Gallery/05.webp' },
-  { id: 'm1_6', src: '/images/Gallery/06.webp' },
-  { id: 'm1_7', src: '/images/Gallery/07.webp' },
-  { id: 'm1_9', src: '/images/Gallery/09.webp' },
-  { id: 'm1_11', src: '/images/Gallery/11.webp', isWide: true },
-  { id: 'm1_13', src: '/images/Gallery/13.webp' },
-  { id: 'm1_16', src: '/images/Gallery/16.webp' },
-  { id: 'm1_17', src: '/images/Gallery/17.webp' },
-  { id: 'm1_18', src: '/images/Gallery/18.webp' },
-  { id: 'm1_19', src: '/images/Gallery/19.webp' },
-  { id: 'm1_20', src: '/images/Gallery/20.webp', isWide: true },
-  { id: 'm1_21', src: '/images/Gallery/21.webp' },
-  { id: 'm1_22', src: '/images/Gallery/22.webp' },
-  { id: 'm1_23', src: '/images/Gallery/23.webp' },
-  { id: 'm1_24', src: '/images/Gallery/24.webp' },
-  { id: 'm1_26', src: '/images/Gallery/26.webp' },
-  { id: 'm1_27', src: '/images/Gallery/27.webp' },
-  { id: 'm1_28', src: '/images/Gallery/28.webp' },
-  { id: 'm1_29', src: '/images/Gallery/29.webp' },
-  { id: 'm1_30', src: '/images/Gallery/30.webp', isWide: true },
-  { id: 'm1_31', src: '/images/Gallery/31.webp' },
-  { id: 'm1_33', src: '/images/Gallery/33.webp' },
-  { id: 'm1_34', src: '/images/Gallery/34.webp' },
-];
+// Верхний слайдер для ПК — первые 43 фото
+export const desktopTop = allGalleryFiles.slice(0, 43).map((file, i) => ({
+  id: `dt${i + 1}`,
+  type: 'photo',
+  src: base + file,
+  ...([2, 11, 20, 30, 40].includes(i) ? { isWide: true } : {}),
+}));
 
-// Второй ряд для мобильных устройств
-export const mobRow2 = [
-  { id: 'm2_1', src: '/images/Gallery/35.webp' },
-  { id: 'm2_2', src: '/images/Gallery/36.webp' },
-  { id: 'm2_3', src: '/images/Gallery/37.webp', isWide: true },
-  { id: 'm2_4', src: '/images/Gallery/38.webp' },
-  { id: 'm2_7', src: '/images/Gallery/41.webp' },
-  { id: 'm2_10', src: '/images/Gallery/44.webp' },
-  { id: 'm2_20', src: '/images/Gallery/54.webp' },
-  { id: 'm2_21', src: '/images/Gallery/55.webp', isWide: true },
-  { id: 'm2_25', src: '/images/Gallery/59.webp' },
-  { id: 'm2_27', src: '/images/Gallery/61.webp' },
-  { id: 'm2_28', src: '/images/Gallery/62.webp' },
-  { id: 'm2_29', src: '/images/Gallery/63.webp' },
-  { id: 'm2_30', src: '/images/Gallery/64.webp' },
-  { id: 'm2_31', src: '/images/Gallery/65.webp', isWide: true },
-  { id: 'm2_33', src: '/images/Gallery/67.webp' },
-];
+// Нижний слайдер для ПК — остальные фото
+export const desktopBottom = allGalleryFiles.slice(43).map((file, i) => ({
+  id: `db${i + 1}`,
+  type: 'photo',
+  src: base + file,
+  ...([5, 15, 25, 35].includes(i) ? { isWide: true } : {}),
+}));
 
-// Третий ряд для мобильных устройств
-export const mobRow3 = [
-  { id: 'm3_3', src: '/images/Gallery/72.webp' },
-  { id: 'm3_6', src: '/images/Gallery/75.webp', isWide: true },
-  { id: 'm3_8', src: '/images/Gallery/77.webp' },
-  { id: 'm3_9', src: '/images/Gallery/78.webp' },
-  { id: 'm3_10', src: '/images/Gallery/79.webp' },
-  { id: 'm3_13', src: '/images/Gallery/82.webp' },
-  { id: 'm3_14', src: '/images/Gallery/83.webp', isWide: true },
-  { id: 'm3_16', src: '/images/Gallery/85.webp' },
-  { id: 'm3_18', src: '/images/Gallery/87.webp' },
-  { id: 'm3_19', src: '/images/Gallery/88.webp' },
-  { id: 'm3_21', src: '/images/Gallery/90.webp' },
-  { id: 'm3_23', src: '/images/Gallery/92.webp', isWide: true },
-  { id: 'm3_25', src: '/images/Gallery/94.webp' },
-  { id: 'm3_26', src: '/images/Gallery/95.webp' },
-  { id: 'm3_27', src: '/images/Gallery/96.webp' },
-  { id: 'm3_29', src: '/images/Gallery/98.webp' },
-  { id: 'm3_31', src: '/images/Gallery/100.webp' },
-  { id: 'm3_32', src: '/images/Gallery/101.webp' },
-  { id: 'm3_33', src: '/images/Gallery/102.webp', isWide: true },
-  { id: 'm3_34', src: '/images/Gallery/103.webp' },
-];
+// Мобильные ряды — равномерно по 4 ряда
+const n = allGalleryFiles.length;
+const m1 = Math.ceil(n * 0.26);
+const m2 = Math.ceil(n * 0.51);
+const m3 = Math.ceil(n * 0.76);
 
-// Четвертый ряд для мобильных устройств
-export const mobRow4 = [
-  { id: 'm4_1', src: '/images/Gallery/105.webp' },
-  { id: 'm4_3', src: '/images/Gallery/107.webp' },
-  { id: 'm4_5', src: '/images/Gallery/109.webp', isWide: true },
-  { id: 'm4_7', src: '/images/Gallery/111.webp' },
-  { id: 'm4_9', src: '/images/Gallery/113.webp' },
-  { id: 'm4_10', src: '/images/Gallery/114.webp' },
-  { id: 'm4_11', src: '/images/Gallery/115.webp' },
-  { id: 'm4_13', src: '/images/Gallery/117.webp' },
-  { id: 'm4_14', src: '/images/Gallery/118.webp', isWide: true },
-  { id: 'm4_16', src: '/images/Gallery/120.webp' },
-  { id: 'm4_19', src: '/images/Gallery/123.webp' },
-  { id: 'm4_21', src: '/images/Gallery/125.webp' },
-  { id: 'm4_22', src: '/images/Gallery/126.webp' },
-  { id: 'm4_23', src: '/images/Gallery/127.webp', isWide: true },
-  { id: 'm4_24', src: '/images/Gallery/128.webp' },
-  { id: 'm4_27', src: '/images/Gallery/131.webp' },
-  { id: 'm4_28', src: '/images/Gallery/132.webp' },
-  { id: 'm4_30', src: '/images/Gallery/134.webp' },
-  { id: 'm4_32', src: '/images/Gallery/136.webp' },
-  { id: 'm4_33', src: '/images/Gallery/137.webp', isWide: true },
-  { id: 'm4_35', src: '/images/Gallery/139.webp' },
-];
+export const mobRow1 = allGalleryFiles.slice(0, m1).map((file, i) => ({
+  id: `m1_${i + 1}`,
+  src: base + file,
+  ...([1, 10, 19].includes(i) ? { isWide: true } : {}),
+}));
+
+export const mobRow2 = allGalleryFiles.slice(m1, m2).map((file, i) => ({
+  id: `m2_${i + 1}`,
+  src: base + file,
+  ...([2, 11].includes(i) ? { isWide: true } : {}),
+}));
+
+export const mobRow3 = allGalleryFiles.slice(m2, m3).map((file, i) => ({
+  id: `m3_${i + 1}`,
+  src: base + file,
+  ...([2, 11].includes(i) ? { isWide: true } : {}),
+}));
+
+export const mobRow4 = allGalleryFiles.slice(m3).map((file, i) => ({
+  id: `m4_${i + 1}`,
+  src: base + file,
+  ...([2, 11].includes(i) ? { isWide: true } : {}),
+}));

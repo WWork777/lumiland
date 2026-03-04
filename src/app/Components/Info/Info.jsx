@@ -11,16 +11,21 @@ export default function Info() {
   const slides = [
     {
       id: 1,
+      img: "01.jpg",
+      descrition: "Более 30 аттракционов! ",
+    },
+    {
+      id: 2,
       img: "01.webp",
       descrition: "Лепите песочные замки в натуральную величину",
     },
     {
-      id: 2,
+      id: 3,
       img: "02.webp",
       descrition: "Создавайте рисунки, которые оживают на ваших глазах",
     },
     {
-      id: 3,
+      id: 4,
       img: "03.webp",
       descrition: "Играйте в хоккей как профессиональный спортсмен",
     },
@@ -196,7 +201,7 @@ export default function Info() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <a href="#gallery">
+      <a href="#mero">
         <button className={styles.aboutGames}>Подробнее об играх</button>
       </a>
       <div className={styles.WhiteBg}></div>

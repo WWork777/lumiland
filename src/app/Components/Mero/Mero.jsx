@@ -83,7 +83,7 @@ const EVENTS = [
 
 export default function Mero() {
     return (
-        <div className={styles.container}>
+        <div className={styles.container} id="mero">
             <h1 className={styles.titleDesktop}>
                 Мероприятия Lumiland <br /> <span>{SCHEDULE_TITLE}</span>
             </h1>
