@@ -51,16 +51,18 @@ const EVENTS = [
         date: '21 марта',
         weekday: 'Суббота',
         cardPurple: true,
+        registrationFormUrl: 'https://forms.gle/vbkPCsqGL1dsTx568',
         events: [
-            { time: '16:00', name: 'Интерактивная эстафета "Мама, папа, я - спортивная семья"' },
+            { time: 'Весь день', name: 'Интерактивная эстафета "Мама, папа, я - спортивная семья"' },
         ],
     },
     {
         date: '22 марта',
         weekday: 'Воскресенье',
         cardPurple: true,
+        registrationFormUrl: 'https://forms.gle/vbkPCsqGL1dsTx568',
         events: [
-            { time: '16:00', name: 'Интерактивная эстафета "Мама, папа, я - спортивная семья"' },
+            { time: 'Весь день', name: 'Интерактивная эстафета "Мама, папа, я - спортивная семья"' },
         ],
     },
     {
@@ -110,6 +112,16 @@ export default function Mero() {
                                 </div>
                             </div>
                         ))}
+                        {day.registrationFormUrl && (
+                            <a
+                                href={day.registrationFormUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.tournamentBtnCard}
+                            >
+                                Записаться
+                            </a>
+                        )}
                     </div>
                 ))}
             </div>

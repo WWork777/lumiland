@@ -288,6 +288,43 @@
   }
 }
 
+.tournamentBtnCard {
+  display: block;
+  margin-top: 20px;
+  padding: 14px 24px;
+  background-color: #9117ba;
+  color: #fff;
+  font-family: 'TT 700';
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+
+  &:hover {
+    background-color: #7a1399;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(145, 23, 186, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 666px) {
+    margin-top: 14px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
 .back {
   position: absolute;
   z-index: -1;
