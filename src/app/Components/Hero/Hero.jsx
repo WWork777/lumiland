@@ -114,9 +114,13 @@ export default function Hero() {
               alt='телефон'
             />
           </Link>
+          <Link href='https://t.me/lumiland_bot' target='_blank' className={styles.infoButton}>
+            Программа лояльности
+          </Link>
           <Link href='#info' className={styles.infoButton}>
             Подробнее о парке
           </Link>
+          
         </div>
         <div className={styles.WhiteBg}></div>
         <div

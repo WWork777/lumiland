@@ -111,6 +111,11 @@
       z-index: 10;
       position: relative;
       margin-top: 80px;
+
+      @media (max-width: 1200px) {
+        flex-direction: column;
+        gap: 20px;
+      }
       .phoneButton {
         display: flex;
         align-items: center;
@@ -151,6 +156,11 @@
         transition: transform 0.2s ease;
         &:hover {
           transform: scale(1.02);
+        }
+
+        &:nth-child(2){
+          background-color: white;
+          border: 1px solid white;
         }
       }
     }
