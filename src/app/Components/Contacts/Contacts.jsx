@@ -1,7 +1,70 @@
+"use client";
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './Contacts.module.scss';
 import Link from 'next/link';
 export default function Contacts() {
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const loadYandexMap = () => {
+      if (window.ymaps && mapRef.current) {
+        window.ymaps.ready(() => {
+          const map = new window.ymaps.Map(mapRef.current, {
+            center: [56.460660, 84.965569],
+            zoom: 15,
+            // ОТКЛЮЧАЕМ ВСЕ ЛИШНИЕ ЭЛЕМЕНТЫ
+            controls: [], // ← пустой массив = никаких элементов управления
+            behaviors: ['default', 'scrollZoom'], // оставляем только базовое поведение
+            type: 'yandex#map', // обычная схема без лишнего
+          });
+
+          // Создаем кастомный маркер
+          const marker = new window.ymaps.Placemark(
+            [55.393134, 86.102307],
+            {
+              hintContent: 'Наш офис',
+              balloonContent: 'ул. Котовского, 19/1',
+            },
+            {
+              // Простой красный маркер
+              preset: 'islands#redIcon',
+              iconColor: '#0091C9',
+            }
+          );
+
+          map.geoObjects.add(marker);
+
+          // ДОПОЛНИТЕЛЬНО: отключаем рекламу и другие элементы
+          setTimeout(() => {
+            // Убираем рекламу и копирайты если они есть
+            const copyrights = mapRef.current.querySelectorAll(
+              '.ymaps-2-1-79-copyrights-pane, .ymaps-2-1-79-copyright'
+            );
+            copyrights.forEach((el) => (el.style.display = 'none'));
+
+            const ads = mapRef.current.querySelectorAll("[class*='ads']");
+            ads.forEach((el) => (el.style.display = 'none'));
+            const currentCenter = map.getCenter();
+            // Смещаем на 0.0015 по долготе для сдвига вправо
+            const newCenter = [currentCenter[0], currentCenter[1]];
+            map.setCenter(newCenter, 17, { duration: 300 });
+          }, 1000);
+        });
+      }
+    };
+
+    if (window.ymaps) {
+      loadYandexMap();
+    } else {
+      const script = document.createElement('script');
+      script.src =
+        'https://api-maps.yandex.ru/2.1/?apikey=2a907ab4-e930-4aca-9ebb-13d8e04a56a5&lang=ru_RU';
+      script.async = true;
+      script.onload = loadYandexMap;
+      document.head.appendChild(script);
+    }
+  }, []);
   return (
     <section className={styles.contacts} id='contacts'>
       <h2 className={styles.contactsTitle}>
@@ -17,12 +80,7 @@ export default function Contacts() {
         className={styles.iconBg}
       />
       <div className={styles.mapContainer}>
-        <Image
-          src={'/images/Contacts/map2.webp'}
-          width={1920}
-          height={670}
-          alt='г. Томск, Котовского 19/1, ТЦ Смайлcity'
-        />
+          <div ref={mapRef} className={styles.map} />
         <div className={styles.contactContainer}>
           <svg
             width='464'

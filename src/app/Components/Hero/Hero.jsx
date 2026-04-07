@@ -85,7 +85,7 @@ export default function Hero() {
         <h1>
           <span>ЖДЕМ ВАС В ПЕРВОМ</span>
           <br />
-          <span>МУЛЬТИМЕДИЙНОМ</span>
+          <span>ИНТЕРАКТИВНОМ</span>
           <br />
           <span className={styles.titleWithGeo}>
             <span>ПАРКЕ В ТОМСКЕ</span>

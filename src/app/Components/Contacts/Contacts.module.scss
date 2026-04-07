@@ -31,8 +31,9 @@
   }
   .mapContainer {
     position: relative;
-    img {
+    .map {
       width: 100vw;
+      height: 700px;
     }
     .contactContainer {
       position: absolute;
@@ -61,7 +62,7 @@
       }
     }
     .mapContainer {
-      img {
+      .map {
         height: 500px;
       }
       .contactContainer {
@@ -96,7 +97,7 @@
       }
     }
     .mapContainer {
-      img {
+      .map {
         width: 100%;
         height: 550px;
         object-fit: cover;
