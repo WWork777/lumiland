@@ -104,6 +104,9 @@ export default function Hero() {
             </span>
           </span>
         </h1>
+        <div className={styles.timeContainer}>
+          <span className={styles.timeText}>с 10:00 до 21:30 ежедневно</span>
+        </div>
         <div className={styles.buttonsContainer}>
           <Link href='tel:79528800330' className={styles.phoneButton}>
             <span>Позвонить в парк</span>

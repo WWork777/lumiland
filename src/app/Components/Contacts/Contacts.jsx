@@ -18,7 +18,7 @@ export default function Contacts() {
       />
       <div className={styles.mapContainer}>
         <Image
-          src={'/images/Contacts/map.webp'}
+          src={'/images/Contacts/map2.webp'}
           width={1920}
           height={670}
           alt='г. Томск, Котовского 19/1, ТЦ Смайлcity'
@@ -136,7 +136,7 @@ export default function Contacts() {
           
           <div className={styles.socials}>
             <span className={styles.socialsLabel}>Соц сети:</span>
-            <Link href='https://t.me/+vrRGysdyfs5hMDI6'>
+            <Link href='https://t.me/lumilandkids'>
               <Image
                 src='/icons/tg.svg'
                 width={36}

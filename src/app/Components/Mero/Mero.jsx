@@ -4,7 +4,7 @@ import styles from './Mero.module.scss';
 
 // ——— РАСПИСАНИЕ МЕРОПРИЯТИЙ ———
 // Меняйте только этот массив: добавляйте/удаляйте дни и события
-const SCHEDULE_TITLE = 'в марте';
+const SCHEDULE_TITLE = 'в апреле';
 
 const EVENTS = [
     {
@@ -18,7 +18,6 @@ const EVENTS = [
     {
         date: '4 апреля',
         weekday: 'Суббота',
-        registrationFormUrl: 'https://forms.gle/cE5fBUXGrSM37jXZ9',
         events: [
             { time: '14:00', name: 'Квест «Сокровища Люмика»' },
         ],
@@ -39,7 +38,7 @@ const EVENTS = [
     },
     {
         date: '18 апреля',
-        weekday: 'Суботта',
+        weekday: 'Суббота',
         events: [
             { time: '14:00', name: 'Мастер‑класс «Сотворим свой слайм!»' },
         ],
@@ -64,7 +63,7 @@ const EVENTS = [
         date: '26 апреля',
         weekday: 'Воскресенье',
         events: [
-            { time: '14:00', name: 'Мастер-класс "Создаем цветок из воздушных шариков' },
+            { time: '14:00', name: 'Мастер-класс «Создаем цветок из воздушных шариков»' },
         ],
     },
 ];
