@@ -1,7 +1,7 @@
 import "./globals.scss";
 import Header from "./Components/Header/Header";
 import YandexMetrika from "./Components/YandexMetrika/YandexMEtrika";
-import Footer from "./Components/Footer/Footer";
+import Footer from "./Components/footer/Footer";
 export const metadata = {
   icons: {
     icon: [
