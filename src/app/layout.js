@@ -1,6 +1,7 @@
 import "./globals.scss";
-import Header from "./Components/Header/Header";
+import Header from "./Components/header/Header";
 import YandexMetrika from "./Components/YandexMetrika/YandexMEtrika";
+import Footer from "./Components/footer/Footer";
 export const metadata = {
   icons: {
     icon: [
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         {children}
+        <Footer />
         <YandexMetrika />
       </body>
     </html>

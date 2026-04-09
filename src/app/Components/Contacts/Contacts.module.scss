@@ -147,8 +147,21 @@
       font-size: 12px;
     }
   }
+  .urData {
+    display: flex;
+    flex-direction: column;
+    .socialsLabel {
+      font-size: 14px;
+      color: #320948;
+      font-weight: 400;
+      white-space: nowrap;
 
-  .socials {
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
+    }
+  }
+  .socialsCon {
     display: flex;
     align-items: center;
     gap: 20px;

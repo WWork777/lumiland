@@ -1,11 +1,11 @@
-import Contacts from './Components/Contacts/Contacts';
-import Hero from './Components/Hero/Hero';
+import Contacts from './Components/contacts/Contacts';
+import Hero from './Components/hero/Hero';
 import Info from './Components/Info/Info';
-import Questions from './Components/Questions/Questions';
-import Price from './Components/Price/Price';
-import Birthday from "./Components/Birthday/Birthday"
-import Mero from './Components/Mero/Mero.jsx'
-import Gallery from './Components/Gallery/Gallery';
+import Questions from './Components/questions/Questions';
+import Price from './Components/price/Price';
+import Birthday from "./Components/birthday/Birthday"
+import Mero from './Components/mero/Mero.jsx'
+import Gallery from './Components/gallery/Gallery';
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 export async function generateMetadata() {
