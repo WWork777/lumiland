@@ -1,81 +1,78 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './Birthday.module.scss';
 
 export default function Birthday() {
-  // Храним состояние открытости для каждого блока отдельно
-  // Изначально только стандарт открыт
   const [openTabs, setOpenTabs] = useState({
-    standart: true,
-    premium: false,
+    base: true,
+    standart: false,
     vip: false,
     custom: false,
   });
 
+  // Состояние для выбора мессенджера (хранит ID активного пакета)
+  const [activeOrder, setActiveOrder] = useState(null);
+
   const toggleTab = (tab) => {
-    // Запоминаем текущую позицию скролла
     const scrollPos = window.scrollY;
-
-    // Переключаем только конкретный блок, не трогая остальные
-    setOpenTabs((prev) => ({
-      ...prev,
-      [tab]: !prev[tab],
-    }));
-
-    // Возвращаем скролл на место в следующем кадре анимации
+    setOpenTabs((prev) => ({ ...prev, [tab]: !prev[tab] }));
     requestAnimationFrame(() => {
       window.scrollTo(0, scrollPos);
     });
   };
 
-  const handleOrder = (packageName) => {
-    const telegramUrl = `https://t.me/+79528800330?text=${encodeURIComponent(
-      `Хочу заказать праздник по пакету: ${packageName}`
-    )}`;
-    window.open(telegramUrl, '_blank');
+  const links = {
+    vk: 'https://vk.com/challenge.html?tid=KJXzux_Nzgwyc8yTjfUUWSHFAev1pA&hash429=E5pkTe6EyqxzhnWfGXSfEJcmVA-SUKT_rBEowhC2TQ1XXOhdqfV8H-QGzMbtjS4_C1-rg3qmjNZHsvpfx0TXUGaWw23uazIhbIjD6eP_x7WSaXdDuOsxQ38T3i7RJ8c1ywrzmLn5d4zvt6p2&sign=HYnvjmtVxRNq-RopIImRKg&back=https%3A%2F%2Fvk.com%2Flumiland.kids&origin=&lang_id=',
+    tg: 'https://t.me/+79528800330',
+    max: 'https://max.ru/u/f9LHodD0cOI9mXJtibRDK-p1ur9gDFWVupyiARE_tbdrCyzutlyeOOEd9Qs',
   };
 
-  // Все цены в одном месте - меняйте здесь и они обновятся везде
   const prices = {
-    standart: {
+    base: {
       weekday: '9 900 ₽',
       weekend: '11 900 ₽',
-      extraGuestWeekday: '1000 ₽',
-      extraGuestWeekend: '1 100 ₽',
+      extraW: '1 000 ₽',
+      extraE: '1 100 ₽',
     },
-    premium: {
-      weekday: '12 900 ₽',
-      weekend: '14 900 ₽',
-      extraGuestWeekday: '1 100 ₽',
-      extraGuestWeekend: '1 400 ₽',
+    standart: {
+      weekday: 'от 15 900 ₽',
+      weekend: '17 900 ₽',
+      extraW: '1 100 ₽',
+      extraE: '1 300 ₽',
     },
     vip: {
-      weekday: '15 900 ₽',
-      weekend: '17 900 ₽',
-      extraGuestWeekday: '1 400 ₽',
-      extraGuestWeekend: '1 600 ₽',
+      weekday: '29 900 ₽',
+      weekend: '31 900 ₽',
+      extraW: '1 100 ₽',
+      extraE: '1 300 ₽',
     },
   };
 
-  const services = [
-    { name: 'Персональный банкетный менеджер', s: true, p: true, v: true },
-    { name: 'Посещение парка безлимит', s: true, p: true, v: true },
-    { name: 'Пати-рум 3 часа', s: true, p: true, v: true },
-    { name: 'Интерактивный стол', s: true, p: true, v: true },
-    { name: 'Праздничная сервировка стола', s: true, p: true, v: true },
-    { name: 'Электронные приглашения', s: true, p: true, v: true },
-    { name: 'Подарок имениннику и гостям', s: true, p: true, v: true },
-    { name: 'Оформление воздушными шарами', s: true, p: true, v: true },
-    { name: 'Квест по локациям парка', s: false, p: true, v: true },
-    { name: 'МК/Турнир на выбор', s: false, p: false, v: true },
-  ];
   const BlackCheck = (
-    <Image src='/icons/blackCheck.svg' alt='check' width={29} height={29} />
+    <Image src="/icons/blackCheck.svg" alt="v" width={26} height={26} />
   );
   const WhiteCheck = (
-    <Image src='/icons/whiteCheck.svg' alt='check' width={29} height={29} />
+    <Image src="/icons/whiteCheck.svg" alt="v" width={26} height={26} />
   );
+
+  // Компонент списка ссылок
+  const MessengerSelection = ({ isDarkTheme }) => (
+    <div
+      className={`${styles.messengerList} ${isDarkTheme ? styles.dark : ''}`}
+    >
+      <a href={links.tg} target="_blank" rel="noopener noreferrer">
+        Заказать в Telegram
+      </a>
+      <a href={links.max} target="_blank" rel="noopener noreferrer">
+        Заказать в Макс
+      </a>
+      <a href={links.vk} target="_blank" rel="noopener noreferrer">
+        Заказать в ВКонтакте
+      </a>
+    </div>
+  );
+
   return (
     <div className={styles.wrapperB}>
       <div className={styles.container}>
@@ -83,469 +80,392 @@ export default function Birthday() {
           <h1 className={styles.birthdayTitle}>
             ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМЫЙ</span> ДЕНЬ РОЖДЕНИЯ В LUMILAND
           </h1>
-          <h2>Пакеты рассчитаны на 6 человек</h2>
+          <h2>Три формата праздника!</h2>
+          <h2>
+            Но в каждый уже включен персональный менеджер, который возьмет все
+            под контроль: от заказа торта до финального фото
+          </h2>
         </header>
+
         <div className={styles.grid}>
+          {/* Headers */}
           <div
-            className={`${styles.cell} ${styles.label} ${styles.labelTitle} `}
+            className={`${styles.cell} ${styles.label} ${styles.labelTitle}`}
           >
             Пакетные предложения
           </div>
           <div
             className={`${styles.cell} ${styles.standart} ${styles.standartTitle}`}
           >
-            Стандарт
+            Базовый
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.premiumTitle}`}
           >
-            Премиум
+            Стандарт
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.vipTitle}`}>
-            Максимум
+            ВИП
           </div>
           <div
             className={`${styles.cell} ${styles.custom} ${styles.customTitle}`}
           >
             Соберу сам
           </div>
-          <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Персональный банкетный менеджер
-          </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {' '}
-            {BlackCheck}{' '}
-          </div>
-          <div className={`${styles.cell} ${styles.premium}`}>
-            {' '}
-            {BlackCheck}{' '}
-          </div>
-          <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
-          {/* Оранжевый блок (один на все строки) */}
+
+          {/* Правая оранжевая колонка */}
           <div className={styles.customSideBlock}>
             ОБСУДИТЕ ДЕТАЛИ С ПЕРСОНАЛЬНЫМ МЕНЕДЖЕРОМ И ПРЕВРАТИТЕ ДЕНЬ РОЖДЕНИЯ
             В НЕЗАБЫВАЕМОЕ ПРИКЛЮЧЕНИЕ
           </div>
+
+          {/* Общие услуги (8 строк) */}
+          {[
+            'Безлимитные билеты в парк для всей компании',
+            'Party-room на 3 часа с яркой праздничной сервировкой',
+            'Интерактивный стол-волшебник с поздравлением',
+            'Готовый хит-старт: игра “Бургер-бум!”',
+            'Личный менеджер на связи 24/7',
+            'Стильные электронные приглашения гостям',
+            'Тёплое поздравление от всей команды Lumiland',
+            'Праздничный сет из воздушных шаров в подарок каждому гостю',
+          ].map((text, i) => (
+            <React.Fragment key={i}>
+              <div
+                className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}
+              >
+                {text}
+              </div>
+              <div className={`${styles.cell} ${styles.standart}`}>
+                {BlackCheck}
+              </div>
+              <div className={`${styles.cell} ${styles.premium}`}>
+                {BlackCheck}
+              </div>
+              <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+            </React.Fragment>
+          ))}
+
+          {/* Услуги Стандарт + ВИП */}
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Посещение парка безлимит
+            Тематический квест по всему парку на выбор
           </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {BlackCheck}
-          </div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Пати-рум 3 часа
+            Вынос торта с шоу от аниматора
           </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {BlackCheck}
-          </div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Интерактивный стол
+            Подарки от партнеров на 3 000+ ₽ и скидки всем
           </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {BlackCheck}
-          </div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+
+          {/* Услуги Только ВИП */}
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Праздничная сервировка стола{' '}
-            <small>(одноразовая яркая посуда)</small>
+            Персональный инструктор — сопровождение детей
           </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {BlackCheck}
-          </div>
-          <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
+          <div className={`${styles.cell} ${styles.premium}`}></div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Электронные приглашения для гостей
+            Мультфильм Люмика с лицом именинника в парке
           </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {BlackCheck}
-          </div>
-          <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
+          <div className={`${styles.cell} ${styles.premium}`}></div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Подарок имениннику и гостям{' '}
-            <small>
-              (пригласительный на посещение парка - бесплатный сертификат
-              имениннику, 50% всем гостям)
-            </small>
+            Профессиональный фотограф (30-50 фото)
           </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {BlackCheck}
-          </div>
-          <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
+          <div className={`${styles.cell} ${styles.premium}`}></div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
-          <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Оформление воздушными шарами{' '}
-            <small>
-              (по шарику привязываем к каждому стульчику с гостем или выдаем на
-              палочках каждому)
-            </small>
-          </div>
-          <div className={`${styles.cell} ${styles.standart}`}>
-            {BlackCheck}
-          </div>
-          <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
-          <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
-          {/* СТРОКА КВЕСТ (Только Premium и VIP) */}
-          <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Квест по локациям парка <small>(40 минут) с ведущим</small>
-          </div>
-          <div className={`${styles.cell} ${styles.standart}`}></div>{' '}
-          {/* Пусто */}
-          <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
-          <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
-          {/* СТРОКА МК (Только VIP) */}
-          <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            МК/Турнир на выбор (айсхук или ралли) на выбор (40 минут)
-          </div>
-          <div className={`${styles.cell} ${styles.standart}`}></div>{' '}
-          {/* Пусто */}
-          <div className={`${styles.cell} ${styles.premium}`}></div>{' '}
-          {/* Пусто */}
-          <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+
+          {/* Цены */}
           <div
             className={`${styles.cell} ${styles.label} ${styles.sellTariff}`}
           >
-            Стоимость в будние дни
+            Будние дни
           </div>
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            {prices.standart.weekday}
+            {prices.base.weekday}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            {prices.premium.weekday}
+            {prices.standart.weekday}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
             {prices.vip.weekday}
           </div>
-          {/* Здесь ячейка под "Соберу сам" уже занята блоком customSideBlock, 
-            но нам нужно закрыть строку цены */}
+
           <div
             className={`${styles.cell} ${styles.label} ${styles.sellTariff}`}
           >
-            Стоимость в выходные дни
+            Выходные дни
           </div>
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            {prices.standart.weekend}
+            {prices.base.weekend}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            {prices.premium.weekend}
+            {prices.standart.weekend}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
             {prices.vip.weekend}
           </div>
+
           <div
             className={`${styles.cell} ${styles.label} ${styles.sellTariff}`}
           >
-            Доп. гость в будни
+            Доп. гость (будни)
           </div>
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            {prices.standart.extraGuestWeekday}
+            {prices.base.extraW}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            {prices.premium.extraGuestWeekday}
+            {prices.standart.extraW}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
-            {prices.vip.extraGuestWeekday}
+            {prices.vip.extraW}
           </div>
+
           <div
             className={`${styles.cell} ${styles.label} ${styles.sellTariff}`}
           >
-            Доп. гость в выходные
+            Доп. гость (выходные)
           </div>
           <div
             className={`${styles.cell} ${styles.standart} ${styles.sellPrice}`}
           >
-            {prices.standart.extraGuestWeekend}
+            {prices.base.extraE}
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.sellPrice}`}
           >
-            {prices.premium.extraGuestWeekend}
+            {prices.standart.extraE}
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.sellPrice}`}>
-            {prices.vip.extraGuestWeekend}
+            {prices.vip.extraE}
           </div>
-          {/* <div className={`${styles.cell} ${styles.label}`}></div>
-        <div className={`${styles.cell} ${styles.standart}`}></div>
-        <div className={`${styles.cell} ${styles.premium}`}></div>    
-        <div className={`${styles.cell} ${styles.custom}`} style={{gridRowStart: 12}}>—</div> */}
         </div>
 
-        {/* КНОПКИ */}
+        {/* Кнопки Десктоп */}
         <div className={styles.footerButtons}>
-          <div /> {/* Пустое место под первой колонкой */}
-          <button
-            className={`${styles.btn} ${styles.standart}`}
-            onClick={() => handleOrder('Стандарт')}
-          >
-            Заказать
-          </button>
-          <button
-            className={`${styles.btn} ${styles.premium}`}
-            onClick={() => handleOrder('Премиум')}
-          >
-            Заказать
-          </button>
-          <button
-            className={`${styles.btn} ${styles.vip}`}
-            onClick={() => handleOrder('Максимум')}
-          >
-            Заказать
-          </button>
-          <button
-            className={`${styles.btn} ${styles.custom}`}
-            onClick={() => handleOrder('Соберу сам')}
-          >
-            Заказать
-          </button>
+          <div /> {/* Отступ под колонку названий */}
+          {['base', 'standart', 'vip', 'custom'].map((id) => (
+            <div key={id} className={styles.btnArea}>
+              {activeOrder === id ? (
+                <MessengerSelection
+                  isDarkTheme={id === 'vip' || id === 'custom'}
+                />
+              ) : (
+                <button
+                  className={`${styles.btn} ${styles[id === 'base' ? 'standart' : id === 'standart' ? 'premium' : id]}`}
+                  onClick={() => setActiveOrder(id)}
+                >
+                  Заказать
+                </button>
+              )}
+            </div>
+          ))}
         </div>
       </div>
-      <Image
-        className={styles.spin}
-        src='/images/Birthday/spinBlue.webp'
-        alt=''
-        width={250}
-        height={250}
-      />
 
+      {/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */}
       <div className={styles.mobileWrapper}>
         <header className={styles.header}>
           <h1 className={styles.birthdayTitle}>
-            ОТПРАЗДНУЙТЕ <span>НЕЗАБЫВАЕМЫЙ ДЕНЬ РОЖДЕНИЯ</span> В LUMILAND
+            ОТПРАЗДНУЙТЕ <span>ДЕНЬ РОЖДЕНИЯ</span>
           </h1>
-          <h2>Пакет рассчитан на 6 человек</h2>
+          <h2>Три формата праздника!</h2>
+          <h2>
+            Но в каждый уже включен персональный менеджер, который возьмет все
+            под контроль: от заказа торта до финального фото
+          </h2>
         </header>
 
-        {/* --- STANDART CARD --- */}
+        {/* Карточка Базовый */}
         <div
-          className={`${styles.mCard} ${styles.standart}  ${openTabs.standart ? styles.isOpen : ''
-            }`}
+          className={`${styles.mCard} ${styles.standart} ${openTabs.base ? styles.isOpen : ''}`}
+        >
+          <div className={styles.mHeader} onClick={() => toggleTab('base')}>
+            <span>БАЗОВЫЙ</span>
+            <div className={styles.mIcon}>{openTabs.base ? '−' : '+'}</div>
+          </div>
+          <div
+            className={`${styles.mContent} ${openTabs.base ? styles.active : ''}`}
+          >
+            {[
+              'Безлимит в парк',
+              'Party-room 3ч',
+              'Игра Бургер-бум',
+              'Менеджер 24/7',
+              'Сет шаров каждому',
+            ].map((item) => (
+              <div key={item} className={styles.mRow}>
+                <p>{item}</p> {BlackCheck}
+              </div>
+            ))}
+            <div className={styles.mPrice}>
+              <div className={styles.tariff}>
+                <span>Будни: {prices.base.weekday}</span>
+                <span>Выходные: {prices.base.weekend}</span>
+              </div>
+            </div>
+            <div className={styles.mOrderArea}>
+              {activeOrder === 'm-base' ? (
+                <MessengerSelection />
+              ) : (
+                <button
+                  className={styles.mBtn}
+                  onClick={() => setActiveOrder('m-base')}
+                >
+                  Заказать
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Карточка Стандарт */}
+        <div
+          className={`${styles.mCard} ${styles.premium} ${openTabs.standart ? styles.isOpen : ''}`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('standart')}>
             <span>СТАНДАРТ</span>
             <div className={styles.mIcon}>{openTabs.standart ? '−' : '+'}</div>
           </div>
           <div
-            className={`${styles.mContent} ${openTabs.standart ? styles.active : ''
-              }`}
+            className={`${styles.mContent} ${openTabs.standart ? styles.active : ''}`}
           >
-            <div className={styles.mRow}>
-              <p>Персональный банкетный менеджер</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Посещение парка безлимит</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Пати-рум 3 часа</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Интерактивный стол</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Праздничная сервировка стола</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Электронные приглашения</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Подарок имениннику и гостям</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Оформление воздушными шарами</p> {BlackCheck}
-            </div>
+            {[
+              'Все из Базового',
+              'Тематический квест',
+              'Вынос торта + шоу',
+              'Подарки партнеров',
+            ].map((item) => (
+              <div key={item} className={styles.mRow}>
+                <p>{item}</p> {BlackCheck}
+              </div>
+            ))}
             <div className={styles.mPrice}>
               <div className={styles.tariff}>
-                <span>Будние дни</span> <strong>{prices.standart.weekday}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Выходные дни</span> <strong>{prices.standart.weekend}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Доп. гость в будни</span> <strong>{prices.standart.extraGuestWeekday}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Доп. гость в выходные</span> <strong>{prices.standart.extraGuestWeekend}</strong>
+                <span>Будни: {prices.standart.weekday}</span>
+                <span>Выходные: {prices.standart.weekend}</span>
               </div>
             </div>
-            <button
-              className={styles.mBtn}
-              onClick={() => handleOrder('Стандарт')}
-            >
-              Заказать
-            </button>
+            <div className={styles.mOrderArea}>
+              {activeOrder === 'm-standart' ? (
+                <MessengerSelection />
+              ) : (
+                <button
+                  className={styles.mBtn}
+                  onClick={() => setActiveOrder('m-standart')}
+                >
+                  Заказать
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* --- PREMIUM CARD --- */}
+        {/* Карточка ВИП */}
         <div
-          className={`${styles.mCard} ${styles.premium} ${openTabs.premium ? styles.isOpen : ''
-            }`}
-        >
-          <div className={styles.mHeader} onClick={() => toggleTab('premium')}>
-            <span>ПРЕМИУМ</span>
-            <div className={styles.mIcon}>{openTabs.premium ? '−' : '+'}</div>
-          </div>
-          <div
-            className={`${styles.mContent} ${openTabs.premium ? styles.active : ''
-              }`}
-          >
-            <div className={styles.mRow}>
-              <p>Персональный банкетный менеджер</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Посещение парка безлимит</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Пати-рум 3 часа</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Интерактивный стол</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Праздничная сервировка стола</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Электронные приглашения</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Подарок имениннику и гостям</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Оформление воздушными шарами</p> {BlackCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Квест по локациям парка (40 мин)</p> {BlackCheck}
-            </div>
-
-            <div className={styles.mPrice}>
-              <div className={styles.tariff}>
-                <span>Будние дни</span> <strong>{prices.premium.weekday}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Выходные дни</span> <strong>{prices.premium.weekend}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Доп. гость в будни</span> <strong>{prices.premium.extraGuestWeekday}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Доп. гость в выходные</span> <strong>{prices.premium.extraGuestWeekend}</strong>
-              </div>
-            </div>
-            <button
-              className={`${styles.mBtn}`}
-              onClick={() => handleOrder('Премиум')}
-            >
-              Заказать
-            </button>
-          </div>
-        </div>
-
-        {/* --- VIP CARD --- */}
-        <div
-          className={`${styles.mCard} ${styles.vip} ${openTabs.vip ? styles.isOpen : ''
-            }`}
+          className={`${styles.mCard} ${styles.vip} ${openTabs.vip ? styles.isOpen : ''}`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('vip')}>
-            <span>МАКСИМУМ</span>
+            <span>ВИП</span>
             <div className={styles.mIcon}>{openTabs.vip ? '−' : '+'}</div>
           </div>
           <div
-            className={`${styles.mContent} ${openTabs.vip ? styles.active : ''
-              }`}
+            className={`${styles.mContent} ${openTabs.vip ? styles.active : ''}`}
           >
-            <div className={styles.mRow}>
-              <p>Персональный банкетный менеджер</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Посещение парка безлимит</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Пати-рум 3 часа</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Интерактивный стол</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Праздничная сервировка стола</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Электронные приглашения</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Подарок имениннику и гостям</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Оформление воздушными шарами</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>Квест по локациям парка (40 мин)</p> {WhiteCheck}
-            </div>
-            <div className={styles.mRow}>
-              <p>МК/Турнир (айсхук или ралли) на выбор (40 мин)</p> {WhiteCheck}
-            </div>
+            {[
+              'Все из Стандарта',
+              'Инструктор на праздник',
+              'Мультфильм с именинником',
+              'Проф. фотограф',
+            ].map((item) => (
+              <div key={item} className={styles.mRow}>
+                <p>{item}</p> {WhiteCheck}
+              </div>
+            ))}
             <div className={styles.mPrice}>
               <div className={styles.tariff}>
-                <span>Будние дни</span> <strong>{prices.vip.weekday}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Выходные дни</span> <strong>{prices.vip.weekend}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Доп. гость в будни</span> <strong>{prices.vip.extraGuestWeekday}</strong>
-              </div>
-              <div className={styles.tariff}>
-                <span>Доп. гость в выходные</span> <strong>{prices.vip.extraGuestWeekend}</strong>
+                <span>Будни: {prices.vip.weekday}</span>
+                <span>Выходные: {prices.vip.weekend}</span>
               </div>
             </div>
-            <button
-              className={`${styles.mBtn} ${styles.mBtn2}`}
-              onClick={() => handleOrder('Максимум')}
-            >
-              Заказать
-            </button>
+            <div className={styles.mOrderArea}>
+              {activeOrder === 'm-vip' ? (
+                <MessengerSelection isDarkTheme />
+              ) : (
+                <button
+                  className={`${styles.mBtn} ${styles.mBtn2}`}
+                  onClick={() => setActiveOrder('m-vip')}
+                >
+                  Заказать
+                </button>
+              )}
+            </div>
           </div>
         </div>
-
-        {/* --- CUSTOM CARD --- */}
-        <div
-          className={`${styles.mCard} ${styles.custom} ${openTabs.custom ? styles.isOpen : ''
-            }`}
-        >
-          <div className={styles.mHeader} onClick={() => toggleTab('custom')}>
-            <span>СОБЕРУ САМ</span>
-            <div className={styles.mIcon}>{openTabs.custom ? '−' : '+'}</div>
-          </div>
-          <div
-            className={`${styles.mContent} ${openTabs.custom ? styles.active : ''
-              }`}
-          >
-            <p className={styles.customText}>
-              Обсудите детали с персональным менеджером и превратите день
-              рождения в незабываемое приключение
+      </div>
+      <div className={styles.summaryContainer}>
+        <div className={styles.summaryGrid}>
+          {/* Базовый */}
+          <div className={`${styles.summaryCard} ${styles.baseBg}`}>
+            <h3 className={styles.summaryTitle}>Базовый</h3>
+            <p className={styles.summaryText}>
+              Все что нужно для хорошего дня рождения: безлимитные билеты +
+              party room на 3 часа + личный менеджер, который во всем поможет!
             </p>
-            <button
-              className={`${styles.mBtn} ${styles.mBtn2}`}
-              onClick={() => handleOrder('Соберу сам')}
-            >
-              Заказать
-            </button>
+          </div>
+
+          {/* Стандарт */}
+          <div className={`${styles.summaryCard} ${styles.standartBg}`}>
+            <h3 className={styles.summaryTitle}>Стандарт</h3>
+            <h4 className={styles.summarySubtitle}>
+              Тематический праздник под ключ!
+            </h4>
+            <p className={styles.summaryText}>
+              Всё из базового пакета + захватывающий тематический квест по
+              парку, эффектный вынос торта от аниматора и памятные подарки для
+              каждого гостя.
+            </p>
+          </div>
+
+          {/* VIP */}
+          <div className={`${styles.summaryCard} ${styles.vipBg}`}>
+            <h3 className={styles.summaryTitle}>VIP</h3>
+            <h4 className={styles.summarySubtitle}>
+              Полная персонализация + тематический ДР
+            </h4>
+            <p className={styles.summaryText}>
+              Всё из пакета «Стандарт» и дополнительно: <br />• Красивые
+              приглашения с ИИ‑генерацией образа вашего ребёнка <br />
+              • Уникальный ИИ‑персонаж с лицом именинника на аттракционах <br />
+              • Личный инструктор и профессиональный фотограф
+            </p>
           </div>
         </div>
       </div>
