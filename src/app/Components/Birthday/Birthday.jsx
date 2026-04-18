@@ -275,7 +275,6 @@ export default function Birthday() {
             <div key={id} className={styles.btnArea}>
               {activeOrder === id ? (
                 <MessengerSelection
-                  isDarkTheme={id === 'vip' || id === 'custom'}
                 />
               ) : (
                 <button
