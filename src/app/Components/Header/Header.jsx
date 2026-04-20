@@ -5,7 +5,7 @@ import Link from 'next/link';
 import styles from './Header.module.scss';
 
 const navItems = [
-  { label: 'О парке', href: '#info' },
+  { label: 'Купить сертификат', href: '#certificate_widget' },
   { label: 'Вопрос-ответ', href: '#questions' },
   { label: 'Контакты', href: '#contacts' },
 ];

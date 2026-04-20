@@ -120,8 +120,8 @@ export default function Hero() {
           <Link href='https://t.me/lumiland_bot' target='_blank' className={styles.infoButton}>
             Программа лояльности
           </Link>
-          <Link href='#info' className={styles.infoButton}>
-            Подробнее о парке
+          <Link href='#certificate_widget' className={styles.infoButton}>
+            Купить сертификат
           </Link>
           
         </div>
