@@ -97,15 +97,15 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.standartTitle}`}
           >
-            Базовый
+            Стандарт
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.premiumTitle}`}
           >
-            Стандарт
+            Комфорт
           </div>
           <div className={`${styles.cell} ${styles.vip} ${styles.vipTitle}`}>
-            ВИП
+            Премиум
           </div>
           <div
             className={`${styles.cell} ${styles.custom} ${styles.customTitle}`}
@@ -146,7 +146,7 @@ export default function Birthday() {
             </React.Fragment>
           ))}
 
-          {/* Услуги Стандарт + ВИП */}
+          {/* Услуги Стандарт + Премиум */}
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
             Тематический квест по всему парку на выбор
           </div>
@@ -168,7 +168,7 @@ export default function Birthday() {
           <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
 
-          {/* Услуги Только ВИП */}
+          {/* Услуги Только Премиум */}
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
             Персональный инструктор — сопровождение детей
           </div>
@@ -302,12 +302,12 @@ export default function Birthday() {
           </h2>
         </header>
 
-        {/* Карточка Базовый */}
+        {/* Карточка Стандарт */}
         <div
           className={`${styles.mCard} ${styles.standart} ${openTabs.base ? styles.isOpen : ''}`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('base')}>
-            <span>БАЗОВЫЙ</span>
+            <span>Стандарт</span>
             <div className={styles.mIcon}>{openTabs.base ? '−' : '+'}</div>
           </div>
           <div
@@ -350,14 +350,14 @@ export default function Birthday() {
           className={`${styles.mCard} ${styles.premium} ${openTabs.standart ? styles.isOpen : ''}`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('standart')}>
-            <span>СТАНДАРТ</span>
+            <span>Комфорт</span>
             <div className={styles.mIcon}>{openTabs.standart ? '−' : '+'}</div>
           </div>
           <div
             className={`${styles.mContent} ${openTabs.standart ? styles.active : ''}`}
           >
             {[
-              'Все из Базового',
+              'Все из Стандартного',
               'Тематический квест',
               'Вынос торта + шоу',
               'Подарки партнеров',
@@ -387,12 +387,12 @@ export default function Birthday() {
           </div>
         </div>
 
-        {/* Карточка ВИП */}
+        {/* Карточка Премиум */}
         <div
           className={`${styles.mCard} ${styles.vip} ${openTabs.vip ? styles.isOpen : ''}`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('vip')}>
-            <span>ВИП</span>
+            <span>Премиум</span>
             <div className={styles.mIcon}>{openTabs.vip ? '−' : '+'}</div>
           </div>
           <div
@@ -431,9 +431,9 @@ export default function Birthday() {
       </div>
       <div className={styles.summaryContainer}>
         <div className={styles.summaryGrid}>
-          {/* Базовый */}
+          {/* Стандарт */}
           <div className={`${styles.summaryCard} ${styles.baseBg}`}>
-            <h3 className={styles.summaryTitle}>Базовый</h3>
+            <h3 className={styles.summaryTitle}>Стандарт</h3>
             <p className={styles.summaryText}>
               Все что нужно для хорошего дня рождения: безлимитные билеты +
               party room на 3 часа + личный менеджер, который во всем поможет!
@@ -442,12 +442,12 @@ export default function Birthday() {
 
           {/* Стандарт */}
           <div className={`${styles.summaryCard} ${styles.standartBg}`}>
-            <h3 className={styles.summaryTitle}>Стандарт</h3>
+            <h3 className={styles.summaryTitle}>Комфорт</h3>
             <h4 className={styles.summarySubtitle}>
               Тематический праздник под ключ!
             </h4>
             <p className={styles.summaryText}>
-              Всё из базового пакета + захватывающий тематический квест по
+              Всё из стандартного пакета + захватывающий тематический квест по
               парку, эффектный вынос торта от аниматора и памятные подарки для
               каждого гостя.
             </p>
@@ -455,12 +455,12 @@ export default function Birthday() {
 
           {/* VIP */}
           <div className={`${styles.summaryCard} ${styles.vipBg}`}>
-            <h3 className={styles.summaryTitle}>VIP</h3>
+            <h3 className={styles.summaryTitle}>Премиум</h3>
             <h4 className={styles.summarySubtitle}>
               Полная персонализация + тематический ДР
             </h4>
             <p className={styles.summaryText}>
-              Всё из пакета «Стандарт» и дополнительно: <br />• Красивые
+              Всё из пакета «Комфорт» и дополнительно: <br />• Красивые
               приглашения с ИИ‑генерацией образа вашего ребёнка <br />
               • Уникальный ИИ‑персонаж с лицом именинника на аттракционах <br />
               • Личный инструктор и профессиональный фотограф

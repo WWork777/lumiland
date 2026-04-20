@@ -8,6 +8,7 @@ import Mero from './Components/Mero/Mero.jsx'
 import Gallery from './Components/Gallery/Gallery';
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
+import Vidget from './Components/Vidget/Vidget';
 export async function generateMetadata() {
   const headersList = headers();
   const host = (await headersList).get('host');
@@ -70,6 +71,7 @@ export default function Home() {
         <Mero />
         <Price />
         <Birthday />
+        <Vidget />
         <Gallery />
         <Questions />
         <Contacts />

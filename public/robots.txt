@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /Components/vidget/
-Disallow: /Components/vidget
 Allow: /
 
 Sitemap: https://lumilandkids.ru/sitemap.xml
