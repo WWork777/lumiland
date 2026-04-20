@@ -1,7 +1,9 @@
 import Script from 'next/script';
+import styles from './styles.module.scss';
 export default function Vidget() {
   return (
     <>
+    <h2 className={styles.mainTitle}><span className={styles.purpleText}>Приобрести сертификат</span> Lumiland</h2>
       <div id="certificate_widget"></div>
       <Script
         id="metechcards-widget"
