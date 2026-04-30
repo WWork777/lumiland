@@ -21,7 +21,6 @@
       }
     }
     @media (max-width: 1820px) {
-      
       top: 5%;
     }
   }
@@ -40,11 +39,15 @@
     cursor: pointer;
   }
   .infoTitle {
-    font-size: 45px;
+    font-size: 42px;
     line-height: 1.46;
     letter-spacing: 3%;
     font-family: 'TT Black';
     color: #4c365a;
+
+    @media (max-width: 1600px) {
+      font-size: 32px;
+    }
     span {
       display: block;
     }
