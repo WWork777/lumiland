@@ -97,7 +97,7 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.standartTitle}`}
           >
-            Стандарт
+            базовый
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.premiumTitle}`}
@@ -146,7 +146,7 @@ export default function Birthday() {
             </React.Fragment>
           ))}
 
-          {/* Услуги Стандарт + Премиум */}
+          {/* Услуги базовый + Премиум */}
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
             Тематический квест по всему парку на выбор
           </div>
@@ -307,7 +307,7 @@ export default function Birthday() {
           className={`${styles.mCard} ${styles.standart} ${openTabs.base ? styles.isOpen : ''}`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('base')}>
-            <span>Стандарт</span>
+            <span>базовый</span>
             <div className={styles.mIcon}>{openTabs.base ? '−' : '+'}</div>
           </div>
           <div
@@ -357,7 +357,7 @@ export default function Birthday() {
             className={`${styles.mContent} ${openTabs.standart ? styles.active : ''}`}
           >
             {[
-              'Все из Стандартного',
+              'Все из базового',
               'Тематический квест',
               'Вынос торта + шоу',
               'Подарки партнеров',
@@ -399,7 +399,7 @@ export default function Birthday() {
             className={`${styles.mContent} ${openTabs.vip ? styles.active : ''}`}
           >
             {[
-              'Все из Стандарта',
+              'Все из базового',
               'Инструктор на праздник',
               'Мультфильм с именинником',
               'Проф. фотограф',
@@ -433,7 +433,7 @@ export default function Birthday() {
         <div className={styles.summaryGrid}>
           {/* Стандарт */}
           <div className={`${styles.summaryCard} ${styles.baseBg}`}>
-            <h3 className={styles.summaryTitle}>Стандарт</h3>
+            <h3 className={styles.summaryTitle}>базовый</h3>
             <p className={styles.summaryText}>
               Все что нужно для хорошего дня рождения: безлимитные билеты +
               party room на 3 часа + личный менеджер, который во всем поможет!
@@ -447,7 +447,7 @@ export default function Birthday() {
               Тематический праздник под ключ!
             </h4>
             <p className={styles.summaryText}>
-              Всё из стандартного пакета + захватывающий тематический квест по
+              Всё из базового пакета + захватывающий тематический квест по
               парку, эффектный вынос торта от аниматора и памятные подарки для
               каждого гостя.
             </p>

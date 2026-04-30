@@ -20,6 +20,10 @@
         transform-origin: center;
       }
     }
+    @media (max-width: 1820px) {
+      
+      top: 5%;
+    }
   }
   .swiperButtonPrev {
     position: relative !important;
