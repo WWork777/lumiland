@@ -8,62 +8,69 @@ const SCHEDULE_TITLE = 'в апреле';
 
 const EVENTS = [
     {
-        date: '3 апреля',
-        weekday: 'Пятница',
+        date: '10 мая',
+        weekday: 'Воскресенье',
         firstCard: true,
         events: [
-            { time: '14:00', name: 'Мастер‑класс «Сотворим свой слайм!»' },
+            { time: '14:00', name: 'Мастер‑класс по бабл-ти' },
         ],
     },
     {
-        date: '4 апреля',
+        date: '11 мая',
+        weekday: 'Понедельник',
+        events: [
+            { time: '14:00', name: 'Квест «Сокровища Люмика»' },
+        ],
+    },
+    {
+        date: '16 мая',
+        weekday: 'Суббота',
+        cardPurple: true,
+        registrationFormUrl: 'https://forms.gle/uGDcSQCScTzvgzmq9',
+        events: [
+            { time: '14:00', name: 'Детский фотодень Pro Fashion Models d Минидино & Lumiland' }
+        ],
+    },
+    {
+        date: '17 мая',
+        weekday: 'Воскресенье',
+        events: [
+            { time: '14:00', name: 'Мастер‑класс по бабл-ти' },
+        ],
+    },
+    {
+        date: '23 мая',
+        weekday: 'Суббота',
+        events: [
+            { time: '14:00', name: 'День рождения зубной пасты: квест и мастер-классы для родителей! Lumiland & Cosmodent' },
+        ],
+    },
+    {
+        date: '24 мая',
+        weekday: 'Воскресенье',
+        events: [
+            { time: '14:00', name: 'Мастер‑класс по бабл-ти' },
+        ],
+    },
+    {
+        date: '29 мая',
+        weekday: 'Пятница',
+        events: [
+            { time: '18:00', name: 'Общегородской выпускной: танцуем six-seven' }
+        ],
+    },
+    {
+        date: '30 мая',
         weekday: 'Суббота',
         events: [
             { time: '14:00', name: 'Квест «Сокровища Люмика»' },
         ],
     },
     {
-        date: '5 апреля',
+        date: '31 мая',
         weekday: 'Воскресенье',
         events: [
-            { time: '14:00', name: 'Провожаем каникулы ярко!Готовим вкусные коктейли и танцуем с Беззубиком!' }
-        ],
-    },
-    {
-        date: '12 апреля',
-        weekday: 'Воскресенье',
-        events: [
-            { time: '14:00', name: 'Вперёд к звёздам! Космический квест для детей' },
-        ],
-    },
-    {
-        date: '18 апреля',
-        weekday: 'Суббота',
-        events: [
-            { time: '14:00', name: 'Мастер‑класс «Сотворим свой слайм!»' },
-        ],
-    },
-    {
-        date: '19 апреля',
-        weekday: 'Воскресенье',
-        cardPurple: true,
-        events: [
-            { time: '14:00', name: 'Создай свой напиток мечты — бабл-ти!' },
-        ],
-    },
-    {
-        date: '25 апреля',
-        weekday: 'Суббота',
-        registrationFormUrl: 'https://forms.gle/i1FyETJmNUKzc5FeA',
-        events: [
-            { time: '14:00', name: 'Квест «Сокровища Люмика»' }
-        ],
-    },
-    {
-        date: '26 апреля',
-        weekday: 'Воскресенье',
-        events: [
-            { time: '14:00', name: 'Мастер-класс «Создаем цветок из воздушных шариков»' },
+            { time: '14:00', name: 'Мастер‑класс по бабл-ти' },
         ],
     },
 ];
