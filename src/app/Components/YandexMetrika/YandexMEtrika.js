@@ -34,7 +34,7 @@ export default function YandexMetrika() {
     <noscript>
       <div>
         <img
-          src="https://mc.yandex.ru/watch/105405917"
+          src="https://mc.yandex.ru/watch/106241998"
           style={{ position: "absolute", left: "-9999px" }}
           alt=""
         />
