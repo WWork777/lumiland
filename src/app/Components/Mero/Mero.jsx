@@ -4,7 +4,7 @@ import styles from './Mero.module.scss';
 
 // ——— РАСПИСАНИЕ МЕРОПРИЯТИЙ ———
 // Меняйте только этот массив: добавляйте/удаляйте дни и события
-const SCHEDULE_TITLE = 'в апреле';
+const SCHEDULE_TITLE = 'в мае';
 
 const EVENTS = [
     {
