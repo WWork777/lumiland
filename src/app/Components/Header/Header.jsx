@@ -126,7 +126,7 @@ export default function Header() {
           </Link>
           </div>
           <div className={styles.numberGeo}>
-            <Link href={'tel:79528800330'}>+7 (952) 880-03-30</Link>
+            <Link href={'tel:+79528800330'}>+7 (952) 880-03-30</Link>
             <span>Томск, Котовского 19/1, ТЦ Смайлcity</span>
           </div>
         </div>

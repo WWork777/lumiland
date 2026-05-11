@@ -97,7 +97,7 @@ export default function Birthday() {
           <div
             className={`${styles.cell} ${styles.standart} ${styles.standartTitle}`}
           >
-            базовый
+            Базовый
           </div>
           <div
             className={`${styles.cell} ${styles.premium} ${styles.premiumTitle}`}
@@ -287,6 +287,7 @@ export default function Birthday() {
             </div>
           ))}
         </div>
+        <span style={{fontSize: '22px', color: "#4c365a", lineHeight: "normal", marginTop: "35px", display: "block"}}>Стоимость пакетов рассчитана на 6 детей. Доплата за каждого дополнительного гостя зависит от пакета и дня недели</span>
       </div>
 
       {/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */}
@@ -307,18 +308,20 @@ export default function Birthday() {
           className={`${styles.mCard} ${styles.standart} ${openTabs.base ? styles.isOpen : ''}`}
         >
           <div className={styles.mHeader} onClick={() => toggleTab('base')}>
-            <span>базовый</span>
+            <span>Базовый</span>
             <div className={styles.mIcon}>{openTabs.base ? '−' : '+'}</div>
           </div>
           <div
             className={`${styles.mContent} ${openTabs.base ? styles.active : ''}`}
           >
             {[
-              'Безлимит в парк',
-              'Party-room 3ч',
-              'Игра Бургер-бум',
-              'Менеджер 24/7',
-              'Сет шаров каждому',
+              'Безлимитные билеты для детей',
+              'Party-room на 3 часа с яркой праздничной сервировкой',
+              'Интерактивный стол с поздравлением именинника - Игра хит-старт: “Бургер-бум!”',
+              'Персональный менеджер',
+              'Электронные приглашения каждому гостю',
+              'Тёплое поздравление от команды',
+              'Оформление воздушными шарами, которые каждый гость заберет с собой',
             ].map((item) => (
               <div key={item} className={styles.mRow}>
                 <p>{item}</p> {BlackCheck}
@@ -343,6 +346,7 @@ export default function Birthday() {
               )}
             </div>
           </div>
+          
         </div>
 
         {/* Карточка Стандарт */}
@@ -358,9 +362,9 @@ export default function Birthday() {
           >
             {[
               'Все из базового',
-              'Тематический квест',
-              'Вынос торта + шоу',
-              'Подарки партнеров',
+              'Тематический квест  по всему парку на выбор',
+              'Вынос торта с шоу от аниматора',
+              'Подарки от партнеров на 3 000+ ₽ и скидки на последующие  визиты для именинника!',
             ].map((item) => (
               <div key={item} className={styles.mRow}>
                 <p>{item}</p> {BlackCheck}
@@ -428,7 +432,9 @@ export default function Birthday() {
             </div>
           </div>
         </div>
+        <span style={{fontSize: '14px', color: "#4c365a", lineHeight: "normal"}}>Стоимость пакетов рассчитана на 6 детей. Доплата за каждого дополнительного гостя зависит от пакета и дня недели</span>
       </div>
+    
       <div className={styles.summaryContainer}>
         <div className={styles.summaryGrid}>
           {/* Стандарт */}
