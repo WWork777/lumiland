@@ -3,12 +3,13 @@ import Hero from './Components/Hero/Hero';
 import Info from './Components/Info/Info';
 import Questions from './Components/Questions/Questions';
 import Price from './Components/Price/Price';
-import Birthday from "./Components/Birthday/Birthday"
-import Mero from './Components/Mero/Mero.jsx'
+import Birthday from './Components/Birthday/Birthday';
+import Mero from './Components/Mero/Mero.jsx';
 import Gallery from './Components/Gallery/Gallery';
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import Vidget from './Components/Vidget/Vidget';
+import MultyVidget from './Components/MultiVidget/MultiVidget';
 export async function generateMetadata() {
   const headersList = headers();
   const host = (await headersList).get('host');
@@ -66,12 +67,14 @@ export default function Home() {
   return (
     <>
       <Hero />
+
       <main>
         <Info />
         <Mero />
         <Price />
         <Birthday />
-        <Vidget />
+        {/* <Vidget /> */}
+        <MultyVidget />
         <Gallery />
         <Questions />
         <Contacts />

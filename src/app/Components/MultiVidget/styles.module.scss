@@ -1,0 +1,18 @@
+.mainTitle {
+  text-align: center;
+  color: #4c365a;
+  margin-bottom: 36px;
+  font-family: "TT Black";
+  font-size: 45px;
+  text-transform: uppercase;
+ 
+  .purpleText {
+    color: #7c2dae;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    margin-bottom: 24px;
+    padding: 0 20px;
+  }
+}
