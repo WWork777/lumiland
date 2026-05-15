@@ -1,0 +1,200 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Модальное окно колеса — весёлый фон */
+.wheelModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; backdrop-filter: blur(0); }
+  to { opacity: 1; backdrop-filter: blur(4px); }
+}
+
+.wheelContainer {
+  background: linear-gradient(145deg, #fffaf0 0%, #fff2df 100%);
+  border-radius: 64px;
+  padding: 2rem 1.8rem 2rem 1.8rem;
+  max-width: 550px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 215, 150, 0.8);
+  animation: slideUp 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: rgba(255, 180, 70, 0.2);
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #b45f1b;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: #ffb347;
+    color: white;
+    transform: scale(1.05);
+  }
+}
+
+.wheelContainer h2 {
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+  background: linear-gradient(135deg, #ff8c00, #ffbc3c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #c26b1a;
+  background: #ffe2b5;
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 40px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02), 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.canvas {
+  width: 100%;
+  height: auto;
+  max-width: 360px;
+  margin: 0.5rem auto;
+  display: block;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.2));
+  border-radius: 50%;
+  transition: filter 0.2s;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1.2rem 0 0.8rem;
+}
+
+.form input {
+  padding: 0.9rem 1.2rem;
+  border: 2px solid #ffcf8a;
+  border-radius: 60px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.2s;
+  font-family: inherit;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  &:focus {
+    border-color: #ff9f2e;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 159, 46, 0.2);
+  }
+}
+
+.errorInput {
+  border-color: #ff6b6b !important;
+  background: #fff8f8;
+}
+
+.errorText {
+  color: #e67e22;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+
+.form button {
+  background: linear-gradient(95deg, #ff9f2e, #ffc857);
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 60px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 5px 0 #b45f1b;
+  transform: translateY(-2px);
+  &:hover:not(:disabled) {
+    background: linear-gradient(95deg, #ffb045, #ffd06e);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 #b45f1b;
+  }
+  &:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #b45f1b;
+  }
+  &:disabled {
+    opacity: 0.7;
+    transform: translateY(0);
+    box-shadow: 0 3px 0 #b45f1b;
+    cursor: not-allowed;
+  }
+}
+
+.note {
+  font-size: 0.7rem;
+  color: #b97f3a;
+  background: #fff0db;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  border-radius: 30px;
+  margin-top: 0.5rem;
+}
+
+.result {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #eaf7e1, #d4efc0);
+  padding: 0.6rem;
+  border-radius: 50px;
+  font-weight: bold;
+  color: #2d6a2b;
+  border: 1px solid #b5d8a1;
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(0.9); opacity: 0; }
+  80% { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}

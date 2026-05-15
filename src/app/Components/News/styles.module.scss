@@ -1,0 +1,114 @@
+.sliderWrapper {
+  margin: 2rem 0;
+  padding: 0 1rem;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: #ffb347;
+      background: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      &::after {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
+
+    .swiper-pagination-bullet {
+      background: #ffb347;
+      opacity: 0.4;
+
+      &-active {
+        opacity: 1;
+      }
+    }
+}
+
+.swiper {
+  padding-bottom: 2.5rem;
+}
+
+.slide {
+  height: auto;
+}
+
+.card {
+  background: #fff9ef;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f0f0f0;
+
+  .image {
+    object-fit: cover;
+  }
+}
+
+.content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    line-height: 1.4;
+    color: #4a4a4a;
+  }
+
+  .extra {
+    font-style: italic;
+    color: #ff6b6b;
+  }
+
+  .button {
+    display: inline-block;
+    background: #ffb347;
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: 0.2s;
+    text-align: center;
+    align-self: flex-start;
+
+    &:hover {
+      background: #ff9f1c;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 1rem;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+}

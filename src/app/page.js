@@ -10,6 +10,8 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import Vidget from './Components/Vidget/Vidget';
 import MultyVidget from './Components/MultiVidget/MultiVidget';
+import NewsSlider from './Components/News/News';
+import WheelOfFortune from './Components/WheelOfFortune/WheelOfFortune';
 export async function generateMetadata() {
   const headersList = headers();
   const host = (await headersList).get('host');
@@ -71,6 +73,7 @@ export default function Home() {
       <main>
         <Info />
         <Mero />
+        <NewsSlider />
         <Price />
         <Birthday />
         {/* <Vidget /> */}
@@ -78,6 +81,7 @@ export default function Home() {
         <Gallery />
         <Questions />
         <Contacts />
+        <WheelOfFortune />
       </main>
     </>
   );
