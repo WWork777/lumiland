@@ -1,10 +1,16 @@
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
+// Импорт шрифтов (если они у вас глобально подключены, то можно не дублировать)
+// Предполагается, что шрифты TT уже загружены на сайте.
 
-/* Модальное окно колеса — весёлый фон */
+// Основные цвета из стилей сайта
+$purple: #9117ba;
+$purple-dark: #7a1399;
+$yellow: #dcff00;
+$text-dark: #4a2b6a;
+$text-light: #655e69;
+$bg-gradient-start: #f1e6f5;
+$bg-gradient-end: #fae1f0;
+
+/* Модальное окно – затемнение с размытием */
 .wheelModal {
   position: fixed;
   top: 0;
@@ -12,7 +18,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,27 +27,34 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; backdrop-filter: blur(0); }
-  to { opacity: 1; backdrop-filter: blur(4px); }
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(6px);
+  }
 }
 
+/* Контейнер колеса – в стиле карточек сайта */
 .wheelContainer {
-  background: linear-gradient(145deg, #fffaf0 0%, #fff2df 100%);
-  border-radius: 64px;
-  padding: 2rem 1.8rem 2rem 1.8rem;
+  background: linear-gradient(145deg, $bg-gradient-start, $bg-gradient-end);
+  border-radius: 32px;
+  padding: 2rem 1.8rem;
   max-width: 550px;
   width: 90%;
   text-align: center;
   position: relative;
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 215, 150, 0.8);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(145, 23, 186, 0.2);
   animation: slideUp 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(50px) scale(0.95);
+    transform: translateY(40px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -49,11 +62,12 @@
   }
 }
 
+/* Кнопка закрытия – фиолетовый акцент */
 .closeBtn {
   position: absolute;
   top: 18px;
-  right: 24px;
-  background: rgba(255, 180, 70, 0.2);
+  right: 20px;
+  background: rgba(145, 23, 186, 0.15);
   border: none;
   font-size: 1.8rem;
   font-weight: bold;
@@ -61,51 +75,53 @@
   height: 36px;
   border-radius: 50%;
   cursor: pointer;
-  color: #b45f1b;
+  color: $purple;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
+
   &:hover {
-    background: #ffb347;
+    background: $purple;
     color: white;
     transform: scale(1.05);
   }
 }
 
+/* Заголовки */
 .wheelContainer h2 {
+  font-family: 'TT Black', 'TT 900', sans-serif;
   font-size: 2rem;
-  margin: 0 0 0.25rem 0;
-  background: linear-gradient(135deg, #ff8c00, #ffbc3c);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  margin: 0 0 0.25rem;
+  color: $text-dark;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: #c26b1a;
-  background: #ffe2b5;
+  font-family: 'TT 600', sans-serif;
+  font-size: 1rem;
+  color: $purple;
+  background: rgba(220, 255, 0, 0.3);
   display: inline-block;
   padding: 0.3rem 1rem;
   border-radius: 40px;
-  margin-bottom: 1rem;
-  font-weight: 500;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02), 0 2px 5px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 }
 
+/* Холст (колесо) */
 .canvas {
   width: 100%;
   height: auto;
-  max-width: 360px;
-  margin: 0.5rem auto;
+  max-width: 380px;
+  margin: 0 auto 1rem;
   display: block;
-  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.15));
   border-radius: 50%;
-  transition: filter 0.2s;
 }
 
+/* Форма ввода номера */
 .form {
   display: flex;
   flex-direction: column;
@@ -114,87 +130,133 @@
 }
 
 .form input {
+  font-family: 'TT 500', sans-serif;
   padding: 0.9rem 1.2rem;
-  border: 2px solid #ffcf8a;
+  border: 2px solid rgba(145, 23, 186, 0.3);
   border-radius: 60px;
   font-size: 1rem;
   background: white;
   transition: all 0.2s;
-  font-family: inherit;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  color: $text-dark;
+
   &:focus {
-    border-color: #ff9f2e;
+    border-color: $purple;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 159, 46, 0.2);
+    box-shadow: 0 0 0 3px rgba(145, 23, 186, 0.2);
+  }
+
+  &::placeholder {
+    color: $text-light;
+    opacity: 0.7;
   }
 }
 
 .errorInput {
-  border-color: #ff6b6b !important;
+  border-color: #e74c3c !important;
   background: #fff8f8;
 }
 
 .errorText {
-  color: #e67e22;
+  font-family: 'TT 500', sans-serif;
+  color: #e74c3c;
   font-size: 0.75rem;
   text-align: left;
   margin-left: 1rem;
-  font-weight: 500;
 }
 
+/* Кнопка «Крутить» – стилизуем как .tournamentBtnCard */
 .form button {
-  background: linear-gradient(95deg, #ff9f2e, #ffc857);
-  border: none;
-  padding: 0.9rem 1.5rem;
-  border-radius: 60px;
-  font-weight: bold;
-  font-size: 1.1rem;
+  background-color: $purple;
   color: white;
+  font-family: 'TT 700', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  padding: 0.9rem 1.5rem;
   cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 5px 0 #b45f1b;
-  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.02em;
+
   &:hover:not(:disabled) {
-    background: linear-gradient(95deg, #ffb045, #ffd06e);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 0 #b45f1b;
+    background-color: $purple-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(145, 23, 186, 0.3);
   }
+
   &:active:not(:disabled) {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #b45f1b;
-  }
-  &:disabled {
-    opacity: 0.7;
     transform: translateY(0);
-    box-shadow: 0 3px 0 #b45f1b;
+  }
+
+  &:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
+    transform: none;
   }
 }
 
+/* Примечание под формой */
 .note {
+  font-family: 'TT 500', sans-serif;
   font-size: 0.7rem;
-  color: #b97f3a;
-  background: #fff0db;
+  color: $text-light;
+  background: rgba(255, 255, 255, 0.7);
   display: inline-block;
   padding: 0.2rem 1rem;
   border-radius: 30px;
   margin-top: 0.5rem;
 }
 
+/* Блок с результатом выигрыша */
 .result {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  background: linear-gradient(135deg, #eaf7e1, #d4efc0);
-  padding: 0.6rem;
-  border-radius: 50px;
+  margin-top: 1.2rem;
+  font-family: 'TT 700', sans-serif;
+  font-size: 1rem;
+  background: rgba(220, 255, 0, 0.5);
+  padding: 0.7rem;
+  border-radius: 60px;
   font-weight: bold;
-  color: #2d6a2b;
-  border: 1px solid #b5d8a1;
+  color: $purple-dark;
+  border: 1px solid rgba(145, 23, 186, 0.2);
   animation: bounce 0.5s ease;
 }
 
 @keyframes bounce {
-  0% { transform: scale(0.9); opacity: 0; }
-  80% { transform: scale(1.02); }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Адаптация под мобильные */
+@media (max-width: 600px) {
+  .wheelContainer {
+    padding: 1.5rem 1.2rem;
+  }
+  .wheelContainer h2 {
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+  }
+  .canvas {
+    max-width: 280px;
+  }
+  .form input {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+  .form button {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
 }

@@ -12,6 +12,7 @@ import Vidget from './Components/Vidget/Vidget';
 import MultyVidget from './Components/MultiVidget/MultiVidget';
 import NewsSlider from './Components/News/News';
 import WheelOfFortune from './Components/WheelOfFortune/WheelOfFortune';
+import PromoSlider from './Components/PromoSlider/PromoSlider';
 export async function generateMetadata() {
   const headersList = headers();
   const host = (await headersList).get('host');
@@ -73,7 +74,8 @@ export default function Home() {
       <main>
         <Info />
         <Mero />
-        <NewsSlider />
+        <PromoSlider />
+        {/* <NewsSlider /> */}
         <Price />
         <Birthday />
         {/* <Vidget /> */}

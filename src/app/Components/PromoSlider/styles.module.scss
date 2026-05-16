@@ -1,0 +1,279 @@
+// ===== ПЕРЕМЕННЫЕ (Цвета сайта) =====
+$purple: #9117ba;
+$yellow: #dcff00;
+$dark-purple: #4a2b6a;
+$gray: #655e69;
+$white: #ffffff;
+$bg-gradient-start: #f1e6f5;
+$bg-gradient-end: #fae1f0;
+$border-radius-card: 48px;
+$border-radius-button: 50px;
+
+// ===== МИКСИНЫ ДЛЯ ШРИФТОВ =====
+@mixin tt-font($weight: 700) {
+  font-family: 'TT #{$weight}', 'TT #{$weight}', 'Inter', sans-serif;
+  font-weight: normal;
+}
+
+// ===== ОБЁРТКА СЛАЙДЕРА =====
+.sliderWrapper {
+  margin: 3rem 0;
+  padding: 0 12vw;
+  overflow: visible;
+    @media (max-width: 768px) {
+        padding: 0 5vw;
+    }
+  // Глобальные стили для Swiper
+    .swiper {
+      overflow: visible !important;
+    }
+
+    // Базовый стиль слайда
+    .swiper-slide {
+      width: 80%;
+      max-width: 480px;
+      transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+      opacity: 0.4;
+      transform: scale(0.85);
+      filter: blur(1px);
+
+      @media (max-width: 768px) {
+        width: 85%;
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+    }
+
+    // Активный слайд (центр)
+    .swiper-slide-active {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+      z-index: 10;
+    }
+
+    // Соседние слайды (видны по бокам)
+    .swiper-slide-prev,
+    .swiper-slide-next {
+      opacity: 0.6;
+      transform: scale(0.9);
+      filter: blur(0.5px);
+      @media (max-width: 768px) {
+        opacity: 0.5;
+        transform: scale(0.85);
+      }
+    }
+
+    // Стрелки навигации
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: $purple;
+      background: $white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(145, 23, 186, 0.2);
+      transition: all 0.3s ease;
+      &::after {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      &:hover {
+        background: $yellow;
+        color: $dark-purple;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(145, 23, 186, 0.3);
+      }
+      @media (max-width: 768px) {
+        width: 36px;
+        height: 36px;
+        &::after {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    // Пагинация (точки)
+    .swiper-pagination-bullet {
+      background: $yellow;
+      opacity: 0.5;
+      width: 10px;
+      height: 10px;
+      transition: all 0.2s;
+      &-active {
+        background: $purple;
+        opacity: 1;
+        width: 24px;
+        border-radius: 8px;
+      }
+    }
+}
+
+// ===== КОНТЕЙНЕР SWIPER =====
+.swiper {
+  padding-bottom: 3.5rem;
+  overflow: visible;
+}
+
+// ===== КАРТОЧКА СЛАЙДА =====
+.card {
+  position: relative;
+  border-radius: $border-radius-card;
+  overflow: hidden;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;  // важно для вертикального размещения контента
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  @media (max-width: 768px) {
+    min-height: 380px;
+    border-radius: 32px;
+  }
+}
+
+// ===== ФОНОВОЕ ИЗОБРАЖЕНИЕ =====
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+// ===== ЗАТЕМНЕНИЕ (ГРАДИЕНТ) =====
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+  z-index: 1;
+}
+
+// ===== КОНТЕНТ ПОВЕРХ ФОНА =====
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  color: $white;
+  max-width: 85%;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  flex: 1;             // растягиваем на всю высоту
+  height: 100%;
+
+  h3 {
+    @include tt-font('Black');
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: $white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    @media (max-width: 600px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .price {
+    @include tt-font('Black');
+    font-size: 2.5rem;
+    color: $yellow;
+    text-shadow: 4px 4px 0 $purple, 6px 6px 0 rgba(0, 0, 0, 0.2);
+    margin: 0.5rem 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    @media (max-width: 600px) {
+      font-size: 1.8rem;
+      text-shadow: 3px 3px 0 $purple;
+    }
+  }
+
+  .desc {
+    @include tt-font(500);
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 1rem 0;
+    color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+// ===== КОНТЕЙНЕР ДЛЯ КНОПКИ И ПОДПИСИ (ПРИЖАТ К НИЗУ) =====
+.buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;      // прижимаем к нижнему краю
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;       // на маленьких экранах переносим
+
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+  }
+}
+
+// ===== КНОПКА (стиль как .tournamentBtnCard) =====
+.button {
+  display: inline-block;
+  background-color: $purple;
+  color: $white;
+  @include tt-font(700);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: $border-radius-button;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 160px;
+
+  &:hover {
+    background-color: darken($purple, 8%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(145, 23, 186, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 666px) {
+    padding: 10px 20px;
+    font-size: 0.7rem;
+    min-width: 140px;
+  }
+}
+
+// ===== ПОДПИСЬ СПРАВА ОТ КНОПКИ (например, "от 1 000 ₽") =====
+.buttonSubtext {
+  @include tt-font(600);
+  font-size: 1rem;
+  color: $yellow;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.3rem 0.9rem;
+  border-radius: 40px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  font-weight: 600;
+
+  @media (max-width: 600px) {
+    font-size: 0.6rem;
+    white-space: normal;
+    padding: 0.2rem 0.6rem;
+  }
+}
