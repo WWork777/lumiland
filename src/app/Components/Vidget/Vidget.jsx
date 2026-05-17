@@ -56,7 +56,7 @@ export default function Vidget() {
 
   return (
     <>
-      <h2 className={styles.mainTitle}>
+      <h2 className={styles.mainTitle} id='vidget'>
         <span className={styles.purpleText}>Приобрести сертификат</span>{' '}
         Lumiland
       </h2>

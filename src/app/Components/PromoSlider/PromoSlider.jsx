@@ -18,8 +18,8 @@ const slides = [
     price: 'всего 800 ₽!',
     buttonText: 'Купить билет',
     buttonSubtext: '',
-    link: '#',
-    bgImage: '',
+    link: '#vidget',
+    bgImage: '/images/PromoSlider/1.png',
     bgColor: '#F9A825',
   },
   {
@@ -28,8 +28,8 @@ const slides = [
     desc: '29 мая, с 18 до 21 — выпускной, который запомнится! Танцы, флешмоб под Six Seven и коктейли. Всё как у взрослых!',
     buttonText: 'Купить билет',
     buttonSubtext: '',
-    link: '#',
-    bgImage: '',
+    link: '#vidget',
+    bgImage: '/images/PromoSlider/2.png',
     bgColor: '#7B1FA2',
   },
   {
@@ -37,8 +37,8 @@ const slides = [
     title: 'Подарочные карты в Lumiland!',
     buttonText: 'Купить сертификат',
     buttonSubtext: 'от 1 000 ₽',
-    link: '#',
-    bgImage: '',
+    link: '#vidget',
+    bgImage: '/images/PromoSlider/3.png',
     bgColor: '#D32F2F',
   },
 ];
@@ -60,7 +60,7 @@ export default function PromoSlider() {
           slideShadows: false,
         }}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        // autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
         breakpoints={{
           320: { spaceBetween: -40 },
@@ -72,13 +72,13 @@ export default function PromoSlider() {
           <SwiperSlide key={slide.id} className={styles.slide}>
             <div className={styles.card} style={{ backgroundColor: slide.bgColor }}>
               <div className={styles.bgImage}>
-                {slide.bgImage & <Image
+                <Image
                   src={slide.bgImage}
-                  alt={slide.title}
+                  alt={"aaa"}
                   fill
                   sizes="(max-width: 768px) 80vw, 50vw"
-                  style={{ objectFit: 'cover' }}
-                />}
+                  // style={{ objectFit: 'cover' }}
+                />
                 <div className={styles.overlay}></div>
               </div>
               <div className={styles.content}>
