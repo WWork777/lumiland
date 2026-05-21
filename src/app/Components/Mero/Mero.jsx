@@ -1,4 +1,4 @@
-'use client';
+'use client'; 
 import Image from 'next/image';
 import styles from './Mero.module.scss';
 
@@ -9,7 +9,7 @@ const SCHEDULE_TITLE = 'в мае';
 const EVENTS = [
     {
         date: '10 мая',
-        weekday: 'Воскресенье',
+       weekday: 'Воскресенье',
         firstCard: true,
         events: [
             { time: '14:00', name: 'Мастер‑класс по бабл-ти' },
