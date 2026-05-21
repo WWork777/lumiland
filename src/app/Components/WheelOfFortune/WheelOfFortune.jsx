@@ -62,15 +62,15 @@ function WheelModal({ onClose, onWin }) {
   const [result, setResult] = useState(null);
 
   const colors = {
-    purple: '#9117ba',
+    purple: '#9133CC',
     yellow: '#dcff00',
-    darkPurple: '#4a2b6a',
+    darkPurple: '#9133CC',
     lightPurple: '#f1e6f5',
     white: '#ffffff',
-    segmentEven: '#FFE5B4',   // можно заменить на более нежный
-    segmentOdd: '#FFD699',
-    winningGradStart: '#dcff00',
-    winningGradEnd: '#b3d900',
+    segmentEven: '#C1F6F1',   // можно заменить на более нежный
+    segmentOdd: '#95F4C0',
+    winningGradStart: '#CDA1E8',
+    winningGradEnd: '#CDA1E8',
   };
 
   const drawWheel = useCallback((rotationAngle = 0) => {

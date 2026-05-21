@@ -102,7 +102,6 @@ $bg-gradient-end: #fae1f0;
   font-family: 'TT 600', sans-serif;
   font-size: 1rem;
   color: $purple;
-  background: rgba(220, 255, 0, 0.3);
   display: inline-block;
   padding: 0.3rem 1rem;
   border-radius: 40px;
@@ -166,7 +165,7 @@ $bg-gradient-end: #fae1f0;
 
 /* Кнопка «Крутить» – стилизуем как .tournamentBtnCard */
 .form button {
-  background-color: $purple;
+  background-color: #9133CC;
   color: white;
   font-family: 'TT 700', sans-serif;
   font-size: 1rem;

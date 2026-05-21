@@ -21,6 +21,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/1.png',
     bgColor: '#F9A825',
+    buttonColor: "#9117ba"
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/2.png',
     bgColor: '#7B1FA2',
+    buttonColor: "#10944b"
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/3.png',
     bgColor: '#D32F2F',
+    buttonColor: "#1dc3b5"
   },
 ];
 
@@ -77,16 +80,16 @@ export default function PromoSlider() {
                   alt={"aaa"}
                   fill
                   sizes="(max-width: 768px) 80vw, 50vw"
-                  // style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover' }}
                 />
-                <div className={styles.overlay}></div>
+                {/* <div className={styles.overlay}></div> */}
               </div>
               <div className={styles.content}>
                 <h3>{slide.title}</h3>
                 {slide.price && <p className={styles.price}>{slide.price}</p>}
                 {slide.desc && <p className={styles.desc}>{slide.desc}</p>}
                 <div className={styles.buttonWrapper}>
-                  <a href={slide.link} className={styles.button}>
+                  <a href={slide.link} className={styles.button} style={{background: `${slide.buttonColor}`}}>
                     {slide.buttonText}
                   </a>
                   {slide.buttonSubtext && (
