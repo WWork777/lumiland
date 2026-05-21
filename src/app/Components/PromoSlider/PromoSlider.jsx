@@ -14,33 +14,26 @@ import styles from './styles.module.scss';
 const slides = [
   {
     id: 1,
-    title: 'Только в мае — билеты онлайн',
-    price: 'всего 800 ₽!',
     buttonText: 'Купить билет',
-    buttonSubtext: '',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/1.png',
+    bgImage: '/images/PromoSlider/1.jpg',
     bgColor: '#F9A825',
     buttonColor: "#9117ba"
   },
   {
     id: 2,
-    title: 'Общегородской выпускной!',
-    desc: '29 мая, с 18 до 21 — выпускной, который запомнится! Танцы, флешмоб под Six Seven и коктейли. Всё как у взрослых!',
     buttonText: 'Купить билет',
     buttonSubtext: '',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/2.png',
+    bgImage: '/images/PromoSlider/2.jpg',
     bgColor: '#7B1FA2',
     buttonColor: "#10944b"
   },
   {
     id: 3,
-    title: 'Подарочные карты в Lumiland!',
     buttonText: 'Купить сертификат',
-    buttonSubtext: 'от 1 000 ₽',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/3.png',
+    bgImage: '/images/PromoSlider/3.jpg',
     bgColor: '#D32F2F',
     buttonColor: "#1dc3b5"
   },
@@ -49,6 +42,7 @@ const slides = [
 export default function PromoSlider() {
   return (
     <div className={styles.sliderWrapper}>
+      <h2 className={styles.title}><span>Акции</span> в lumiland</h2>
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
         effect="coverflow"

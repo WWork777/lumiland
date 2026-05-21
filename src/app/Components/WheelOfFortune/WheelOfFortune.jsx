@@ -1,14 +1,15 @@
+// WheelOfFortune.jsx
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './styles.module.scss';
 
 const SEGMENTS = [
-  { label: 'Годовой безлимитный абонемент в парк!', color: '#FFD966' },
-  { label: 'Скидка 10% на празднование дня рождения', color: '#FFE5B4' },
-  { label: 'Бесплатный аквагрим к текущему заказу!', isWinning: true, color: '#FFD966' },
-  { label: '50% скидка на пакет Premium!', color: '#FFE5B4' },
-  { label: 'Приглашения с ИИ-генерацией образа вашего ребёнка', color: '#FFD966' },
+  { label: 'Годовой абонемент' },
+  { label: 'Скидка 10% на ДР' },
+  { label: 'Бесплатный аквагрим', isWinning: true },
+  { label: 'Premium пакет -50%' },
+  { label: 'AI-приглашение' },
 ];
 
 const ANGLE_PER_SEGMENT = 360 / SEGMENTS.length;
@@ -28,11 +29,6 @@ const formatPhone = (value) => {
   return result.trim();
 };
 
-const validatePhone = (phone) => {
-  const digits = phone.replace(/\D/g, '');
-  return digits.length === 11;
-};
-
 function drawMultilineText(ctx, text, maxWidth, lineHeight) {
   const words = text.split(' ');
   const lines = [];
@@ -48,9 +44,7 @@ function drawMultilineText(ctx, text, maxWidth, lineHeight) {
     }
   }
   if (currentLine) lines.push(currentLine);
-  const finalLines = lines.slice(0, 2);
-  if (lines.length > 2) finalLines[1] = finalLines[1] + '…';
-  return finalLines;
+  return lines.slice(0, 2);
 }
 
 function WheelModal({ onClose, onWin }) {
@@ -62,24 +56,24 @@ function WheelModal({ onClose, onWin }) {
   const [result, setResult] = useState(null);
 
   const colors = {
-    purple: '#9133CC',
-    yellow: '#dcff00',
-    darkPurple: '#9133CC',
-    lightPurple: '#f1e6f5',
-    white: '#ffffff',
-    segmentEven: '#C1F6F1',   // можно заменить на более нежный
-    segmentOdd: '#95F4C0',
-    winningGradStart: '#CDA1E8',
-    winningGradEnd: '#CDA1E8',
+    purple: '#8624B4',
+    lumi: '#DBFF00',
+    white: '#FFFFFF',
+    black: '#1D1D1B',
+    grayLight: '#F5F5F5',
+    segmentEven: '#EADDFF',
+    segmentOdd: '#D8C0FF',
   };
 
   const drawWheel = useCallback((rotationAngle = 0) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const w = canvas.width, h = canvas.height;
-    const cx = w / 2, cy = h / 2;
-    const radius = w * 0.45;
+    const w = canvas.width;
+    const h = canvas.height;
+    const cx = w / 2;
+    const cy = h / 2;
+    const radius = w * 0.42;
 
     ctx.clearRect(0, 0, w, h);
 
@@ -89,168 +83,121 @@ function WheelModal({ onClose, onWin }) {
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.arc(cx, cy, radius, (start * Math.PI) / 180, (end * Math.PI) / 180);
+      ctx.closePath();
 
-      if (i === WINNING_INDEX) {
-        // Выигрышный сектор – градиент жёлтого
-        const grad = ctx.createLinearGradient(cx - radius, cy - radius, cx + radius, cy + radius);
-        grad.addColorStop(0, colors.winningGradStart);
-        grad.addColorStop(1, colors.winningGradEnd);
-        ctx.fillStyle = grad;
-      } else {
-        ctx.fillStyle = i % 2 === 0 ? colors.segmentEven : colors.segmentOdd;
-      }
+      ctx.fillStyle = i === WINNING_INDEX ? colors.lumi : (i % 2 === 0 ? colors.segmentEven : colors.segmentOdd);
       ctx.fill();
       ctx.strokeStyle = colors.white;
-      ctx.lineWidth = 2.5;
+      ctx.lineWidth = 1.5;
       ctx.stroke();
 
-      // Разделительная линия
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(cx + radius * Math.cos((start * Math.PI) / 180), cy + radius * Math.sin((start * Math.PI) / 180));
       ctx.stroke();
 
-      // Текст приза (с переносом и фирменным шрифтом)
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(((start + ANGLE_PER_SEGMENT / 2) * Math.PI) / 180);
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      // Используем шрифты сайта с запасными
-      const fontFamily = "'TT 700', 'TT Bold', 'Segoe UI', 'Comic Neue', sans-serif";
-      ctx.font = i === WINNING_INDEX 
-        ? `bold 13px ${fontFamily}` 
-        : `500 12px ${fontFamily}`;
-      ctx.fillStyle = colors.darkPurple;
-      ctx.shadowBlur = 0;
+      ctx.font = i === WINNING_INDEX
+        ? `bold 12px 'TT Travels Next', 'Inter', sans-serif`
+        : `500 11px 'TT Travels Next', 'Inter', sans-serif`;
+      ctx.fillStyle = i === WINNING_INDEX ? colors.black : colors.black;
       const maxTextWidth = radius * 0.5;
-      const lines = drawMultilineText(ctx, SEGMENTS[i].label, maxTextWidth, 14);
-      let yOffset = -(lines.length - 1) * 7;
-      for (let line of lines) {
-        ctx.fillText(line, radius * 0.62, yOffset);
-        yOffset += 14;
+      const lines = drawMultilineText(ctx, SEGMENTS[i].label, maxTextWidth, 12);
+      let yOffset = -(lines.length - 1) * 6;
+      for (const line of lines) {
+        ctx.fillText(line, radius * 0.65, yOffset);
+        yOffset += 12;
       }
       ctx.restore();
     }
-        // Добавим небольшой декоративный ободок вокруг колеса
-    ctx.beginPath();
-    ctx.arc(cx, cy, radius + 3, 0, 2 * Math.PI);
-    ctx.strokeStyle = colors.winningGradEnd;
-    ctx.lineWidth = 2;
-    ctx.stroke();
 
-    // Стрелка в стиле Lumiland (фиолетовая с жёлтым бликом)
-    const arrowY = cy - radius - 12;
+    // простая стрелка
+    const arrowY = cy - radius - 8;
     ctx.beginPath();
-    ctx.moveTo(cx - 12, arrowY);
-    ctx.lineTo(cx, arrowY + 28);
-    ctx.lineTo(cx + 12, arrowY);
+    ctx.moveTo(cx - 10, arrowY);
+    ctx.lineTo(cx, arrowY + 22);
+    ctx.lineTo(cx + 10, arrowY);
     ctx.fillStyle = colors.purple;
-    ctx.shadowBlur = 5;
-    ctx.shadowColor = 'rgba(0,0,0,0.3)';
     ctx.fill();
-    // Блик стрелки
-    ctx.beginPath();
-    ctx.moveTo(cx - 5, arrowY + 6);
-    ctx.lineTo(cx, arrowY + 18);
-    ctx.lineTo(cx + 5, arrowY + 6);
-    ctx.fillStyle = colors.yellow;
-    ctx.fill();
-    ctx.shadowBlur = 0;
-
-  }, []);
+  }, [colors]);
 
   useEffect(() => {
     drawWheel(0);
   }, [drawWheel]);
 
   const handlePhoneChange = (e) => {
-    let value = e.target.value;
-    if (!value.trim()) {
-      setPhone('+7');
-      return;
-    }
-    let digits = value.replace(/\D/g, '');
-    if (digits.length === 0) {
-      setPhone('+7');
-      return;
-    }
-    if (digits[0] !== '7') digits = '7' + digits;
-    if (digits.length > 11) digits = digits.slice(0, 11);
-    let formatted = '+7';
-    let rest = digits.slice(1);
-    if (rest.length > 0) formatted += ' ' + rest.slice(0, 3);
-    if (rest.length > 3) formatted += ' ' + rest.slice(3, 6);
-    if (rest.length > 6) formatted += ' ' + rest.slice(6, 8);
-    if (rest.length > 8) formatted += ' ' + rest.slice(8, 10);
-    setPhone(formatted.trim());
+    setPhone(formatPhone(e.target.value));
   };
 
   const spinWheel = () => {
-  const rawDigits = phone.replace(/\D/g, '');
-  if (rawDigits.length !== 11) {
-    setPhoneError('Введите номер в формате +7 XXX XXX XX XX (11 цифр)');
-    return;
-  }
-  setPhoneError('');
-  if (isSpinning || hasSpun) return;
-
-  setIsSpinning(true);
-  setResult(null);
-  let currentRotation = 0;
-  const spinAngle = 360 * 8;
-  const startTime = performance.now();
-  const duration = 2000;
-
-  const animate = (now) => {
-    const elapsed = now - startTime;
-    let progress = Math.min(1, elapsed / duration);
-    const easeOut = 1 - Math.pow(1 - progress, 3);
-    const rotation = currentRotation + spinAngle * easeOut;
-    drawWheel(rotation % 360);
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    } else {
-      const finalRotation = (currentRotation + spinAngle) % 360;
-      const targetMidAngle = WINNING_INDEX * ANGLE_PER_SEGMENT + ANGLE_PER_SEGMENT / 2;
-      let neededRotation = (270 - targetMidAngle + 360) % 360;
-      let delta = neededRotation - finalRotation;
-      if (delta > 180) delta -= 360;
-      if (delta < -180) delta += 360;
-
-      let startFix = finalRotation;
-      const fixStart = performance.now();
-      const fixDuration = 400;
-      const fixAnimate = (nowFix) => {
-        const fixElapsed = nowFix - fixStart;
-        let fixProgress = Math.min(1, fixElapsed / fixDuration);
-        const ease = 1 - Math.pow(1 - fixProgress, 2);
-        const newAngle = (startFix + delta * ease + 360) % 360;
-        drawWheel(newAngle);
-        if (fixProgress < 1) {
-          requestAnimationFrame(fixAnimate);
-        } else {
-          drawWheel(neededRotation);
-          setIsSpinning(false);
-          setHasSpun(true);
-          const prize = SEGMENTS[WINNING_INDEX].label;
-          setResult(prize);
-          if (onWin) onWin(prize, phone);
-        }
-      };
-      requestAnimationFrame(fixAnimate);
+    const rawDigits = phone.replace(/\D/g, '');
+    if (rawDigits.length !== 11) {
+      setPhoneError('Введите 11 цифр после +7');
+      return;
     }
+    setPhoneError('');
+    if (isSpinning || hasSpun) return;
+
+    setIsSpinning(true);
+    setResult(null);
+    let startRotation = 0;
+    const spinAngle = 360 * 6;
+    const startTime = performance.now();
+    const duration = 1800;
+
+    const animate = (now) => {
+      const elapsed = now - startTime;
+      let progress = Math.min(1, elapsed / duration);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const rotation = startRotation + spinAngle * easeOut;
+      drawWheel(rotation % 360);
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        const finalRotation = (startRotation + spinAngle) % 360;
+        const targetMidAngle = WINNING_INDEX * ANGLE_PER_SEGMENT + ANGLE_PER_SEGMENT / 2;
+        let neededRotation = (270 - targetMidAngle + 360) % 360;
+        let delta = neededRotation - finalRotation;
+        if (delta > 180) delta -= 360;
+        if (delta < -180) delta += 360;
+
+        let fixStart = finalRotation;
+        const fixTime = performance.now();
+        const fixDuration = 300;
+        const fixAnimate = (nowFix) => {
+          const fixElapsed = nowFix - fixTime;
+          let fixProgress = Math.min(1, fixElapsed / fixDuration);
+          const ease = 1 - Math.pow(1 - fixProgress, 2);
+          const newAngle = (fixStart + delta * ease + 360) % 360;
+          drawWheel(newAngle);
+          if (fixProgress < 1) {
+            requestAnimationFrame(fixAnimate);
+          } else {
+            drawWheel(neededRotation);
+            setIsSpinning(false);
+            setHasSpun(true);
+            const prize = SEGMENTS[WINNING_INDEX].label;
+            setResult(prize);
+            onWin(prize, phone);
+          }
+        };
+        requestAnimationFrame(fixAnimate);
+      }
+    };
+    requestAnimationFrame(animate);
   };
-  requestAnimationFrame(animate);
-};
 
   return (
-    <div className={styles.wheelModal}>
-      <div className={styles.wheelContainer}>
-        <button className={styles.closeBtn} onClick={onClose}>×</button>
-        <h2>Колесо фортуны</h2>
-        <p className={styles.subtitle}>Крути колесо, чтобы получить гарантированный бонус к мероприятию!</p>
-        <canvas ref={canvasRef} width={450} height={450} className={styles.canvas} />
+    <div className={styles.modalOverlay}>
+      <div className={styles.modal}>
+        <button className={styles.closeBtn} onClick={onClose}>✕</button>
+        <h2 className={styles.title}>Колесо фортуны</h2>
+        <p className={styles.subtitle}>Крутите и получите гарантированный бонус</p>
+        <canvas ref={canvasRef} width={400} height={400} className={styles.canvas} />
         <div className={styles.form}>
           <input
             type="tel"
@@ -261,14 +208,14 @@ function WheelModal({ onClose, onWin }) {
             placeholder="+7 000 000 00 00"
           />
           {phoneError && <div className={styles.errorText}>{phoneError}</div>}
-          <button onClick={spinWheel} disabled={isSpinning || hasSpun}>
-            {isSpinning ? 'Крутится...' : hasSpun ? 'Вы уже крутили' : 'Крутить колесо 🎲'}
+          <button onClick={spinWheel} disabled={isSpinning || hasSpun} className={styles.spinBtn}>
+            {isSpinning ? 'Вращение...' : hasSpun ? 'Участвовали' : 'Вращать'}
           </button>
         </div>
-        <p className={styles.note}>*Призом можно воспользоваться только при покупке пакета дня рождения</p>
+        <p className={styles.note}>*Приз действует при покупке пакета «День рождения»</p>
         {result && (
           <div className={styles.result}>
-            Ваш выигрыш: <strong>{result}</strong>
+            Вы выиграли: {result}
           </div>
         )}
       </div>
@@ -283,12 +230,12 @@ export default function WheelOfFortune() {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!wheelUsed) setShowWheel(true);
-    }, 10000);
+    }, 8000);
     return () => clearTimeout(timer);
   }, [wheelUsed]);
 
   const handleWin = (prize, phone) => {
-    console.log(`Пользователь ${phone} выиграл: ${prize}`);
+    console.log(`LumiLand: ${phone} выиграл ${prize}`);
     setWheelUsed(true);
   };
 
@@ -297,9 +244,5 @@ export default function WheelOfFortune() {
     setShowWheel(false);
   };
 
-  return (
-    <div className={styles.container}>
-      {showWheel && <WheelModal onClose={handleClose} onWin={handleWin} />}
-    </div>
-  );
+  return <>{showWheel && <WheelModal onClose={handleClose} onWin={handleWin} />}</>;
 }
