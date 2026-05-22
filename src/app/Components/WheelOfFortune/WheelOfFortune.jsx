@@ -212,7 +212,7 @@ function WheelModal({ onClose, onWin }) {
             {isSpinning ? 'Вращение...' : hasSpun ? 'Участвовали' : 'Вращать'}
           </button>
         </div>
-        <p className={styles.note}>*Приз действует при покупке пакета «День рождения»</p>
+        <p className={styles.note}>*Приз действует при приобретении пакета на празднование дня рождения</p>
         {result && (
           <div className={styles.result}>
             Вы выиграли: {result}
