@@ -16,7 +16,7 @@ const slides = [
     id: 1,
     buttonText: 'Купить билет',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/1.png',
+    bgImage: '/images/PromoSlider/01.png',
     bgColor: '#F9A825',
     buttonColor: "#9117ba"
   },
@@ -25,7 +25,7 @@ const slides = [
     buttonText: 'Купить билет',
     buttonSubtext: '',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/2.png',
+    bgImage: '/images/PromoSlider/02.png',
     bgColor: '#7B1FA2',
     buttonColor: "#10944b"
   },
@@ -33,7 +33,7 @@ const slides = [
     id: 3,
     buttonText: 'Купить сертификат',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/3.png',
+    bgImage: '/images/PromoSlider/03.png',
     bgColor: '#D32F2F',
     buttonColor: "#1dc3b5"
   },
