@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Hero.module.scss';
 import { useEffect, useRef } from 'react';
+import PromoSlider from '../PromoSlider/PromoSlider';
 
 export default function Hero() {
   const imageMainRef = useRef(null);
@@ -82,13 +83,16 @@ export default function Hero() {
         <div className={styles.sloganTop}>
           <p>Детские и взрослые мечты сбываются в LUMILAND</p>
         </div>
+      </div>
+        <PromoSlider />
+      <div className={styles.heroContent}>
         <h1>
-          <span>ЖДЕМ ВАС В ПЕРВОМ</span>
+          {/* <span>ЖДЕМ ВАС В ПЕРВОМ</span>
           <br />
-          <span>ИНТЕРАКТИВНОМ</span>
-          <br />
+          <span>ИНТЕРАКТИВНОМ</span> */}
+          {/* <br /> */}
           <span className={styles.titleWithGeo}>
-            <span>ПАРКЕ В ТОМСКЕ</span>
+            {/* <span>ПАРКЕ В ТОМСКЕ</span> */}
             <span className={styles.geoInline}>
               <Image
                 src={'/icons/geo.svg'}
@@ -104,10 +108,7 @@ export default function Hero() {
             </span>
           </span>
         </h1>
-        <div className={styles.timeContainer}>
-          <span className={styles.timeText}>с 10:00 до 21:00 ежедневно</span>
-        </div>
-        <div className={styles.buttonsContainer}>
+                <div className={styles.buttonsContainer}>
           <Link href='tel:79528800330' className={styles.phoneButton}>
             <span>Позвонить в парк</span>
             <Image
@@ -124,6 +125,9 @@ export default function Hero() {
             Купить сертификат
           </Link>
           
+        </div>
+        <div className={styles.timeContainer}>
+          <span className={styles.timeText}>с 10:00 до 21:00 ежедневно</span>
         </div>
         <div className={styles.WhiteBg}></div>
         <div

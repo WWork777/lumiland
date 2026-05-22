@@ -16,7 +16,7 @@ const slides = [
     id: 1,
     buttonText: 'Купить билет',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/1.jpg',
+    bgImage: '/images/PromoSlider/1.png',
     bgColor: '#F9A825',
     buttonColor: "#9117ba"
   },
@@ -25,7 +25,7 @@ const slides = [
     buttonText: 'Купить билет',
     buttonSubtext: '',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/2.jpg',
+    bgImage: '/images/PromoSlider/2.png',
     bgColor: '#7B1FA2',
     buttonColor: "#10944b"
   },
@@ -33,7 +33,7 @@ const slides = [
     id: 3,
     buttonText: 'Купить сертификат',
     link: '#vidget',
-    bgImage: '/images/PromoSlider/3.jpg',
+    bgImage: '/images/PromoSlider/3.png',
     bgColor: '#D32F2F',
     buttonColor: "#1dc3b5"
   },
@@ -42,7 +42,6 @@ const slides = [
 export default function PromoSlider() {
   return (
     <div className={styles.sliderWrapper}>
-      <h2 className={styles.title}><span>Акции</span> в lumiland</h2>
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
         effect="coverflow"

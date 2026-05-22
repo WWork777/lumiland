@@ -74,7 +74,6 @@ export default function Home() {
       <main>
         <Info />
         <Mero />
-        <PromoSlider />
         {/* <NewsSlider /> */}
         <Price />
         <Birthday />
