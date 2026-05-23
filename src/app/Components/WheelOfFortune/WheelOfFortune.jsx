@@ -13,7 +13,7 @@ const SEGMENTS = [
 ];
 
 const ANGLE_PER_SEGMENT = 360 / SEGMENTS.length;
-const WINNING_INDEX = SEGMENTS.findIndex(s => s.isWinning);
+const WINNING_INDEX = SEGMENTS.findIndex((s) => s.isWinning);
 
 const formatPhone = (value) => {
   let digits = value.replace(/\D/g, '');
@@ -68,65 +68,82 @@ function WheelModal({ onClose, onWin }) {
     segmentOdd: '#D8C0FF',
   };
 
-  const drawWheel = useCallback((rotationAngle = 0) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width;
-    const h = canvas.height;
-    const cx = w / 2;
-    const cy = h / 2;
-    const radius = w * 0.46;
+  const drawWheel = useCallback(
+    (rotationAngle = 0) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const radius = w * 0.46;
 
-    ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, w, h);
 
-    for (let i = 0; i < SEGMENTS.length; i++) {
-      const start = rotationAngle + i * ANGLE_PER_SEGMENT;
-      const end = start + ANGLE_PER_SEGMENT;
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.arc(cx, cy, radius, (start * Math.PI) / 180, (end * Math.PI) / 180);
-      ctx.closePath();
+      for (let i = 0; i < SEGMENTS.length; i++) {
+        const start = rotationAngle + i * ANGLE_PER_SEGMENT;
+        const end = start + ANGLE_PER_SEGMENT;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, radius, (start * Math.PI) / 180, (end * Math.PI) / 180);
+        ctx.closePath();
 
-      ctx.fillStyle = i === WINNING_INDEX ? colors.lumi : (i % 2 === 0 ? colors.segmentEven : colors.segmentOdd);
-      ctx.fill();
-      ctx.strokeStyle = colors.white;
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
+        ctx.fillStyle =
+          i === WINNING_INDEX
+            ? colors.lumi
+            : i % 2 === 0
+              ? colors.segmentEven
+              : colors.segmentOdd;
+        ctx.fill();
+        ctx.strokeStyle = colors.white;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
 
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + radius * Math.cos((start * Math.PI) / 180), cy + radius * Math.sin((start * Math.PI) / 180));
-      ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(
+          cx + radius * Math.cos((start * Math.PI) / 180),
+          cy + radius * Math.sin((start * Math.PI) / 180)
+        );
+        ctx.stroke();
 
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(((start + ANGLE_PER_SEGMENT / 2) * Math.PI) / 180);
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.font = i === WINNING_INDEX
-        ? `bold 20px 'TT Travels Next', 'Inter', sans-serif`
-        : `500 19px 'TT Travels Next', 'Inter', sans-serif`;
-      ctx.fillStyle = i === WINNING_INDEX ? colors.black : colors.black;
-      const maxTextWidth = radius * 0.55;
-      const lines = drawMultilineText(ctx, SEGMENTS[i].label, maxTextWidth, 12);
-      let yOffset = -(lines.length - 1) * 7;
-      for (const line of lines) {
-        ctx.fillText(line, radius * 0.6, yOffset);
-        yOffset += 20;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(((start + ANGLE_PER_SEGMENT / 2) * Math.PI) / 180);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font =
+          i === WINNING_INDEX
+            ? `bold 20px 'TT Travels Next', 'Inter', sans-serif`
+            : `500 19px 'TT Travels Next', 'Inter', sans-serif`;
+        ctx.fillStyle = i === WINNING_INDEX ? colors.black : colors.black;
+        const maxTextWidth = radius * 0.55;
+        const lines = drawMultilineText(
+          ctx,
+          SEGMENTS[i].label,
+          maxTextWidth,
+          12
+        );
+        let yOffset = -(lines.length - 1) * 7;
+        for (const line of lines) {
+          ctx.fillText(line, radius * 0.6, yOffset);
+          yOffset += 20;
+        }
+        ctx.restore();
       }
-      ctx.restore();
-    }
 
-    // стрелка
-    const arrowY = cy - radius - 8;
-    ctx.beginPath();
-    ctx.moveTo(cx - 10, arrowY);
-    ctx.lineTo(cx, arrowY + 22);
-    ctx.lineTo(cx + 10, arrowY);
-    ctx.fillStyle = colors.purple;
-    ctx.fill();
-  }, [colors]);
+      // стрелка
+      const arrowY = cy - radius - 8;
+      ctx.beginPath();
+      ctx.moveTo(cx - 10, arrowY);
+      ctx.lineTo(cx, arrowY + 22);
+      ctx.lineTo(cx + 10, arrowY);
+      ctx.fillStyle = colors.purple;
+      ctx.fill();
+    },
+    [colors]
+  );
 
   useEffect(() => {
     drawWheel(currentRotation);
@@ -136,25 +153,26 @@ function WheelModal({ onClose, onWin }) {
     setPhone(formatPhone(e.target.value));
   };
 
-const spinWheel = () => {
- const rawDigits = phone.replace(/\D/g, '');
-  if (rawDigits.length !== 11) {
-    setPhoneError('Введите 11 цифр после +7');
-    return;
-  }
-  if (!privacyAccepted) {
-    setPhoneError('Необходимо согласие с политикой конфиденциальности');
-    return;
-  }
-  setPhoneError('');
-  if (isSpinning || hasSpun) return;
+  const spinWheel = () => {
+    const rawDigits = phone.replace(/\D/g, '');
+    if (rawDigits.length !== 11) {
+      setPhoneError('Введите 11 цифр после +7');
+      return;
+    }
+    if (!privacyAccepted) {
+      setPhoneError('Необходимо согласие с политикой конфиденциальности');
+      return;
+    }
+    setPhoneError('');
+    if (isSpinning || hasSpun) return;
 
     setIsSpinning(true);
     setResult(null);
 
     const startRotation = currentRotation; // начинаем с текущего угла
     const fullTurns = 6 + Math.floor(Math.random() * 4);
-    const targetSegmentMid = WINNING_INDEX * ANGLE_PER_SEGMENT + ANGLE_PER_SEGMENT / 2;
+    const targetSegmentMid =
+      WINNING_INDEX * ANGLE_PER_SEGMENT + ANGLE_PER_SEGMENT / 2;
     let neededRotation = (270 - targetSegmentMid + 360) % 360;
     const randomOffset = (Math.random() - 0.5) * (ANGLE_PER_SEGMENT * 0.6);
     neededRotation = (neededRotation + randomOffset + 360) % 360;
@@ -177,7 +195,7 @@ const spinWheel = () => {
       } else {
         const finalAngle = neededRotation; // итоговый угол в диапазоне 0..359
         drawWheel(finalAngle);
-        setCurrentRotation(finalAngle);    // запоминаем угол остановки
+        setCurrentRotation(finalAngle); // запоминаем угол остановки
         setIsSpinning(false);
         setHasSpun(true);
         const prize = SEGMENTS[WINNING_INDEX].label;
@@ -191,10 +209,19 @@ const spinWheel = () => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
-        <button className={styles.closeBtn} onClick={onClose}>✕</button>
+        <button className={styles.closeBtn} onClick={onClose}>
+          ✕
+        </button>
         <h2 className={styles.title}>Колесо фортуны</h2>
-        <p className={styles.subtitle}>Крутите и получите гарантированный бонус</p>
-        <canvas ref={canvasRef} width={500} height={500} className={styles.canvas} />
+        <p className={styles.subtitle}>
+          Крутите и получите гарантированный бонус
+        </p>
+        <canvas
+          ref={canvasRef}
+          width={500}
+          height={500}
+          className={styles.canvas}
+        />
         <div className={styles.form}>
           <input
             type="tel"
@@ -204,7 +231,7 @@ const spinWheel = () => {
             className={phoneError ? styles.errorInput : ''}
             placeholder="+7 000 000 00 00"
           />
-           {phoneError && <div className={styles.errorText}>{phoneError}</div>}
+          {phoneError && <div className={styles.errorText}>{phoneError}</div>}
           {/* Чекбокс согласия */}
           <div className={styles.privacyRow}>
             <label className={styles.checkboxLabel}>
@@ -227,11 +254,17 @@ const spinWheel = () => {
               </span>
             </label>
           </div>
-          <button onClick={spinWheel} disabled={isSpinning || hasSpun || !privacyAccepted} className={styles.spinBtn}>
+          <button
+            onClick={spinWheel}
+            disabled={isSpinning || hasSpun || !privacyAccepted}
+            className={styles.spinBtn}
+          >
             {isSpinning ? 'Вращение...' : hasSpun ? 'Участвовали' : 'Вращать'}
           </button>
         </div>
-        <p className={styles.note}>*Приз действует при приобретении пакета на празднование дня рождения</p>
+        <p className={styles.note}>
+          *Приз действует при приобретении пакета на празднование дня рождения
+        </p>
         {result && <div className={styles.result}>Вы выиграли: {result}</div>}
       </div>
     </div>
@@ -243,30 +276,62 @@ export default function WheelOfFortune() {
   const [wheelUsed, setWheelUsed] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!wheelUsed) setShowWheel(true);
-    }, 8000);
-    return () => clearTimeout(timer);
-  }, [wheelUsed]);
+    let timer;
+
+    const checkWheelAccess = async () => {
+      try {
+        const response = await fetch('/api/check-wheel/');
+
+        const data = await response.json();
+
+        if (data.canShow) {
+          timer = setTimeout(() => {
+            setShowWheel(true);
+          }, 8000);
+        }
+      } catch (err) {
+        console.error('Ошибка проверки колеса:', err);
+      }
+    };
+
+    checkWheelAccess();
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, []);
 
   const handleWin = async (prize, phone) => {
-    console.log('✅ handleWin вызван, prize:', prize, 'phone:', phone);
     try {
       const response = await fetch('/api/submit-wheel/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone, prize }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          phone,
+          prize,
+        }),
       });
+
       const data = await response.json();
+
       if (!data.success) {
-        console.error('❌ Ошибка отправки заявки:', data.error);
-      } else {
-        console.log('✅ Заявка успешно отправлена');
+        alert(data.error);
+        return;
       }
+
+      console.log('✅ Заявка успешно отправлена');
+
+      setWheelUsed(true);
+
+      // закрываем модалку
+      setTimeout(() => {
+        setShowWheel(false);
+      }, 2500);
     } catch (err) {
       console.error('❌ Не удалось отправить заявку:', err);
     }
-    setWheelUsed(true);
   };
 
   const handleClose = () => {
@@ -274,5 +339,7 @@ export default function WheelOfFortune() {
     setShowWheel(false);
   };
 
-  return <>{showWheel && <WheelModal onClose={handleClose} onWin={handleWin} />}</>;
+  return (
+    <>{showWheel && <WheelModal onClose={handleClose} onWin={handleWin} />}</>
+  );
 }

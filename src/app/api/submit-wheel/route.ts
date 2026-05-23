@@ -1,22 +1,73 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+import { attempts, LIMIT_TIME } from '../../../lib/wheelStore';
+
 export async function POST(request: Request) {
   try {
+    // ===============================
+    // Получаем IP
+    // ===============================
+    const forwardedFor = request.headers.get('x-forwarded-for');
+
+    const ip = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
+
+    console.log('🌐 IP:', ip);
+
+    // ===============================
+    // Проверка лимита
+    // ===============================
+    const now = Date.now();
+
+    const lastAttempt = attempts.get(ip);
+
+    if (lastAttempt && now - lastAttempt < LIMIT_TIME) {
+      const remainingMs = LIMIT_TIME - (now - lastAttempt);
+
+      const hours = Math.floor(remainingMs / (1000 * 60 * 60));
+
+      const minutes = Math.floor(
+        (remainingMs % (1000 * 60 * 60)) / (1000 * 60)
+      );
+
+      return NextResponse.json(
+        {
+          success: false,
+          error: `Вы уже крутили колесо. Попробуйте снова через ${hours} ч. ${minutes} мин.`,
+        },
+        { status: 429 }
+      );
+    }
+
+    // ===============================
+    // Данные
+    // ===============================
     const { phone, prize } = await request.json();
-    console.log('📥 Заявка получена:', { phone, prize });
 
     if (!phone || !prize) {
       return NextResponse.json(
-        { error: 'Не все поля заполнены' },
+        {
+          success: false,
+          error: 'Не все поля заполнены',
+        },
         { status: 400 }
       );
     }
 
-    // ---------- TELEGRAM: отправка группе и двум пользователям ----------
+    // сохраняем попытку
+    attempts.set(ip, now);
+
+    console.log('📥 Новая заявка:', {
+      phone,
+      prize,
+      ip,
+    });
+
+    // ===============================
+    // TELEGRAM
+    // ===============================
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
-    // Собираем ID из отдельных переменных (только если они заданы)
     const chatIds = [
       process.env.TELEGRAM_CHAT_ID_GROUP,
       process.env.TELEGRAM_CHAT_ID_USER1,
@@ -24,10 +75,14 @@ export async function POST(request: Request) {
     ].filter(Boolean) as string[];
 
     let tgSuccessCount = 0;
-    const tgErrors: string[] = [];
 
-    if (TELEGRAM_BOT_TOKEN && chatIds.length > 0) {
-      const tgMessage = `🎁 Новая заявка с Колеса фортуны!\n📞 Телефон: ${phone}\n🏆 Выигрыш: ${prize}\n⏰ Время: ${new Date().toLocaleString()}`;
+    if (TELEGRAM_BOT_TOKEN && chatIds.length) {
+      const tgMessage =
+        `🎁 Новая заявка с Колеса фортуны!\n\n` +
+        `📞 Телефон: ${phone}\n` +
+        `🏆 Приз: ${prize}\n` +
+        `🌐 IP: ${ip}\n` +
+        `⏰ Время: ${new Date().toLocaleString()}`;
 
       for (const chatId of chatIds) {
         try {
@@ -35,36 +90,32 @@ export async function POST(request: Request) {
             `https://tg-proxy.parsikovevgenij470.workers.dev/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
             {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ chat_id: chatId, text: tgMessage }),
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                chat_id: chatId,
+                text: tgMessage,
+              }),
             }
           );
-          const data = await tgRes.json();
+
           if (tgRes.ok) {
             tgSuccessCount++;
-            console.log(`✅ Telegram отправлено в ${chatId}`);
-          } else {
-            console.error(`❌ Ошибка Telegram для ${chatId}:`, data);
-            tgErrors.push(`${chatId}: ${data.description}`);
           }
-        } catch (e: any) {
-          console.error(`❌ Исключение для ${chatId}:`, e);
-          tgErrors.push(`${chatId}: ${e.message}`);
+        } catch (e) {
+          console.error('Ошибка Telegram:', e);
         }
       }
-    } else {
-      console.warn(
-        '⚠️ Telegram не настроен: отсутствует токен или все ID пусты'
-      );
     }
 
-    // ---------- EMAIL (опционально) ----------
+    // ===============================
+    // EMAIL
+    // ===============================
     let emailOk = false;
-    const emailErrors: string[] = [];
-    const EMAIL_TO = process.env.EMAIL_TO;
 
     if (
-      EMAIL_TO &&
+      process.env.EMAIL_TO &&
       process.env.EMAIL_HOST &&
       process.env.EMAIL_USER &&
       process.env.EMAIL_PASS
@@ -79,37 +130,40 @@ export async function POST(request: Request) {
             pass: process.env.EMAIL_PASS,
           },
         });
+
         await transporter.sendMail({
           from: `"LumiLand" <${process.env.EMAIL_USER}>`,
-          to: EMAIL_TO,
-          subject: 'Новый выигрыш в Колесе фортуны',
+          to: process.env.EMAIL_TO,
+          subject: 'Новая заявка с колеса фортуны',
           html: `
-            <h2>Заявка с Колеса фортуны</h2>
-            <p><strong>Телефон:</strong> ${phone}</p>
-            <p><strong>Приз:</strong> ${prize}</p>
-            <p><strong>Время:</strong> ${new Date().toLocaleString()}</p>
+            <h2>Новая заявка</h2>
+
+            <p>
+              <strong>Телефон:</strong>
+              ${phone}
+            </p>
+
+            <p>
+              <strong>Приз:</strong>
+              ${prize}
+            </p>
+
+            <p>
+              <strong>IP:</strong>
+              ${ip}
+            </p>
+
+            <p>
+              <strong>Время:</strong>
+              ${new Date().toLocaleString()}
+            </p>
           `,
         });
-        emailOk = true;
-        console.log('✅ Email отправлен');
-      } catch (e: any) {
-        console.error('❌ Ошибка email:', e);
-        emailErrors.push(e.message);
-      }
-    } else {
-      console.warn('⚠️ Email не настроен (пропущены переменные)');
-    }
 
-    // ---------- Результат ----------
-    if (tgSuccessCount === 0 && !emailOk) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Не удалось отправить заявку',
-          details: { tgErrors, emailErrors },
-        },
-        { status: 500 }
-      );
+        emailOk = true;
+      } catch (e) {
+        console.error('Ошибка email:', e);
+      }
     }
 
     return NextResponse.json({
@@ -118,9 +172,13 @@ export async function POST(request: Request) {
       emailOk,
     });
   } catch (error: any) {
-    console.error('❌ Критическая ошибка API:', error);
+    console.error(error);
+
     return NextResponse.json(
-      { error: 'Внутренняя ошибка сервера', details: error.message },
+      {
+        success: false,
+        error: 'Внутренняя ошибка сервера',
+      },
       { status: 500 }
     );
   }
