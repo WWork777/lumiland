@@ -1,7 +1,12 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCoverflow,
+} from 'swiper/modules';
 import Image from 'next/image';
 
 import 'swiper/css';
@@ -18,7 +23,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/01.png',
     bgColor: '#F9A825',
-    buttonColor: "#dcff00"
+    buttonColor: '#dcff00',
   },
   {
     id: 2,
@@ -27,7 +32,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/02.png',
     bgColor: '#7B1FA2',
-    buttonColor: "#dcff00"
+    buttonColor: '#dcff00',
   },
   {
     id: 3,
@@ -35,7 +40,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/03.png',
     bgColor: '#D32F2F',
-    buttonColor: "#dcff00"
+    buttonColor: '#dcff00',
   },
 ];
 
@@ -57,7 +62,7 @@ export default function PromoSlider() {
         }}
         pagination={{ clickable: true }}
         // autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop={true}
+        // loop={true}
         breakpoints={{
           320: { spaceBetween: -40 },
           768: { spaceBetween: -60 },
@@ -66,11 +71,14 @@ export default function PromoSlider() {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className={styles.slide}>
-            <div className={styles.card} style={{ backgroundColor: slide.bgColor }}>
+            <div
+              className={styles.card}
+              style={{ backgroundColor: slide.bgColor }}
+            >
               <div className={styles.bgImage}>
                 <Image
                   src={slide.bgImage}
-                  alt={"aaa"}
+                  alt={'aaa'}
                   fill
                   sizes="(max-width: 768px) 80vw, 50vw"
                   style={{ objectFit: 'cover' }}
@@ -82,11 +90,17 @@ export default function PromoSlider() {
                 {slide.price && <p className={styles.price}>{slide.price}</p>}
                 {slide.desc && <p className={styles.desc}>{slide.desc}</p>}
                 <div className={styles.buttonWrapper}>
-                  <a href={slide.link} className={styles.button} style={{background: `${slide.buttonColor}`}}>
+                  <a
+                    href={slide.link}
+                    className={styles.button}
+                    style={{ background: `${slide.buttonColor}` }}
+                  >
                     {slide.buttonText}
                   </a>
                   {slide.buttonSubtext && (
-                    <span className={styles.buttonSubtext}>{slide.buttonSubtext}</span>
+                    <span className={styles.buttonSubtext}>
+                      {slide.buttonSubtext}
+                    </span>
                   )}
                 </div>
               </div>

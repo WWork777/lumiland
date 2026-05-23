@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.imageTop}>
-        <div className={styles.imageLeft}>
+        {/* <div className={styles.imageLeft}>
             <Image
               src='/images/Hero/imageLeft.webp'
               alt='lumiland'
@@ -49,9 +49,9 @@ export default function Hero() {
               sizes="(max-width: 768px) 150px, 260px" // Подсказка для браузера
               className={styles.responsiveImg}
             />
-          </div>
+          </div> */}
 
-          <div className={styles.imageRight}>
+        {/* <div className={styles.imageRight}>
             <Image
               src='/images/Hero/imageRight.webp'
               alt='lumiland'
@@ -59,7 +59,7 @@ export default function Hero() {
               sizes="(max-width: 768px) 160px, 281px"
               className={styles.responsiveImg}
             />
-          </div>
+          </div> */}
       </div>
       <div className={styles.imageBg}>
         <div className={styles.imageBgLeft}>
@@ -67,7 +67,7 @@ export default function Hero() {
             src={'/images/Hero/imageBgLeft.webp'}
             width={464}
             height={460}
-            alt='lumiland'
+            alt="lumiland"
           />
         </div>
         <div className={styles.imageBgRight}>
@@ -75,7 +75,7 @@ export default function Hero() {
             src={'/images/Hero/imageBgRight.webp'}
             width={1000}
             height={700}
-            alt='lumiland'
+            alt="lumiland"
           />
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function Hero() {
           <p>Детские и взрослые мечты сбываются в LUMILAND</p>
         </div>
       </div>
-        <PromoSlider />
+      <PromoSlider />
       <div className={styles.heroContent}>
         <h1>
           {/* <span>ЖДЕМ ВАС В ПЕРВОМ</span>
@@ -98,7 +98,7 @@ export default function Hero() {
                 src={'/icons/geo.svg'}
                 width={53}
                 height={53}
-                alt='ул. Котовского 19/1, ТЦ Смайлcity'
+                alt="ул. Котовского 19/1, ТЦ Смайлcity"
               />
               <span>
                 ул. Котовского 19/1,
@@ -108,23 +108,26 @@ export default function Hero() {
             </span>
           </span>
         </h1>
-                <div className={styles.buttonsContainer}>
-          <Link href='tel:79528800330' className={styles.phoneButton}>
+        <div className={styles.buttonsContainer}>
+          <Link href="tel:79528800330" className={styles.phoneButton}>
             <span>Позвонить в парк</span>
             <Image
               src={'/icons/phone.svg'}
               width={24}
               height={24}
-              alt='телефон'
+              alt="телефон"
             />
           </Link>
-          <Link href='https://t.me/lumiland_bot' target='_blank' className={styles.infoButton}>
+          <Link
+            href="https://t.me/lumiland_bot"
+            target="_blank"
+            className={styles.infoButton}
+          >
             Программа лояльности
           </Link>
-          <Link href='#certificate_widget' className={styles.infoButton}>
+          <Link href="#certificate_widget" className={styles.infoButton}>
             Купить сертификат
           </Link>
-          
         </div>
         <div className={styles.timeContainer}>
           <span className={styles.timeText}>с 10:00 до 21:00 ежедневно</span>
@@ -143,7 +146,7 @@ export default function Hero() {
             src={'/images/Hero/imageMain.webp'}
             width={650}
             height={650}
-            alt='lumiland'
+            alt="lumiland"
           />
         </div>
       </div>
