@@ -216,14 +216,14 @@ const spinWheel = () => {
               />
               <span>
                 Я принимаю условия{' '}
-                {/* <a
+                <a
                   href="/privacy-policy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.privacyLink}
-                > */}
+                >
                   политики конфиденциальности
-                {/* </a> */}
+                </a>
               </span>
             </label>
           </div>
