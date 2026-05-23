@@ -61,8 +61,8 @@ export default function PromoSlider() {
           slideShadows: false,
         }}
         pagination={{ clickable: true }}
-        // autoplay={{ delay: 5000, disableOnInteraction: false }}
-        // loop={true}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        loop={true}
         breakpoints={{
           320: { spaceBetween: -40 },
           768: { spaceBetween: -60 },
