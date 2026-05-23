@@ -17,6 +17,7 @@
     "react-dom": "^19.2.1",
     "react-server-dom-parcel": "^19.2.1",
     "react-server-dom-webpack": "^19.2.1",
+    "react-to-webcomponent": "^2.0.1",
     "sass": "^1.94.0",
     "swiper": "^12.1.4"
   },

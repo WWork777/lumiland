@@ -8,7 +8,6 @@ import Mero from './Components/Mero/Mero.jsx';
 import Gallery from './Components/Gallery/Gallery';
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
-import Vidget from './Components/Vidget/Vidget';
 import MultyVidget from './Components/MultiVidget/MultiVidget';
 import NewsSlider from './Components/News/News';
 import WheelOfFortune from './Components/WheelOfFortune/WheelOfFortune';
@@ -74,10 +73,8 @@ export default function Home() {
       <main>
         <Info />
         <Mero />
-        {/* <NewsSlider /> */}
         <Price />
         <Birthday />
-        {/* <Vidget /> */}
         <MultyVidget />
         <Gallery />
         <Questions />
