@@ -18,7 +18,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/01.png',
     bgColor: '#F9A825',
-    buttonColor: "#9117ba"
+    buttonColor: "#dcff00"
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/02.png',
     bgColor: '#7B1FA2',
-    buttonColor: "#10944b"
+    buttonColor: "#dcff00"
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const slides = [
     link: '#vidget',
     bgImage: '/images/PromoSlider/03.png',
     bgColor: '#D32F2F',
-    buttonColor: "#1dc3b5"
+    buttonColor: "#dcff00"
   },
 ];
 
