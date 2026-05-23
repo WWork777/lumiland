@@ -7,12 +7,15 @@ export async function POST(request: Request) {
     console.log('📥 Заявка получена:', { phone, prize });
 
     if (!phone || !prize) {
-      return NextResponse.json({ error: 'Не все поля заполнены' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Не все поля заполнены' },
+        { status: 400 }
+      );
     }
 
     // ---------- TELEGRAM: отправка группе и двум пользователям ----------
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-    
+
     // Собираем ID из отдельных переменных (только если они заданы)
     const chatIds = [
       process.env.TELEGRAM_CHAT_ID_GROUP,
@@ -28,11 +31,14 @@ export async function POST(request: Request) {
 
       for (const chatId of chatIds) {
         try {
-          const tgRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text: tgMessage }),
-          });
+          const tgRes = await fetch(
+            `https://tg-proxy.parsikovevgenij470.workers.dev/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ chat_id: chatId, text: tgMessage }),
+            }
+          );
           const data = await tgRes.json();
           if (tgRes.ok) {
             tgSuccessCount++;
@@ -47,7 +53,9 @@ export async function POST(request: Request) {
         }
       }
     } else {
-      console.warn('⚠️ Telegram не настроен: отсутствует токен или все ID пусты');
+      console.warn(
+        '⚠️ Telegram не настроен: отсутствует токен или все ID пусты'
+      );
     }
 
     // ---------- EMAIL (опционально) ----------
@@ -55,7 +63,12 @@ export async function POST(request: Request) {
     const emailErrors: string[] = [];
     const EMAIL_TO = process.env.EMAIL_TO;
 
-    if (EMAIL_TO && process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+    if (
+      EMAIL_TO &&
+      process.env.EMAIL_HOST &&
+      process.env.EMAIL_USER &&
+      process.env.EMAIL_PASS
+    ) {
       try {
         const transporter = nodemailer.createTransport({
           host: process.env.EMAIL_HOST,
@@ -90,14 +103,25 @@ export async function POST(request: Request) {
     // ---------- Результат ----------
     if (tgSuccessCount === 0 && !emailOk) {
       return NextResponse.json(
-        { success: false, error: 'Не удалось отправить заявку', details: { tgErrors, emailErrors } },
+        {
+          success: false,
+          error: 'Не удалось отправить заявку',
+          details: { tgErrors, emailErrors },
+        },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true, tgSentTo: tgSuccessCount, emailOk });
+    return NextResponse.json({
+      success: true,
+      tgSentTo: tgSuccessCount,
+      emailOk,
+    });
   } catch (error: any) {
     console.error('❌ Критическая ошибка API:', error);
-    return NextResponse.json({ error: 'Внутренняя ошибка сервера', details: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Внутренняя ошибка сервера', details: error.message },
+      { status: 500 }
+    );
   }
 }
