@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     const tgErrors: string[] = [];
 
     if (TELEGRAM_BOT_TOKEN && chatIds.length > 0) {
-      const tgMessage = `🎁 Новая заявка с Колеса фортуны!\n📞 Телефон: ${phone}\n🏆 Выигрыш: ${prize}\n⏰ Время: ${new Date().toLocaleString()}`;
+      const tgMessage = `🎁 Новая заявка с Колеса фортуны!\n📞 Телефон: ${phone}\n🏆 Выигрыш: ${prize}`;
 
       for (const chatId of chatIds) {
         try {
@@ -51,51 +51,51 @@ export async function POST(request: Request) {
     }
 
     // ---------- EMAIL (опционально) ----------
-    let emailOk = false;
-    const emailErrors: string[] = [];
-    const EMAIL_TO = process.env.EMAIL_TO;
+    // let emailOk = false;
+    // const emailErrors: string[] = [];
+    // const EMAIL_TO = process.env.EMAIL_TO;
 
-    if (EMAIL_TO && process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      try {
-        const transporter = nodemailer.createTransport({
-          host: process.env.EMAIL_HOST,
-          port: Number(process.env.EMAIL_PORT) || 587,
-          secure: false,
-          auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-          },
-        });
-        await transporter.sendMail({
-          from: `"LumiLand" <${process.env.EMAIL_USER}>`,
-          to: EMAIL_TO,
-          subject: 'Новый выигрыш в Колесе фортуны',
-          html: `
-            <h2>Заявка с Колеса фортуны</h2>
-            <p><strong>Телефон:</strong> ${phone}</p>
-            <p><strong>Приз:</strong> ${prize}</p>
-            <p><strong>Время:</strong> ${new Date().toLocaleString()}</p>
-          `,
-        });
-        emailOk = true;
-        console.log('✅ Email отправлен');
-      } catch (e: any) {
-        console.error('❌ Ошибка email:', e);
-        emailErrors.push(e.message);
-      }
-    } else {
-      console.warn('⚠️ Email не настроен (пропущены переменные)');
-    }
+    // if (EMAIL_TO && process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+    //   try {
+    //     const transporter = nodemailer.createTransport({
+    //       host: process.env.EMAIL_HOST,
+    //       port: Number(process.env.EMAIL_PORT) || 587,
+    //       secure: false,
+    //       auth: {
+    //         user: process.env.EMAIL_USER,
+    //         pass: process.env.EMAIL_PASS,
+    //       },
+    //     });
+    //     await transporter.sendMail({
+    //       from: `"LumiLand" <${process.env.EMAIL_USER}>`,
+    //       to: EMAIL_TO,
+    //       subject: 'Новый выигрыш в Колесе фортуны',
+    //       html: `
+    //         <h2>Заявка с Колеса фортуны</h2>
+    //         <p><strong>Телефон:</strong> ${phone}</p>
+    //         <p><strong>Приз:</strong> ${prize}</p>
+    //         <p><strong>Время:</strong> ${new Date().toLocaleString()}</p>
+    //       `,
+    //     });
+    //     emailOk = true;
+    //     console.log('✅ Email отправлен');
+    //   } catch (e: any) {
+    //     console.error('❌ Ошибка email:', e);
+    //     emailErrors.push(e.message);
+    //   }
+    // } else {
+    //   console.warn('⚠️ Email не настроен (пропущены переменные)');
+    // }
 
-    // ---------- Результат ----------
-    if (tgSuccessCount === 0 && !emailOk) {
-      return NextResponse.json(
-        { success: false, error: 'Не удалось отправить заявку', details: { tgErrors, emailErrors } },
-        { status: 500 }
-      );
-    }
+    // // ---------- Результат ----------
+    // if (tgSuccessCount === 0 && !emailOk) {
+    //   return NextResponse.json(
+    //     { success: false, error: 'Не удалось отправить заявку', details: { tgErrors, emailErrors } },
+    //     { status: 500 }
+    //   );
+    // }
 
-    return NextResponse.json({ success: true, tgSentTo: tgSuccessCount, emailOk });
+    // return NextResponse.json({ success: true, tgSentTo: tgSuccessCount, emailOk });
   } catch (error: any) {
     console.error('❌ Критическая ошибка API:', error);
     return NextResponse.json({ error: 'Внутренняя ошибка сервера', details: error.message }, { status: 500 });

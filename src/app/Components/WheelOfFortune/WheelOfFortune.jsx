@@ -1,4 +1,3 @@
-// components/WheelOfFortune.jsx
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -118,7 +117,6 @@ function WheelModal({ onClose, onWin }) {
       ctx.restore();
     }
 
-    // стрелка
     const arrowY = cy - radius - 8;
     ctx.beginPath();
     ctx.moveTo(cx - 10, arrowY);
@@ -136,33 +134,31 @@ function WheelModal({ onClose, onWin }) {
     setPhone(formatPhone(e.target.value));
   };
 
-const spinWheel = () => {
- const rawDigits = phone.replace(/\D/g, '');
-  if (rawDigits.length !== 11) {
-    setPhoneError('Введите 11 цифр после +7');
-    return;
-  }
-  if (!privacyAccepted) {
-    setPhoneError('Необходимо согласие с политикой конфиденциальности');
-    return;
-  }
-  setPhoneError('');
-  if (isSpinning || hasSpun) return;
+  const spinWheel = () => {
+    const rawDigits = phone.replace(/\D/g, '');
+    if (rawDigits.length !== 11) {
+      setPhoneError('Введите 11 цифр после +7');
+      return;
+    }
+    if (!privacyAccepted) {
+      setPhoneError('Необходимо согласие с политикой конфиденциальности');
+      return;
+    }
+    setPhoneError('');
+    if (isSpinning || hasSpun) return;
 
     setIsSpinning(true);
     setResult(null);
 
-    const startRotation = currentRotation; // начинаем с текущего угла
+    const startRotation = currentRotation;
     const fullTurns = 6 + Math.floor(Math.random() * 4);
     const targetSegmentMid = WINNING_INDEX * ANGLE_PER_SEGMENT + ANGLE_PER_SEGMENT / 2;
     let neededRotation = (270 - targetSegmentMid + 360) % 360;
     const randomOffset = (Math.random() - 0.5) * (ANGLE_PER_SEGMENT * 0.6);
     neededRotation = (neededRotation + randomOffset + 360) % 360;
 
-    // Конечный угол (абсолютный) = полные обороты * 360 + neededRotation
     const endRotation = fullTurns * 360 + neededRotation;
-    const delta = endRotation - startRotation; // сколько проехать
-
+    const delta = endRotation - startRotation;
     const startTime = performance.now();
     const duration = 2000;
 
@@ -175,9 +171,9 @@ const spinWheel = () => {
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        const finalAngle = neededRotation; // итоговый угол в диапазоне 0..359
+        const finalAngle = neededRotation;
         drawWheel(finalAngle);
-        setCurrentRotation(finalAngle);    // запоминаем угол остановки
+        setCurrentRotation(finalAngle);
         setIsSpinning(false);
         setHasSpun(true);
         const prize = SEGMENTS[WINNING_INDEX].label;
@@ -204,8 +200,7 @@ const spinWheel = () => {
             className={phoneError ? styles.errorInput : ''}
             placeholder="+7 000 000 00 00"
           />
-           {phoneError && <div className={styles.errorText}>{phoneError}</div>}
-          {/* Чекбокс согласия */}
+          {phoneError && <div className={styles.errorText}>{phoneError}</div>}
           <div className={styles.privacyRow}>
             <label className={styles.checkboxLabel}>
               <input
@@ -241,32 +236,63 @@ const spinWheel = () => {
 export default function WheelOfFortune() {
   const [showWheel, setShowWheel] = useState(false);
   const [wheelUsed, setWheelUsed] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!wheelUsed) setShowWheel(true);
-    }, 8000);
-    return () => clearTimeout(timer);
+    async function checkAvailability() {
+      try {
+        const res = await fetch('/api/wheel/check');
+        if (!res.ok) throw new Error('Ошибка проверки');
+        const { allowed } = await res.json();
+        if (allowed && !wheelUsed) {
+          const timer = setTimeout(() => setShowWheel(true), 8000);
+          return () => clearTimeout(timer);
+        }
+      } catch (err) {
+        console.error('Ошибка проверки IP:', err);
+      } finally {
+        setChecked(true);
+      }
+    }
+    checkAvailability();
   }, [wheelUsed]);
 
   const handleWin = async (prize, phone) => {
-    console.log('✅ handleWin вызван, prize:', prize, 'phone:', phone);
     try {
+      // 1. Отправляем заявку
       const response = await fetch('/api/submit-wheel/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, prize }),
       });
-      const data = await response.json();
-      if (!data.success) {
-        console.error('❌ Ошибка отправки заявки:', data.error);
+      // Безопасный парсинг JSON (защита от пустого ответа)
+      let data = {};
+      const text = await response.text();
+      if (text) {
+        try {
+          data = JSON.parse(text);
+        } catch (e) {
+          console.warn('Ответ не JSON:', text);
+        }
+      }
+      if (!response.ok) {
+        console.error('Ошибка отправки заявки:', data.error || response.statusText);
       } else {
-        console.log('✅ Заявка успешно отправлена');
+        console.log('Заявка отправлена');
       }
     } catch (err) {
-      console.error('❌ Не удалось отправить заявку:', err);
+      console.error('Ошибка при отправке заявки:', err);
     }
+
+    // 2. Регистрируем вращение (24h блокировка)
+    try {
+      await fetch('/api/wheel/register', { method: 'POST' });
+    } catch (err) {
+      console.error('Ошибка регистрации вращения:', err);
+    }
+
     setWheelUsed(true);
+    setShowWheel(false);
   };
 
   const handleClose = () => {
@@ -274,5 +300,7 @@ export default function WheelOfFortune() {
     setShowWheel(false);
   };
 
+  // Пока не проверили IP – ничего не рендерим
+  if (!checked) return null;
   return <>{showWheel && <WheelModal onClose={handleClose} onWin={handleWin} />}</>;
 }

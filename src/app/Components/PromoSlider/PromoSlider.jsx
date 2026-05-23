@@ -50,9 +50,9 @@ export default function PromoSlider() {
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
         effect="coverflow"
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={'auto'}
+        grabCursor
+        centeredSlides
+        slidesPerView="auto"
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -62,7 +62,8 @@ export default function PromoSlider() {
         }}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop={true}
+        loop
+        watchSlidesProgress
         breakpoints={{
           320: { spaceBetween: -40 },
           768: { spaceBetween: -60 },
@@ -71,19 +72,16 @@ export default function PromoSlider() {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className={styles.slide}>
-            <div
-              className={styles.card}
-              style={{ backgroundColor: slide.bgColor }}
-            >
+            <div className={styles.card} style={{ backgroundColor: slide.bgColor }}>
               <div className={styles.bgImage}>
                 <Image
                   src={slide.bgImage}
-                  alt={'aaa'}
+                  alt=""
                   fill
                   sizes="(max-width: 768px) 80vw, 50vw"
                   style={{ objectFit: 'cover' }}
+                  loading="eager"
                 />
-                {/* <div className={styles.overlay}></div> */}
               </div>
               <div className={styles.content}>
                 <h3>{slide.title}</h3>
