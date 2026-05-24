@@ -72,6 +72,7 @@ export async function POST(request: Request) {
       process.env.TELEGRAM_CHAT_ID_GROUP,
       process.env.TELEGRAM_CHAT_ID_USER1,
       process.env.TELEGRAM_CHAT_ID_USER2,
+      process.env.TELEGRAM_CHAT_ID_USER3,
     ].filter(Boolean) as string[];
 
     let tgSuccessCount = 0;
