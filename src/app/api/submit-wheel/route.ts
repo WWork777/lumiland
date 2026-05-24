@@ -1,3 +1,5 @@
+// app/api/submit-wheel/route.ts
+
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -42,9 +44,9 @@ export async function POST(request: Request) {
     // ===============================
     // Данные
     // ===============================
-    const { phone, prize } = await request.json();
+    const { name, phone, prize } = await request.json();
 
-    if (!phone || !prize) {
+    if (!name || !phone || !prize) {
       return NextResponse.json(
         {
           success: false,
@@ -58,6 +60,7 @@ export async function POST(request: Request) {
     attempts.set(ip, now);
 
     console.log('📥 Новая заявка:', {
+      name,
       phone,
       prize,
       ip,
@@ -80,8 +83,10 @@ export async function POST(request: Request) {
     if (TELEGRAM_BOT_TOKEN && chatIds.length) {
       const tgMessage =
         `🎁 Новая заявка с Колеса фортуны!\n\n` +
+        `👤 Имя: ${name}\n` +
         `📞 Телефон: ${phone}\n` +
-        `🏆 Приз: ${prize}\n`;
+        `🏆 Приз: ${prize}\n` +
+        `🌐 IP: ${ip}`;
 
       for (const chatId of chatIds) {
         try {
@@ -114,7 +119,6 @@ export async function POST(request: Request) {
     let emailOk = false;
 
     if (
-      process.env.EMAIL_TO &&
       process.env.EMAIL_HOST &&
       process.env.EMAIL_USER &&
       process.env.EMAIL_PASS
@@ -134,8 +138,14 @@ export async function POST(request: Request) {
           from: `"LumiLand" <${process.env.EMAIL_USER}>`,
           to: ['Arinakovaleva644@gmail.com', 'lumi.land@mail.ru'],
           subject: 'Новая заявка с колеса фортуны',
+
           html: `
             <h2>Новая заявка</h2>
+
+            <p>
+              <strong>Имя:</strong>
+              ${name}
+            </p>
 
             <p>
               <strong>Телефон:</strong>
