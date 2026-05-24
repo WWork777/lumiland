@@ -80,9 +80,7 @@ export async function POST(request: Request) {
       const tgMessage =
         `🎁 Новая заявка с Колеса фортуны!\n\n` +
         `📞 Телефон: ${phone}\n` +
-        `🏆 Приз: ${prize}\n` +
-        `🌐 IP: ${ip}\n` +
-        `⏰ Время: ${new Date().toLocaleString()}`;
+        `🏆 Приз: ${prize}\n`;
 
       for (const chatId of chatIds) {
         try {
@@ -133,7 +131,7 @@ export async function POST(request: Request) {
 
         await transporter.sendMail({
           from: `"LumiLand" <${process.env.EMAIL_USER}>`,
-          to: process.env.EMAIL_TO,
+          to: ['Arinakovaleva644@gmail.com', 'lumi.land@mail.ru'],
           subject: 'Новая заявка с колеса фортуны',
           html: `
             <h2>Новая заявка</h2>

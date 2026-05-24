@@ -43,7 +43,7 @@ export default function Home() {
         <Gallery />
         <Questions />
         <Contacts />
-        {/* <WheelOfFortune /> */}
+        <WheelOfFortune />
       </main>
     </>
   );

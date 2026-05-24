@@ -278,23 +278,19 @@ export default function WheelOfFortune() {
   useEffect(() => {
     let timer;
 
-    const checkWheelAccess = async () => {
-      try {
-        const response = await fetch('/api/check-wheel/');
+    const wheelBlockedUntil = localStorage.getItem('wheelBlockedUntil');
 
-        const data = await response.json();
+    if (wheelBlockedUntil) {
+      const expiresAt = Number(wheelBlockedUntil);
 
-        if (data.canShow) {
-          timer = setTimeout(() => {
-            setShowWheel(true);
-          }, 8000);
-        }
-      } catch (err) {
-        console.error('Ошибка проверки колеса:', err);
+      if (Date.now() < expiresAt) {
+        return;
       }
-    };
+    }
 
-    checkWheelAccess();
+    timer = setTimeout(() => {
+      setShowWheel(true);
+    }, 8000);
 
     return () => {
       if (timer) clearTimeout(timer);
@@ -322,6 +318,9 @@ export default function WheelOfFortune() {
       }
 
       console.log('✅ Заявка успешно отправлена');
+      const expiresAt = Date.now() + 24 * 60 * 60 * 1000;
+
+      localStorage.setItem('wheelBlockedUntil', expiresAt.toString());
 
       setWheelUsed(true);
 
