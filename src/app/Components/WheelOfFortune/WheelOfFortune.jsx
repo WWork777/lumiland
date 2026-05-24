@@ -115,7 +115,7 @@ function WheelModal({ onClose, onWin }) {
         ctx.closePath();
 
         ctx.fillStyle =
-          i === WINNING_INDEX
+          i === 0
             ? colors.lumi
             : i % 2 === 0
               ? colors.segmentEven
@@ -148,7 +148,7 @@ function WheelModal({ onClose, onWin }) {
         ctx.textBaseline = 'middle';
 
         ctx.font =
-          i === WINNING_INDEX
+          i === 0
             ? `bold 20px 'TT Travels Next', 'Inter', sans-serif`
             : `500 19px 'TT Travels Next', 'Inter', sans-serif`;
 
