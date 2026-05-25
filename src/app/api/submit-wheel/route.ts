@@ -44,9 +44,9 @@ export async function POST(request: Request) {
     // ===============================
     // Данные
     // ===============================
-    const { name, phone, prize } = await request.json();
+    const { date, name, phone, prize } = await request.json();
 
-    if (!name || !phone || !prize) {
+    if (!name || !phone || !prize || !date) {
       return NextResponse.json(
         {
           success: false,
@@ -60,6 +60,7 @@ export async function POST(request: Request) {
     attempts.set(ip, now);
 
     console.log('📥 Новая заявка:', {
+      date,
       name,
       phone,
       prize,
@@ -84,6 +85,7 @@ export async function POST(request: Request) {
       const tgMessage =
         `🎁 Новая заявка с Колеса фортуны!\n\n` +
         `👤 Имя: ${name}\n` +
+        `🎂 Дата рождения: ${date}\n` +
         `📞 Телефон: ${phone}\n` +
         `🏆 Приз: ${prize}\n` +
         `🌐 IP: ${ip}`;
@@ -145,6 +147,11 @@ export async function POST(request: Request) {
             <p>
               <strong>Имя:</strong>
               ${name}
+            </p>
+
+            <p>
+              <strong>Дата рождения ребенка:</strong>
+              ${date}
             </p>
 
             <p>

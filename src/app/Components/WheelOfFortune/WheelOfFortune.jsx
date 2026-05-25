@@ -63,6 +63,9 @@ function WheelModal({ onClose, onWin }) {
   const [isSpinning, setIsSpinning] = useState(false);
 
   const [name, setName] = useState('');
+  const [dateError, setDateError] = useState('');
+
+  const [date, setDate] = useState('');
   const [nameError, setNameError] = useState('');
 
   const [phone, setPhone] = useState('+7');
@@ -191,14 +194,42 @@ function WheelModal({ onClose, onWin }) {
   const handlePhoneChange = (e) => {
     setPhone(formatPhone(e.target.value));
   };
+  const validateDateFormat = (value) => {
+  const regex = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.(19|20)\d{2}$/;
+  return regex.test(value);
+};
 
+// Обработчик ввода с маской
+const handleDateChange = (e) => {
+  let raw = e.target.value.replace(/\D/g, ''); // только цифры
+  if (raw.length > 8) raw = raw.slice(0, 8);
+
+  let formatted = '';
+  if (raw.length >= 1) formatted += raw.slice(0, 2);
+  if (raw.length >= 3) formatted += '.' + raw.slice(2, 4);
+  if (raw.length >= 5) formatted += '.' + raw.slice(4, 8);
+
+  setDate(formatted);
+  
+  // Валидация полной даты
+};
+
+// (Опционально) проверка при потере фокуса
+const handleBlur = () => {
+  if (date.length === 10) {
+    setDateError(validateDateFormat(date) ? '' : 'Неверный формат даты (ДД.ММ.ГГГГ)');
+  } else if (date.length >= 0) {
+    setDateError('Введите полную дату в формате ДД.ММ.ГГГГ');
+  } else {
+    setDateError('');
+  }
+};
   const spinWheel = () => {
     // имя
     if (!name.trim()) {
       setNameError('Введите имя');
       return;
     }
-
     setNameError('');
 
     // телефон
@@ -211,6 +242,15 @@ function WheelModal({ onClose, onWin }) {
 
     setPhoneError('');
 
+    if (date.length !== 10) {
+    setDateError('Введите дату рождения ребёнка');
+    return;
+    }
+    if (!validateDateFormat(date)) {
+      setDateError('Неверный формат даты (ДД.ММ.ГГГГ)');
+      return;
+    }
+    setDateError('');
     // политика
     if (!privacyAccepted) {
       setPhoneError('Необходимо согласие с политикой конфиденциальности');
@@ -272,7 +312,7 @@ function WheelModal({ onClose, onWin }) {
 
         setResult(prize);
 
-        onWin(prize, phone, name);
+        onWin(prize, phone, name, date);
       }
     };
 
@@ -309,8 +349,17 @@ function WheelModal({ onClose, onWin }) {
             className={nameError ? styles.errorInput : ''}
             placeholder="Ваше имя"
           />
-
           {nameError && <div className={styles.errorText}>{nameError}</div>}
+          <input
+            type="text"
+            value={date}
+            onChange={handleDateChange}
+            onBlur={handleBlur}
+            disabled={isSpinning || hasSpun}
+            className={dateError ? styles.errorInput : ''}
+            placeholder="дд.мм.гггг вашего ребенка"
+          />
+          {dateError && <div className={styles.errorText}>{dateError}</div>}
 
           {/* Телефон */}
           <input
@@ -392,7 +441,7 @@ export default function WheelOfFortune() {
     };
   }, []);
 
-  const handleWin = async (prize, phone, name) => {
+  const handleWin = async (prize, phone, name, date) => {
     try {
       // 1. Отправляем заявку
       const response = await fetch('/api/submit-wheel/', {
@@ -401,6 +450,7 @@ export default function WheelOfFortune() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          date,
           name,
           phone,
           prize,
