@@ -3,7 +3,119 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-import { attempts, LIMIT_TIME } from '../../../lib/wheelStore';
+// import { attempts, LIMIT_TIME } from '../../../lib/wheelStore';
+
+async function ensureCustomFields(amoFetch: any) {
+  const fieldsToCreate = [
+    { name: 'Приз с колеса фортуны', type: 'text' },
+    { name: 'Дата рождения ребенка', type: 'text' }
+  ];
+
+  const existingFields = await amoFetch('/leads/custom_fields');
+  const fieldIds: Record<string, number> = {};
+
+  for (const field of fieldsToCreate) {
+    const existing = existingFields._embedded?.custom_fields?.find((f: any) => f.name === field.name);
+    if (existing) {
+      fieldIds[field.name] = existing.id;
+    } else {
+      const newField = await amoFetch('/leads/custom_fields', {
+        method: 'POST',
+        body: JSON.stringify([{ name: field.name, type: field.type }])
+      });
+      fieldIds[field.name] = newField._embedded.custom_fields[0].id;
+      console.log(`✅ Создано новое поле: ${field.name}, ID: ${fieldIds[field.name]}`);
+    }
+  }
+  return fieldIds;
+}
+async function sendToAmoCRM(name: string, phone: string, prize: string, date: string) {
+  const subdomain = process.env.AMO_SUBDOMAIN;
+  const accessToken = process.env.AMO_ACCESS_TOKEN;
+  const pipelineId = parseInt(process.env.AMO_PIPELINE_ID || '0');
+  const statusId = parseInt(process.env.AMO_STATUS_ID || '0');
+
+  if (!subdomain || !accessToken) {
+    console.warn('⚠️ Отсутствуют AMO_SUBDOMAIN или AMO_ACCESS_TOKEN');
+    return false;
+  }
+  if (!pipelineId || !statusId) {
+    console.warn('⚠️ Не указаны ID воронки или статуса (AMO_PIPELINE_ID, AMO_STATUS_ID)');
+    return false;
+  }
+
+  const baseUrl = `https://${subdomain}.amocrm.ru/api/v4`;
+
+  async function amoFetch(endpoint: string, options: RequestInit = {}) {
+    const url = `${baseUrl}${endpoint}`;
+    const response = await fetch(url, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`,
+        ...options.headers,
+      },
+    });
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`amoCRM API error ${response.status}: ${text}`);
+    }
+    return response.json();
+  }
+
+  try {
+    // 1. Создаём новый контакт (всегда!)
+    console.log(`➕ Создаём новый контакт: имя="${name}", телефон="${phone}"`);
+    const createContactResult = await amoFetch('/contacts', {
+      method: 'POST',
+      body: JSON.stringify([{
+        name: name,
+        custom_fields_values: [
+          {
+            field_code: 'PHONE',
+            values: [{ value: phone }]
+          }
+        ]
+      }])
+    });
+    const contactId = createContactResult?._embedded?.contacts?.[0]?.id;
+    if (!contactId) throw new Error('Не удалось создать контакт');
+    console.log(`✅ Контакт создан, ID: ${contactId}`);
+
+    // 2. Получаем ID пользовательских полей (приз, IP) – создаются автоматически при отсутствии
+    const fieldIds = await ensureCustomFields(amoFetch);
+    const prizeFieldId = fieldIds['Приз с колеса фортуны'];
+    const dateFieldId = fieldIds['Дата рождения ребенка'];
+
+    // 3. Создаём сделку в нужной воронке и статусе, привязываем контакт
+    console.log(`➕ Создаём сделку для контакта ${contactId}...`);
+    const leadResult = await amoFetch('/leads', {
+      method: 'POST',
+      body: JSON.stringify([{
+        name: `Заявка с колеса фортуны: ${prize}`,
+        price: 0,
+        pipeline_id: pipelineId,
+        status_id: statusId,
+        _embedded: { contacts: [{ id: contactId }] },
+        custom_fields_values: [
+          { field_id: prizeFieldId, values: [{ value: prize }] },
+          { field_id: dateFieldId, values: [{ value: date }] }
+        ]
+      }])
+    });
+
+    if (leadResult?._embedded?.leads?.length > 0) {
+      console.log(`✅ Сделка создана, ID: ${leadResult._embedded.leads[0].id}`);
+      return true;
+    } else {
+      throw new Error('Не удалось создать сделку');
+    }
+  } catch (error) {
+    console.error('❌ Ошибка при отправке в amoCRM:', error);
+    return false;
+  }
+}
+
 
 export async function POST(request: Request) {
   try {
@@ -21,25 +133,25 @@ export async function POST(request: Request) {
     // ===============================
     const now = Date.now();
 
-    const lastAttempt = attempts.get(ip);
+    // const lastAttempt = attempts.get(ip);
 
-    if (lastAttempt && now - lastAttempt < LIMIT_TIME) {
-      const remainingMs = LIMIT_TIME - (now - lastAttempt);
+    // if (lastAttempt && now - lastAttempt < LIMIT_TIME) {
+    //   const remainingMs = LIMIT_TIME - (now - lastAttempt);
 
-      const hours = Math.floor(remainingMs / (1000 * 60 * 60));
+    //   const hours = Math.floor(remainingMs / (1000 * 60 * 60));
 
-      const minutes = Math.floor(
-        (remainingMs % (1000 * 60 * 60)) / (1000 * 60)
-      );
+    //   const minutes = Math.floor(
+    //     (remainingMs % (1000 * 60 * 60)) / (1000 * 60)
+    //   );
 
-      return NextResponse.json(
-        {
-          success: false,
-          error: `Вы уже крутили колесо. Попробуйте снова через ${hours} ч. ${minutes} мин.`,
-        },
-        { status: 429 }
-      );
-    }
+    //   return NextResponse.json(
+    //     {
+    //       success: false,
+    //       error: `Вы уже крутили колесо. Попробуйте снова через ${hours} ч. ${minutes} мин.`,
+    //     },
+    //     { status: 429 }
+    //   );
+    // }
 
     // ===============================
     // Данные
@@ -57,7 +169,7 @@ export async function POST(request: Request) {
     }
 
     // сохраняем попытку
-    attempts.set(ip, now);
+    // attempts.set(ip, now);
 
     console.log('📥 Новая заявка:', {
       date,
@@ -181,20 +293,32 @@ export async function POST(request: Request) {
         console.error('Ошибка email:', e);
       }
     }
+   // ----- 5. Отправка в amoCRM -----
+   let amoSent = false;
+    try {
+      console.log('📤 Отправка в amoCRM...');
+      amoSent = await sendToAmoCRM(name, phone, prize, date);
+      if (amoSent) console.log('✅ Успешно отправлено в amoCRM');
+      else console.log('⚠️ Не удалось отправить в amoCRM');
+    } catch (err) {
+      console.error('❌ Критическая ошибка amoCRM:', err);
+    }
 
+    // ----- 6. Ответ клиенту (включаем все данные для отладки) -----
     return NextResponse.json({
       success: true,
+      name,
+      phone,
+      prize,
+      date,
       tgSentTo: tgSuccessCount,
       emailOk,
+      amoSent,
     });
   } catch (error: any) {
-    console.error(error);
-
+    console.error('❌ Внутренняя ошибка сервера:', error);
     return NextResponse.json(
-      {
-        success: false,
-        error: 'Внутренняя ошибка сервера',
-      },
+      { success: false, error: 'Внутренняя ошибка сервера' },
       { status: 500 }
     );
   }
