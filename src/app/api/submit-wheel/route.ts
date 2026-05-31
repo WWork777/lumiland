@@ -3,7 +3,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// import { attempts, LIMIT_TIME } from '../../../lib/wheelStore';
+import { attempts, LIMIT_TIME } from '../../../lib/wheelStore';
 
 async function ensureCustomFields(amoFetch: any) {
   const fieldsToCreate = [
@@ -92,7 +92,7 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
     const leadResult = await amoFetch('/leads', {
       method: 'POST',
       body: JSON.stringify([{
-        name: `Заявка с колеса фортуны: ${prize}`,
+        name: `КФ`,
         price: 0,
         pipeline_id: pipelineId,
         status_id: statusId,
@@ -133,25 +133,25 @@ export async function POST(request: Request) {
     // ===============================
     const now = Date.now();
 
-    // const lastAttempt = attempts.get(ip);
+    const lastAttempt = attempts.get(ip);
 
-    // if (lastAttempt && now - lastAttempt < LIMIT_TIME) {
-    //   const remainingMs = LIMIT_TIME - (now - lastAttempt);
+    if (lastAttempt && now - lastAttempt < LIMIT_TIME) {
+      const remainingMs = LIMIT_TIME - (now - lastAttempt);
 
-    //   const hours = Math.floor(remainingMs / (1000 * 60 * 60));
+      const hours = Math.floor(remainingMs / (1000 * 60 * 60));
 
-    //   const minutes = Math.floor(
-    //     (remainingMs % (1000 * 60 * 60)) / (1000 * 60)
-    //   );
+      const minutes = Math.floor(
+        (remainingMs % (1000 * 60 * 60)) / (1000 * 60)
+      );
 
-    //   return NextResponse.json(
-    //     {
-    //       success: false,
-    //       error: `Вы уже крутили колесо. Попробуйте снова через ${hours} ч. ${minutes} мин.`,
-    //     },
-    //     { status: 429 }
-    //   );
-    // }
+      return NextResponse.json(
+        {
+          success: false,
+          error: `Вы уже крутили колесо. Попробуйте снова через ${hours} ч. ${minutes} мин.`,
+        },
+        { status: 429 }
+      );
+    }
 
     // ===============================
     // Данные
@@ -169,7 +169,7 @@ export async function POST(request: Request) {
     }
 
     // сохраняем попытку
-    // attempts.set(ip, now);
+    attempts.set(ip, now);
 
     console.log('📥 Новая заявка:', {
       date,
