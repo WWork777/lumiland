@@ -16,11 +16,13 @@
   position: relative;
   width: 90%;
   max-width: 480px;
+  max-height: 90%;
   background: white;
   border-radius: 32px;
   padding: 2rem 1.5rem 1.8rem;
   box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
   text-align: center;
+  // скролла нет
 }
 
 .closeBtn {
@@ -65,6 +67,9 @@
 .form {
   max-width: 260px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   input {
     width: 90%;
     display: block;
@@ -121,9 +126,6 @@
   color: #333;
   margin-top: 1rem;
   font-family: 'Inter', sans-serif;
-  @media (max-width: 768px) {
-    font-size: 0.65rem;
-  }
 }
 
 .result {
@@ -138,17 +140,6 @@
   color: #1D1D1B;
 }
 
-@media (max-width: 500px) {
-  .modal {
-    padding: 1.5rem 1rem 1.2rem;
-  }
-  .title {
-    font-size: 1.5rem;
-  }
-  .canvas {
-    max-width: 280px;
-  }
-}
 .privacyRow {
   margin: 16px 0 12px;
   text-align: left;
@@ -184,4 +175,186 @@
   font-size: 11px;
   margin-top: 4px;
   text-align: left;
+}
+
+// ========= АДАПТИВНОСТЬ ПО ШИРИНЕ =========
+@media (max-width: 1280px) {
+  .modal {
+    padding: 1.8rem 1.2rem 3rem;
+    max-width: 460px;
+  }
+  .canvas {
+    max-width: 300px;
+  }
+  .title {
+    font-size: 1.7rem;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+  }
+  .form {
+    max-width: 240px;
+    input {
+      font-size: 0.85rem;
+      padding: 8px 12px;
+    }
+  }
+  .spinBtn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  .note {
+    font-size: 0.75rem;
+  }
+}
+
+// @media (min-width: 1280px) {
+//   .modal {
+//     max-width: 520px;
+//     padding: 2.2rem 2rem 2rem;
+//   }
+//   .canvas {
+//     max-width: 400px;
+//     margin-bottom: 1.2rem;
+//   }
+//   .title {
+//     font-size: 2rem;
+//   }
+//   .subtitle {
+//     font-size: 1rem;
+//   }
+//   .form {
+//     max-width: 280px;
+//     input {
+//       padding: 12px 16px;
+//       font-size: 1rem;
+//     }
+//   }
+//   .spinBtn {
+//     padding: 12px 16px;
+//     font-size: 1rem;
+//   }
+//   .note {
+//     font-size: 0.85rem;
+//   }
+// }
+
+@media (max-width: 768px) {
+  .canvas {
+    max-width: 320px;
+  }
+  .note {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal {
+    padding: 1.5rem 1rem 1.2rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .canvas {
+    max-width: 260px;
+  }
+}
+
+// ========= ВЕРТИКАЛЬНАЯ АДАПТАЦИЯ БЕЗ СКРОЛЛА =========
+// Уменьшаем всё при высоте окна ≤ 750px
+@media (max-height: 750px) {
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 0.8rem;
+  }
+  .canvas {
+    max-width: 240px;
+    margin-bottom: 0.6rem;
+  }
+  .form {
+    max-width: 220px;
+    input {
+      padding: 6px 10px;
+      font-size: 0.75rem;
+    }
+  }
+  .spinBtn {
+    margin-top: 10px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .privacyRow {
+    margin: 6px 0 4px;
+    font-size: 10px;
+  }
+  .checkboxLabel {
+    gap: 6px;
+    input {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  .note {
+    margin-top: 0.5rem;
+    font-size: 0.65rem;
+  }
+  .result {
+    margin-top: 0.5rem;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+// Для совсем низких экранов (≤ 650px) – ещё компактнее
+@media (max-height: 650px) {
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 0.1rem;
+  }
+  .subtitle {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .canvas {
+    max-width: 200px;
+    margin-bottom: 0.4rem;
+  }
+  .form {
+    max-width: 200px;
+    input {
+      padding: 4px 8px;
+      font-size: 0.7rem;
+    }
+  }
+  .spinBtn {
+    margin-top: 8px;
+    padding: 5px 8px;
+  }
+  .privacyRow {
+    margin: 4px 0 2px;
+  }
+  .note {
+    margin-top: 0.3rem;
+    font-size: 0.6rem;
+  }
+}
+
+// При очень маленькой высоте (например, 550px) – дополнительно уменьшаем canvas и поля
+@media (max-height: 550px) {
+  .canvas {
+    max-width: 170px;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .subtitle {
+    margin-bottom: 0.3rem;
+  }
+  .form {
+    max-width: 180px;
+  }
 }
