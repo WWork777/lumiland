@@ -17,14 +17,14 @@ import 'swiper/css/effect-coverflow';
 import styles from './styles.module.scss';
 
 const slides = [
-  {
-    id: 1,
-    buttonText: 'Купить билет',
-    link: '#vidget',
-    bgImage: '/images/PromoSlider/01.png',
-    bgColor: '#F9A825',
-    buttonColor: '#dcff00',
-  },
+  // {
+  //   id: 1,
+  //   buttonText: 'Купить билет',
+  //   link: '#vidget',
+  //   bgImage: '/images/PromoSlider/01.png',
+  //   bgColor: '#F9A825',
+  //   buttonColor: '#dcff00',
+  // },
   {
     id: 2,
     buttonText: 'Купить билет',
@@ -62,8 +62,9 @@ export default function PromoSlider() {
         }}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop
+        // loop
         watchSlidesProgress
+        initialSlide={0}
         breakpoints={{
           320: { spaceBetween: -40 },
           768: { spaceBetween: -60 },
@@ -72,7 +73,10 @@ export default function PromoSlider() {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className={styles.slide}>
-            <div className={styles.card} style={{ backgroundColor: slide.bgColor }}>
+            <div
+              className={styles.card}
+              style={{ backgroundColor: slide.bgColor }}
+            >
               <div className={styles.bgImage}>
                 <Image
                   src={slide.bgImage}
