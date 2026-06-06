@@ -83,7 +83,7 @@ export default function PromoSlider() {
                   alt=""
                   fill
                   sizes="(max-width: 768px) 80vw, 50vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: '100% 100%' }}
                   loading="eager"
                 />
               </div>

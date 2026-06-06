@@ -85,6 +85,9 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   column-gap: 50px;
   row-gap: 0px;
+  @media (max-width:1700px) {
+    grid-template-columns: 1fr 1fr;
+  }
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     justify-items: center;

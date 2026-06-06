@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <div className={styles.footer}>
           <span className={styles.copyright}>
-            @ 2025 - Lumi Land. Все права защищены <br />
+            @ 2026 - Lumi Land. Все права защищены <br />
             <a href="https://virlab42.ru">Сайт разработан компанией <span>Вирлаб</span></a>
           </span>
           
