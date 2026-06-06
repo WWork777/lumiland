@@ -62,7 +62,7 @@ export default function PromoSlider() {
         }}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        // loop
+        loop
         watchSlidesProgress
         initialSlide={0}
         breakpoints={{
