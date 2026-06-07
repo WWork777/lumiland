@@ -52,7 +52,7 @@ export default function PromoSlider() {
         effect="coverflow"
         grabCursor
         centeredSlides
-        slidesPerView="auto"
+        slidesPerView="1"
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
