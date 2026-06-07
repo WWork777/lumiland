@@ -25,15 +25,15 @@ const slides = [
   //   bgColor: '#F9A825',
   //   buttonColor: '#dcff00',
   // },
-  {
-    id: 2,
-    buttonText: 'Купить билет',
-    buttonSubtext: '',
-    link: '#vidget',
-    bgImage: '/images/PromoSlider/02.png',
-    bgColor: '#7B1FA2',
-    buttonColor: '#dcff00',
-  },
+  // {
+  //   id: 2,
+  //   buttonText: 'Купить билет',
+  //   buttonSubtext: '',
+  //   link: '#vidget',
+  //   bgImage: '/images/PromoSlider/02.png',
+  //   bgColor: '#7B1FA2',
+  //   buttonColor: '#dcff00',
+  // },
   {
     id: 3,
     buttonText: 'Купить сертификат',
@@ -52,7 +52,7 @@ export default function PromoSlider() {
         effect="coverflow"
         grabCursor
         centeredSlides
-        slidesPerView="1"
+        slidesPerView="auto"
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
