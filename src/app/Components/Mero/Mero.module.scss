@@ -7,6 +7,12 @@
   font-family: 'TT 700';
   color: #4a2b6a;
   background: linear-gradient(180deg, #f1e6f5 0%, #fae1f0 100%);
+  @media (min-width: 2200px) {
+    padding: 50px 8vw;
+  }
+  @media (min-width: 2000px) and (max-width: 2200px) {
+    padding: 50px 12vw;
+  }
   @media (max-width: 1601px) {
     padding: 50px 15vw;
   }
@@ -85,6 +91,9 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   column-gap: 50px;
   row-gap: 0px;
+  @media (min-width:2000px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
   @media (max-width:1700px) {
     grid-template-columns: 1fr 1fr;
   }
