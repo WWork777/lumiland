@@ -121,14 +121,14 @@ export default function Birthday() {
 
           {/* Общие услуги (8 строк) */}
           {[
-            'Безлимитные билеты в парк для всей компании',
+            'Безлимитные билеты для детей',
             'Party-room на 3 часа с яркой праздничной сервировкой',
-            'Интерактивный стол-волшебник с поздравлением',
-            'Готовый хит-старт: игра “Бургер-бум!”',
-            'Личный менеджер на связи 24/7',
-            'Стильные электронные приглашения гостям',
-            'Тёплое поздравление от всей команды Lumiland',
-            'Праздничный сет из воздушных шаров в подарок каждому гостю',
+            'Персональный менеджер',
+            'Интерактивный стол с поздравлением именинника',
+            'Игра хит-старт “Бургер-бум!”',
+            'Электронные приглашения каждому гостю',
+            'Тёплое поздравление от команды',
+            'Оформление воздушными шарами, которые каждый гость заберёт с собой',
           ].map((text, i) => (
             <React.Fragment key={i}>
               <div
@@ -148,6 +148,13 @@ export default function Birthday() {
 
           {/* Услуги базовый + Премиум */}
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
+            Единая механика: от стаканчиков до прощания
+          </div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
+          <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
+          <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+
+          <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
             Тематический квест по всему парку на выбор
           </div>
           <div className={`${styles.cell} ${styles.standart}`}></div>
@@ -162,34 +169,42 @@ export default function Birthday() {
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
 
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Подарки от партнеров на 3 000+ ₽ и скидки всем
+            Подарки от партнеров на 3 000+ ₽ и скидки на последующие визиты для именинника!
           </div>
+
           <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}>{BlackCheck}</div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
 
           {/* Услуги Только Премиум */}
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Персональный инструктор — сопровождение детей
+            Приглашение с ИИ-генерацией образа вашего ребёнка
           </div>
           <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}></div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
 
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Мультфильм Люмика с лицом именинника в парке
+            ИИ-персонаж с образом именинника прямо на огромных экранах в парке
           </div>
           <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}></div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
 
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Профессиональный фотограф (30-50 фото)
+            Персональный инструктор на весь праздник
           </div>
           <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}></div>
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
 
+          <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
+            Час работы фотографа и видеографа
+          </div>
+          <div className={`${styles.cell} ${styles.standart}`}></div>
+          <div className={`${styles.cell} ${styles.premium}`}></div>
+          <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
+            
           {/* Цены */}
           <div
             className={`${styles.cell} ${styles.label} ${styles.sellTariff}`}
@@ -317,8 +332,9 @@ export default function Birthday() {
             {[
               'Безлимитные билеты для детей',
               'Party-room на 3 часа с яркой праздничной сервировкой',
-              'Интерактивный стол с поздравлением именинника - Игра хит-старт: “Бургер-бум!”',
               'Персональный менеджер',
+              'Интерактивный стол с поздравлением именинника',
+              'Игра хит-старт “Бургер-бум!”',
               'Электронные приглашения каждому гостю',
               'Тёплое поздравление от команды',
               'Оформление воздушными шарами, которые каждый гость заберет с собой',
@@ -361,10 +377,11 @@ export default function Birthday() {
             className={`${styles.mContent} ${openTabs.standart ? styles.active : ''}`}
           >
             {[
-              'Все из базового',
-              'Тематический квест  по всему парку на выбор',
+              'Все из пакета «Базовый»',
+              'Единая механика: от стаканчиков до прощания',
+              'Тематический квест по всему парку на выбор',
               'Вынос торта с шоу от аниматора',
-              'Подарки от партнеров на 3 000+ ₽ и скидки на последующие  визиты для именинника!',
+              'Подарки от партнеров на 3 000+ ₽ и скидки на последующие визиты для именинника!',
             ].map((item) => (
               <div key={item} className={styles.mRow}>
                 <p>{item}</p> {BlackCheck}
@@ -404,10 +421,10 @@ export default function Birthday() {
           >
             {[
               'Все из пакета «Комфорт»',
-              'Персональный инструктор на весь праздник',
               'Приглашение с ИИ-генерацией образа вашего ребенка',
-              'ИИ-персонаж с образом именинника на атракционнах парка',
-              'Профессиональная фото или видеосъёмка 1 час',
+              'ИИ-персонаж с образом именинника прямо на огромных экранах в парке',
+              'Персональный инструктор на весь праздник',
+              'Час работы фотографа и видеографа',
             ].map((item) => (
               <div key={item} className={styles.mRow}>
                 <p>{item}</p> {WhiteCheck}
@@ -441,9 +458,18 @@ export default function Birthday() {
           {/* Стандарт */}
           <div className={`${styles.summaryCard} ${styles.baseBg}`}>
             <h3 className={styles.summaryTitle}>базовый</h3>
+            <h4 className={styles.summarySubtitle}>
+              Все что нужно для хорошего дня рождения!
+            </h4>
             <p className={styles.summaryText}>
-              Все что нужно для хорошего дня рождения: безлимитные билеты +
-              party room на 3 часа + личный менеджер, который во всем поможет!
+              ● Безлимитные билеты для детей <br />
+              ● Party-room на 3 часа с яркой праздничной сервировкой <br />
+              ● Персональный менеджер <br />
+              ● Интерактивный стол с поздравлением именинника <br />
+              ● Игра хит-старт “Бургер-бум!” <br />
+              ● Электронные приглашения каждому гостю <br />
+              ● Тёплое поздравление от команды <br />
+              ● Оформление воздушными шарами, которые каждый гость заберет с собой <br />
             </p>
           </div>
 
@@ -454,9 +480,11 @@ export default function Birthday() {
               Тематический праздник под ключ!
             </h4>
             <p className={styles.summaryText}>
-              Всё из базового пакета + захватывающий тематический квест по
-              парку, эффектный вынос торта от аниматора и памятные подарки для
-              каждого гостя.
+              Всё из пакета «Базовый»<br />
+              + Единая механика: от стаканчиков до прощания <br />
+              + Тематический квест по всему парку на выбор <br />
+              + Вынос торта с шоу от аниматора <br />
+              + Подарки от партнеров на 3 000+ ₽ и скидки на последующие визиты для именинника!
             </p>
           </div>
 
@@ -467,10 +495,11 @@ export default function Birthday() {
               Полная персонализация + тематический ДР
             </h4>
             <p className={styles.summaryText}>
-              Всё из пакета «Комфорт» и дополнительно: <br />• Красивые
-              приглашения с ИИ‑генерацией образа вашего ребёнка <br />
-              • Уникальный ИИ‑персонаж с лицом именинника на аттракционах <br />
-              • Личный инструктор и профессиональный фотограф
+              Всё из пакета «Комфорт»<br />
+              + Приглашение с ИИ-генерацией образа вашего ребенка <br />
+              + ИИ-персонаж с образом именинника прямо на огромных экранах в парке <br />
+              + Персональный инструктор на весь праздник <br />
+              + Час работы фотографа и видеографа
             </p>
           </div>
         </div>
