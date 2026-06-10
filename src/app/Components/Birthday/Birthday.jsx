@@ -199,7 +199,7 @@ export default function Birthday() {
           <div className={`${styles.cell} ${styles.vip}`}>{WhiteCheck}</div>
 
           <div className={`${styles.cell} ${styles.label} ${styles.sellTopic}`}>
-            Час работы фотографа и видеографа
+            Час работы фотографа или видеографа
           </div>
           <div className={`${styles.cell} ${styles.standart}`}></div>
           <div className={`${styles.cell} ${styles.premium}`}></div>
@@ -424,7 +424,7 @@ export default function Birthday() {
               'Приглашение с ИИ-генерацией образа вашего ребенка',
               'ИИ-персонаж с образом именинника прямо на огромных экранах в парке',
               'Персональный инструктор на весь праздник',
-              'Час работы фотографа и видеографа',
+              'Час работы фотографа или видеографа',
             ].map((item) => (
               <div key={item} className={styles.mRow}>
                 <p>{item}</p> {WhiteCheck}
@@ -499,7 +499,7 @@ export default function Birthday() {
               + Приглашение с ИИ-генерацией образа вашего ребенка <br />
               + ИИ-персонаж с образом именинника прямо на огромных экранах в парке <br />
               + Персональный инструктор на весь праздник <br />
-              + Час работы фотографа и видеографа
+              + Час работы фотографа или видеографа
             </p>
           </div>
         </div>
