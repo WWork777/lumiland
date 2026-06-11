@@ -1,0 +1,147 @@
+// components/CookieConsent.scss
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  
+  &__container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid #e5e7eb;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #171717;
+  }
+
+  &__link {
+    color: #7c2dae;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    
+    &:hover {
+      color: #7c2dae;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  &__button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &--reject {
+      background: transparent;
+      color: #7c2dae;
+      border: 1px solid #7c2dae;
+      
+      &:hover {
+        background: rgba(37, 99, 235, 0.1);
+      }
+    }
+
+    &--accept {
+      background: #7c2dae;
+      color: white;
+      
+      &:hover {
+        background: #7c2dae;
+      }
+    }
+  }
+}
+
+// Адаптив
+@media (max-width: 768px) {
+  .cookie-consent {
+    padding: 12px;
+    
+    &__container {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+      padding: 16px 20px;
+    }
+    
+    &__buttons {
+      width: 100%;
+      justify-content: center;
+    }
+    
+    &__button {
+      flex: 1;
+      max-width: 140px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cookie-consent {
+    &__container {
+      padding: 12px 16px;
+    }
+    
+    &__text {
+      font-size: 13px;
+    }
+    
+    &__buttons {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    &__button {
+      max-width: none;
+      width: 100%;
+      padding: 12px;
+    }
+  }
+}
+
+// Анимация
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cookie-consent {
+  animation: slideUp 0.3s ease-out;
+}

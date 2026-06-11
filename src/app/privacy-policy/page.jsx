@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Политика конфиденциальности</h1>
-      <div className={styles.updateDate}>Дата последнего обновления: 23 мая 2026 г.</div>
+      <div className={styles.updateDate}>Дата последнего обновления: 11 июня 2026 г.</div>
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>1. Общие положения</h2>
@@ -19,20 +19,19 @@ const PrivacyPolicy = () => {
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>2. Какие данные мы собираем</h2>
         <ul className={styles.list}>
-          <li><strong>Обязательные:</strong> ФИО, email, телефон, адрес доставки.</li>
-          <li><strong>Необязательные:</strong> дата рождения ребёнка, предпочтения по товарам.</li>
+          <li><strong>Обязательные:</strong> Имя, телефон, дата рождения ребёнка.</li>
           <li><strong>Технические:</strong> IP, браузер, cookies, история просмотров.</li>
         </ul>
       </section>
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>3. Цели обработки</h2>
-        <p>Оформление и доставка заказов, обратная связь, персонализация, рассылки (с согласия), безопасность.</p>
+        <p>Заявки, обратная связь, персонализация, рассылки (с согласия), безопасность.</p>
       </section>
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>4. Передача данных третьим лицам</h2>
-        <p>Только службам доставки, платёжным агрегаторам или по запросу госорганов. <strong>Продажа данных запрещена.</strong></p>
+        <p>Платёжным агрегаторам или по запросу госорганов. <strong>Продажа данных запрещена.</strong></p>
       </section>
 
       <section className={styles.section}>
