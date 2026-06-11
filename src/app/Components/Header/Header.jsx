@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Image src='/icons/logo.svg' width={212} height={53} alt='lumiland' />
+      <Link href={"/"}><Image src='/icons/logo.svg' width={212} height={53} alt='lumiland' /></Link>
       <nav className={styles.navigation}>
         {navItems.map(({ label, href }) => (
           <Link key={label} href={href}>

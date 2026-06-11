@@ -49,6 +49,7 @@ export default function Footer() {
               <span className={styles.socialsLabel}><b>ИП</b> Харитончик Иван Олегович</span>
               <span className={styles.socialsLabel}><b>ИНН</b> 701713554179</span>
               <span className={styles.socialsLabel}><b>Юр. адрес:</b> Томск, ул.Говорова 64-24</span>
+              <Link className={styles.socialsLabel} href={'/privacy-policy'} style={{textDecoration: "underline"}}>Политика конфиденциальности</Link>
             </div>
           </div>
         </div>
