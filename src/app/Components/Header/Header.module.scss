@@ -1,6 +1,6 @@
 .header {
   background: linear-gradient(#fae1f0, #f1e6f5);
-  padding: 34px 18vw;
+  padding: 34px 9vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,12 +68,12 @@
 }
 @media (max-width: 1650px) {
   .header {
-    padding: 34px 8vw;
+    padding: 34px 4vw;
   }
 }
 @media (max-width: 1280px) {
   .header {
-    padding: 34px 5vw;
+    padding: 34px 2.5vw;
     .navigation {
       gap: 20px;
       a {

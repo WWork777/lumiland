@@ -123,7 +123,7 @@ export default function Info() {
               <feComposite in2="hardAlpha" operator="out" />
               <feColorMatrix
                 type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
               />
               <feBlend
                 mode="normal"
