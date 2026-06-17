@@ -4,8 +4,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
   border-bottom: 1px solid #7c2dae33;
   position: relative;
+  > a {
+    flex-shrink: 0;
+  }
   .navigation {
     display: flex;
     gap: 35px;
@@ -70,6 +74,12 @@
 @media (max-width: 1280px) {
   .header {
     padding: 34px 5vw;
+    .navigation {
+      gap: 20px;
+      a {
+        white-space: nowrap;
+      }
+    }
     .contacts {
       .numberGeo {
         span:first-child {

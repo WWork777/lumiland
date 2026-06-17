@@ -8,28 +8,37 @@ import { attempts, LIMIT_TIME } from '../../../lib/wheelStore';
 async function ensureCustomFields(amoFetch: any) {
   const fieldsToCreate = [
     { name: 'Приз с колеса фортуны', type: 'text' },
-    { name: 'Дата рождения ребенка', type: 'text' }
+    { name: 'Дата рождения ребенка', type: 'text' },
   ];
 
   const existingFields = await amoFetch('/leads/custom_fields');
   const fieldIds: Record<string, number> = {};
 
   for (const field of fieldsToCreate) {
-    const existing = existingFields._embedded?.custom_fields?.find((f: any) => f.name === field.name);
+    const existing = existingFields._embedded?.custom_fields?.find(
+      (f: any) => f.name === field.name
+    );
     if (existing) {
       fieldIds[field.name] = existing.id;
     } else {
       const newField = await amoFetch('/leads/custom_fields', {
         method: 'POST',
-        body: JSON.stringify([{ name: field.name, type: field.type }])
+        body: JSON.stringify([{ name: field.name, type: field.type }]),
       });
       fieldIds[field.name] = newField._embedded.custom_fields[0].id;
-      console.log(`✅ Создано новое поле: ${field.name}, ID: ${fieldIds[field.name]}`);
+      console.log(
+        `✅ Создано новое поле: ${field.name}, ID: ${fieldIds[field.name]}`
+      );
     }
   }
   return fieldIds;
 }
-async function sendToAmoCRM(name: string, phone: string, prize: string, date: string) {
+async function sendToAmoCRM(
+  name: string,
+  phone: string,
+  prize: string,
+  date: string
+) {
   const subdomain = process.env.AMO_SUBDOMAIN;
   const accessToken = process.env.AMO_ACCESS_TOKEN;
   const pipelineId = parseInt(process.env.AMO_PIPELINE_ID || '0');
@@ -40,7 +49,9 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
     return false;
   }
   if (!pipelineId || !statusId) {
-    console.warn('⚠️ Не указаны ID воронки или статуса (AMO_PIPELINE_ID, AMO_STATUS_ID)');
+    console.warn(
+      '⚠️ Не указаны ID воронки или статуса (AMO_PIPELINE_ID, AMO_STATUS_ID)'
+    );
     return false;
   }
 
@@ -52,7 +63,7 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
       ...options,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         ...options.headers,
       },
     });
@@ -68,15 +79,17 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
     console.log(`➕ Создаём новый контакт: имя="${name}", телефон="${phone}"`);
     const createContactResult = await amoFetch('/contacts', {
       method: 'POST',
-      body: JSON.stringify([{
-        name: name,
-        custom_fields_values: [
-          {
-            field_code: 'PHONE',
-            values: [{ value: phone }]
-          }
-        ]
-      }])
+      body: JSON.stringify([
+        {
+          name: name,
+          custom_fields_values: [
+            {
+              field_code: 'PHONE',
+              values: [{ value: phone }],
+            },
+          ],
+        },
+      ]),
     });
     const contactId = createContactResult?._embedded?.contacts?.[0]?.id;
     if (!contactId) throw new Error('Не удалось создать контакт');
@@ -91,17 +104,19 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
     console.log(`➕ Создаём сделку для контакта ${contactId}...`);
     const leadResult = await amoFetch('/leads', {
       method: 'POST',
-      body: JSON.stringify([{
-        name: `КФ`,
-        price: 0,
-        pipeline_id: pipelineId,
-        status_id: statusId,
-        _embedded: { contacts: [{ id: contactId }] },
-        custom_fields_values: [
-          { field_id: prizeFieldId, values: [{ value: prize }] },
-          { field_id: dateFieldId, values: [{ value: date }] }
-        ]
-      }])
+      body: JSON.stringify([
+        {
+          name: `КФ`,
+          price: 0,
+          pipeline_id: pipelineId,
+          status_id: statusId,
+          _embedded: { contacts: [{ id: contactId }] },
+          custom_fields_values: [
+            { field_id: prizeFieldId, values: [{ value: prize }] },
+            { field_id: dateFieldId, values: [{ value: date }] },
+          ],
+        },
+      ]),
     });
 
     if (leadResult?._embedded?.leads?.length > 0) {
@@ -115,7 +130,6 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
     return false;
   }
 }
-
 
 export async function POST(request: Request) {
   try {
@@ -293,8 +307,8 @@ export async function POST(request: Request) {
         console.error('Ошибка email:', e);
       }
     }
-   // ----- 5. Отправка в amoCRM -----
-   let amoSent = false;
+    // ----- 5. Отправка в amoCRM -----
+    let amoSent = false;
     try {
       console.log('📤 Отправка в amoCRM...');
       amoSent = await sendToAmoCRM(name, phone, prize, date);
