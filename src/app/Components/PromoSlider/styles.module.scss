@@ -281,6 +281,11 @@ $border-radius-button: 50px;
     padding: 0.2rem 0.6rem;
   }
 }
+// ===== КНОПКА ПО ЦЕНТРУ (для новых карточек-изображений) =====
+.buttonWrapperCenter {
+  justify-content: center;
+}
+
 .title {
   text-align: center;
   color: #4c365a;
