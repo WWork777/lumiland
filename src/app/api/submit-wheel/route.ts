@@ -123,10 +123,24 @@ async function sendToAmoCRM(
       const leadId = leadResult._embedded.leads[0].id;
       console.log(`✅ Сделка создана, ID: ${leadId}`);
 
-      // 4. Создаём задачу «Связаться» на сегодня
-      const endOfDay = new Date();
-      endOfDay.setHours(23, 59, 59, 0);
-      const completeTill = Math.floor(endOfDay.getTime() / 1000);
+      // 4. Создаём задачу «Связаться» на сегодня (конец дня в часовом поясе аккаунта)
+      let tz = 'Europe/Moscow';
+      try {
+        const account = await amoFetch('/account?with=datetime_settings');
+        const accountTz = account?.datetime_settings?.timezone || account?.timezone;
+        if (accountTz) tz = accountTz;
+        console.log(`🕐 Часовой пояс аккаунта: ${tz}`);
+      } catch (e) {
+        console.warn('⚠️ Не удалось получить часовой пояс, используется', tz);
+      }
+      const now = new Date();
+      const utcRef = new Date(now.toLocaleString('en-US', { timeZone: 'UTC' }));
+      const tzRef = new Date(now.toLocaleString('en-US', { timeZone: tz }));
+      const offsetMs = tzRef.getTime() - utcRef.getTime();
+      const localNow = new Date(now.getTime() + offsetMs);
+      const completeTill = Math.floor(
+        (Date.UTC(localNow.getUTCFullYear(), localNow.getUTCMonth(), localNow.getUTCDate(), 16, 59, 59) - offsetMs) / 1000
+      );
 
       try {
         await amoFetch('/tasks', {
