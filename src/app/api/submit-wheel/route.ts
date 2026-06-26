@@ -139,7 +139,7 @@ async function sendToAmoCRM(
       const offsetMs = tzRef.getTime() - utcRef.getTime();
       const localNow = new Date(now.getTime() + offsetMs);
       const completeTill = Math.floor(
-        (Date.UTC(localNow.getUTCFullYear(), localNow.getUTCMonth(), localNow.getUTCDate(), 16, 59, 59) - offsetMs) / 1000
+        (Date.UTC(localNow.getUTCFullYear(), localNow.getUTCMonth(), localNow.getUTCDate(), 5, 0, 0) - offsetMs) / 1000
       );
 
       try {
