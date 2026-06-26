@@ -52,9 +52,9 @@ export default function Info() {
       </p>
       <div className={styles.fireIcone}>
         <svg
-          width="724"
-          height="724"
-          viewBox="0 0 724 250"
+          width="300"
+          height="300"
+          viewBox="212 80 300 300"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -123,7 +123,7 @@ export default function Info() {
               <feComposite in2="hardAlpha" operator="out" />
               <feColorMatrix
                 type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
               />
               <feBlend
                 mode="normal"

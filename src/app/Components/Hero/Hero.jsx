@@ -109,7 +109,7 @@ export default function Hero() {
           </span>
         </h1>
         <div className={styles.buttonsContainer}>
-          <Link href="tel:79528800330" className={styles.phoneButton}>
+          <Link href="tel:+79528800330" className={styles.phoneButton}>
             <span>Позвонить в парк</span>
             <Image
               src={'/icons/phone.svg'}

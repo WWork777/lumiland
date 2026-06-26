@@ -17,23 +17,24 @@ import 'swiper/css/effect-coverflow';
 import styles from './styles.module.scss';
 
 const slides = [
-  // {
-  //   id: 1,
-  //   buttonText: 'Купить билет',
-  //   link: '#vidget',
-  //   bgImage: '/images/PromoSlider/01.png',
-  //   bgColor: '#F9A825',
-  //   buttonColor: '#dcff00',
-  // },
-  // {
-  //   id: 2,
-  //   buttonText: 'Купить билет',
-  //   buttonSubtext: '',
-  //   link: '#vidget',
-  //   bgImage: '/images/PromoSlider/02.png',
-  //   bgColor: '#7B1FA2',
-  //   buttonColor: '#dcff00',
-  // },
+  {
+    id: 1,
+    buttonText: 'Купить',
+    link: '#certificate_widget',
+    bgImage: '/images/PromoSlider/3.png',
+    bgColor: '#3b1b7a',
+    buttonColor: '#dcff00',
+    buttonCenter: true,
+  },
+  {
+    id: 2,
+    buttonText: 'Купить билет!',
+    link: '#certificate_widget',
+    bgImage: '/images/PromoSlider/2.png',
+    bgColor: '#3b1b7a',
+    buttonColor: '#dcff00',
+    buttonCenter: true,
+  },
   {
     id: 3,
     buttonText: 'Купить сертификат',
@@ -62,7 +63,7 @@ export default function PromoSlider() {
         }}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop
+        // loop
         watchSlidesProgress
         initialSlide={0}
         breakpoints={{
@@ -74,24 +75,28 @@ export default function PromoSlider() {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className={styles.slide}>
             <div
-              className={styles.card}
-              style={{ backgroundColor: slide.bgColor }}
+              className={`${styles.card} ${slide.bgImage ? '' : styles.textCard}`}
+              style={{ background: slide.bgColor }}
             >
-              <div className={styles.bgImage}>
-                <Image
-                  src={slide.bgImage}
-                  alt=""
-                  fill
-                  sizes="(max-width: 768px) 80vw, 50vw"
-                  style={{ objectFit: '100% 100%' }}
-                  loading="eager"
-                />
-              </div>
+              {slide.bgImage && (
+                <div className={styles.bgImage}>
+                  <Image
+                    src={slide.bgImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 80vw, 50vw"
+                    style={{ objectFit: '100% 100%' }}
+                    loading="eager"
+                  />
+                </div>
+              )}
               <div className={styles.content}>
-                <h3>{slide.title}</h3>
+                {slide.title && <h3>{slide.title}</h3>}
                 {slide.price && <p className={styles.price}>{slide.price}</p>}
                 {slide.desc && <p className={styles.desc}>{slide.desc}</p>}
-                <div className={styles.buttonWrapper}>
+                <div
+                  className={`${styles.buttonWrapper} ${slide.buttonCenter ? styles.buttonWrapperCenter : ''}`}
+                >
                   <a
                     href={slide.link}
                     className={styles.button}

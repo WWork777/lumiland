@@ -5,9 +5,9 @@ import Link from 'next/link';
 import styles from './Header.module.scss';
 
 const navItems = [
-  { label: 'Купить сертификат', href: '#certificate_widget' },
-  { label: 'Вопрос-ответ', href: '#questions' },
-  { label: 'Контакты', href: '#contacts' },
+  { label: 'Купить сертификат', href: '/#certificate_widget' },
+  { label: 'Вопрос-ответ', href: '/#questions' },
+  { label: 'Контакты', href: '/#contacts' },
 ];
 
 export default function Header() {
@@ -88,7 +88,9 @@ export default function Header() {
         id='mobile-nav'
       >
         <div className={styles.mobileMenuHeader}>
-          <Image src='/icons/logo.svg' width={149} height={37} alt='lumiland' />
+          <Link href={'/'} onClick={closeMenu}>
+            <Image src='/icons/logo.svg' width={149} height={37} alt='lumiland' />
+          </Link>
           <button
             type='button'
             onClick={closeMenu}
