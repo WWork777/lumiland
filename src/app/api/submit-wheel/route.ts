@@ -105,7 +105,30 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
     });
 
     if (leadResult?._embedded?.leads?.length > 0) {
-      console.log(`✅ Сделка создана, ID: ${leadResult._embedded.leads[0].id}`);
+      const leadId = leadResult._embedded.leads[0].id;
+      console.log(`✅ Сделка создана, ID: ${leadId}`);
+
+      // 4. Создаём задачу «Связаться» на сегодня
+      const endOfDay = new Date();
+      endOfDay.setHours(23, 59, 59, 0);
+      const completeTill = Math.floor(endOfDay.getTime() / 1000);
+
+      try {
+        await amoFetch('/tasks', {
+          method: 'POST',
+          body: JSON.stringify([{
+            task_type_id: 1,
+            text: '',
+            complete_till: completeTill,
+            entity_id: leadId,
+            entity_type: 'leads'
+          }])
+        });
+        console.log(`✅ Задача «Связаться» создана для сделки ${leadId}`);
+      } catch (taskError) {
+        console.error('⚠️ Не удалось создать задачу:', taskError);
+      }
+
       return true;
     } else {
       throw new Error('Не удалось создать сделку');
