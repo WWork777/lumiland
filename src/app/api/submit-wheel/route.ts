@@ -118,7 +118,7 @@ async function sendToAmoCRM(name: string, phone: string, prize: string, date: st
           method: 'POST',
           body: JSON.stringify([{
             task_type_id: 1,
-            text: '',
+            text: 'Связаться с клиентом',
             complete_till: completeTill,
             entity_id: leadId,
             entity_type: 'leads'
